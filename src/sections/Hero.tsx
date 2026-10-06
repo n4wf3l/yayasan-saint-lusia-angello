@@ -1,4 +1,4 @@
-import { ArrowRight, Heart, Play, Sparkles } from 'lucide-react'
+import { ArrowRight, Heart, Play } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import { YOUTUBE_URL } from '../config'
 
@@ -6,44 +6,20 @@ export function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section
-      id="top"
-      className="relative overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-28"
-    >
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-cream to-cream"
-        aria-hidden
-      />
-      <div
-        className="absolute inset-x-0 top-0 -z-10 h-[70%] opacity-50 dot-pattern"
-        aria-hidden
-      />
-
-      <div
-        className="pointer-events-none absolute -top-24 -left-24 -z-10 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute top-20 right-0 -z-10 h-80 w-80 rounded-full bg-ocean-200/40 blur-3xl"
-        aria-hidden
-      />
-
+    <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
       <div className="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
-        <div className="lg:col-span-7 animate-slide-up">
-          <span className="chip">
-            <Sparkles className="h-3.5 w-3.5" />
+        <div className="lg:col-span-7">
+          <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('hero.badge')}
-          </span>
+          </div>
 
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-slate-900">
-            {t('hero.title1')}
-            <br />
-            <span className="gradient-text">{t('hero.title2')}</span>
-            <br />
+          <h1 className="mt-5 font-display text-[2.5rem] sm:text-6xl lg:text-[4.5rem] font-medium leading-[1.02] text-slate-900">
+            {t('hero.title1')}{' '}
+            <em className="italic text-brand-600">{t('hero.title2')}</em>{' '}
             {t('hero.title3')}
           </h1>
 
-          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-slate-600">
+          <p className="mt-7 max-w-xl text-base sm:text-lg leading-relaxed text-slate-700">
             {t('hero.subtitle')}
           </p>
 
@@ -60,7 +36,7 @@ export function Hero() {
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-white px-5 py-3 text-sm font-semibold text-red-600 shadow-sm transition hover:border-red-500 hover:bg-red-50"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-red-600"
             >
               <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-white">
                 <Play className="h-3 w-3 fill-current" />
@@ -69,15 +45,20 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6">
+          <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-slate-200 pt-8">
             <Stat value={t('hero.stat1Value')} label={t('hero.stat1Label')} />
             <Stat value={t('hero.stat2Value')} label={t('hero.stat2Label')} />
             <Stat value={t('hero.stat3Value')} label={t('hero.stat3Label')} />
           </dl>
         </div>
 
-        <div className="lg:col-span-5 relative">
-          <HeroArtwork />
+        <div className="lg:col-span-5 flex justify-center">
+          <img
+            src="/logo-yayasan.png"
+            alt="Yayasan Saint Lusia Angello"
+            className="h-56 w-56 sm:h-72 sm:w-72 object-contain drop-shadow-xl"
+            loading="eager"
+          />
         </div>
       </div>
     </section>
@@ -87,48 +68,8 @@ export function Hero() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <dt className="text-3xl font-bold text-brand-600 font-display">{value}</dt>
-      <dd className="mt-1 text-xs sm:text-sm text-slate-500">{label}</dd>
-    </div>
-  )
-}
-
-function HeroArtwork() {
-  return (
-    <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
-      <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-brand-400 to-brand-600 shadow-2xl shadow-brand-500/30 rotate-3" />
-      <div className="absolute inset-0 rounded-[2rem] overflow-hidden bg-white shadow-2xl">
-        <img
-          src="https://images.unsplash.com/photo-1511949860663-92c5c57d48a7?auto=format&fit=crop&w=900&q=80"
-          alt="Smiling children at the orphanage"
-          className="h-full w-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-x-0 bottom-0 p-5">
-          <div className="rounded-2xl bg-white/90 backdrop-blur px-4 py-3 shadow-xl">
-            <div className="flex items-center gap-3">
-              <div className="rounded-full bg-brand-100 p-2">
-                <Heart className="h-4 w-4 text-brand-600" />
-              </div>
-              <div className="text-sm">
-                <div className="font-semibold text-slate-900">
-                  20 anak • 20 kids
-                </div>
-                <div className="text-slate-500 text-xs">
-                  Growing stronger every day
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute -top-4 right-0 rounded-2xl bg-white px-4 py-3 shadow-xl animate-float">
-        <div className="text-[11px] uppercase tracking-wider text-brand-600 font-bold">
-          Since 2021
-        </div>
-        <div className="text-sm font-semibold text-slate-900">Berbadan hukum 2023</div>
-      </div>
+      <dt className="font-display text-3xl font-medium text-slate-900">{value}</dt>
+      <dd className="mt-1 text-xs text-slate-500">{label}</dd>
     </div>
   )
 }

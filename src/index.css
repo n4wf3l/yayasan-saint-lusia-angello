@@ -7,10 +7,12 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-cream text-slate-800 font-sans antialiased;
+    @apply bg-white text-slate-800 font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
   }
   h1, h2, h3, h4 {
     @apply font-display tracking-tight;
+    font-feature-settings: 'ss01';
   }
   ::selection {
     @apply bg-brand-200 text-brand-900;
@@ -19,36 +21,12 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-600 hover:shadow-brand-500/40 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-offset-2;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-500 hover:text-brand-600;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-slate-900 hover:text-slate-900;
   }
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100;
-  }
-  .chip {
-    @apply inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700;
-  }
-  .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900;
-  }
-  .section-lead {
-    @apply mt-4 text-base sm:text-lg text-slate-600 leading-relaxed;
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #f06108 0%, #ff9a38 50%, #0b8ce0 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.dot-pattern {
-  background-image: radial-gradient(circle, rgba(240, 97, 8, 0.12) 1px, transparent 1px);
-  background-size: 20px 20px;
 }

@@ -16,7 +16,6 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-slate-900 text-slate-300">
-      <div className="absolute inset-0 opacity-20 dot-pattern" aria-hidden />
       <div className="container-page relative py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>

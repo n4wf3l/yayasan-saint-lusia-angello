@@ -4,12 +4,9 @@ import { Hero } from './sections/Hero'
 import { About } from './sections/About'
 import { Mission } from './sections/Mission'
 import { Team } from './sections/Team'
-import { Programs } from './sections/Programs'
 import { DailyLife } from './sections/DailyLife'
 import { Impact } from './sections/Impact'
-import { YouTubeSection } from './sections/YouTube'
 import { Donate } from './sections/Donate'
-import { Gallery } from './sections/Gallery'
 import { Contact } from './sections/Contact'
 
 export default function App() {
@@ -21,12 +18,9 @@ export default function App() {
         <About />
         <Mission />
         <Team />
-        <Programs />
         <DailyLife />
         <Impact />
-        <YouTubeSection />
         <Donate />
-        <Gallery />
         <Contact />
       </main>
       <Footer />

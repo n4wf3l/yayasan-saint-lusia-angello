@@ -4,6 +4,8 @@ export type TranslationKey =
   | 'nav.about'
   | 'nav.mission'
   | 'nav.programs'
+  | 'nav.team'
+  | 'nav.daily'
   | 'nav.impact'
   | 'nav.donate'
   | 'nav.gallery'
@@ -63,15 +65,11 @@ export type TranslationKey =
   | 'impact.chip'
   | 'impact.title'
   | 'impact.lead'
-  | 'impact.testimonial1'
-  | 'impact.testimonial1Author'
-  | 'impact.testimonial1Role'
-  | 'impact.testimonial2'
-  | 'impact.testimonial2Author'
-  | 'impact.testimonial2Role'
-  | 'impact.testimonial3'
-  | 'impact.testimonial3Author'
-  | 'impact.testimonial3Role'
+  | 'impact.donorsTitle'
+  | 'impact.donorsLead'
+  | 'impact.donor1'
+  | 'impact.donor2'
+  | 'impact.donor3'
   | 'donate.chip'
   | 'donate.title'
   | 'donate.lead'
@@ -202,21 +200,23 @@ export type TranslationKey =
 
 export const translations: Record<Language, Record<TranslationKey, string>> = {
   id: {
-    'nav.about': 'Tentang Kami',
+    'nav.about': 'Tentang',
     'nav.mission': 'Misi',
     'nav.programs': 'Program',
-    'nav.impact': 'Dampak',
+    'nav.team': 'Pengurus',
+    'nav.daily': 'Keseharian',
+    'nav.impact': 'Cerita',
     'nav.donate': 'Donasi',
     'nav.gallery': 'Galeri',
     'nav.contact': 'Kontak',
-    'nav.donateCta': 'Donasi Sekarang',
+    'nav.donateCta': 'Donasi',
 
-    'hero.badge': 'Panti Asuhan di Jakarta, Indonesia',
-    'hero.title1': 'Memberi harapan,',
-    'hero.title2': 'merawat masa depan',
-    'hero.title3': 'anak-anak kami.',
+    'hero.badge': 'Yayasan sosial, Jakarta Barat — berbadan hukum sejak 2023',
+    'hero.title1': '20 anak,',
+    'hero.title2': 'satu rumah',
+    'hero.title3': 'di Meruya Selatan.',
     'hero.subtitle':
-      'Yayasan Saint Lusia Angello adalah rumah bagi anak-anak yatim di Jakarta. Kami memberikan kasih sayang, pendidikan, dan tempat yang aman untuk tumbuh menjadi pribadi yang kuat dan percaya diri.',
+      'Didirikan oleh Ibu Lusia Owa. Kami menanggung sekolah, makan, tempat tinggal, dan pendampingan harian — dari bayi hingga remaja. Rp 22 juta per bulan untuk membuat semuanya berjalan.',
     'hero.ctaPrimary': 'Donasi Sekarang',
     'hero.ctaSecondary': 'Pelajari Lebih Lanjut',
     'hero.ctaYoutube': 'Tonton di YouTube',
@@ -279,27 +279,21 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'programs.p6Desc':
       'Doa bersama, bimbingan karakter, dan nilai-nilai hidup yang membangun jati diri.',
 
-    'impact.chip': 'Dampak Kami',
-    'impact.title': 'Cerita yang membuat kami terus berjalan',
+    'impact.chip': 'Satu cerita panjang',
+    'impact.title': 'Ricky, dari rumah ini ke seragam TNI',
     'impact.lead':
-      'Berkat kebaikan Anda, anak-anak kami menemukan rumah, mimpi, dan masa depan yang baru.',
-    'impact.testimonial1':
-      'Setelah lulus SMA, saya menyampaikan keinginan untuk menjadi tentara. Ibu Lusia mendukung penuh dan membantu saya mempersiapkan semua syarat. Hari ini saya mengenakan seragam TNI AD dan bertugas di Papua — ini adalah mimpi yang menjadi kenyataan berkat Yayasan.',
-    'impact.testimonial1Author': 'Ricky (Rikardus Ndona Ndore)',
-    'impact.testimonial1Role': 'Alumni YSLA • Anggota TNI AD, Papua',
-    'impact.testimonial2':
-      'Saya mendukung Yayasan ini karena saya melihat sendiri bagaimana setiap bantuan langsung berdampak pada kehidupan anak-anak. Transparansi dan ketulusan yang jarang saya temukan.',
-    'impact.testimonial2Author': 'Bapak Niko Wangsidi',
-    'impact.testimonial2Role': 'Donatur tetap',
-    'impact.testimonial3':
-      'Setiap kali berkunjung, saya pulang dengan hati yang penuh. Anak-anak di sini mengajarkan arti syukur dan harapan yang sesungguhnya.',
-    'impact.testimonial3Author': 'Ibu Wilona Nathania',
-    'impact.testimonial3Role': 'Donatur tetap',
+      'Rikardus Ndona Ndore (Ricky), lahir di Koporombo (15 Juli 2005), masuk Yayasan sebagai anak panti. Setelah lulus SMA, ia menyampaikan keinginan menjadi tentara. Ibu Lusia mendukung penuh dan membantunya mempersiapkan setiap syarat yang diwajibkan. Sambil menunggu panggilan, Ricky membantu mengurus adik-adiknya di panti. Hari ini ia anggota TNI Angkatan Darat, bertugas di Papua.',
+    'impact.donorsTitle': 'Donatur tetap kami',
+    'impact.donorsLead':
+      'Terima kasih atas kehadiran berkelanjutan Anda bagi anak-anak kami.',
+    'impact.donor1': 'Bapak Niko Wangsidi',
+    'impact.donor2': 'Ibu Wilona Nathania',
+    'impact.donor3': 'Bapak Vincent Saverio',
 
-    'donate.chip': 'Donasi',
-    'donate.title': 'Cara Anda bisa membantu',
+    'donate.chip': 'Dukungan',
+    'donate.title': 'Transfer, kirim barang, atau datang langsung',
     'donate.lead':
-      'Setiap bentuk dukungan — besar atau kecil — membuat perbedaan nyata dalam kehidupan anak-anak kami.',
+      'Tiga jalur, semuanya terbuka. Rekening resmi di bawah ini atas nama Yayasan — bukan rekening pribadi. Konfirmasi transfer via WhatsApp agar kami bisa catat dan berterima kasih.',
     'donate.financialTitle': 'Donasi Keuangan',
     'donate.financialDesc':
       'Transfer langsung ke rekening resmi yayasan. Setiap rupiah digunakan untuk makanan, pendidikan, dan kebutuhan harian anak-anak.',
@@ -414,9 +408,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'gallery.cap6': 'Ibadah pagi bersama',
 
     'contact.chip': 'Kontak',
-    'contact.title': 'Mari terhubung dengan kami',
+    'contact.title': 'Datang, telepon, atau tulis kami',
     'contact.lead':
-      'Ada pertanyaan, ingin berdonasi, atau sekadar mampir? Jangan ragu untuk menghubungi kami.',
+      'WhatsApp Ibu Liez adalah cara tercepat. Kami juga menerima kunjungan — beri tahu kami sebelumnya agar anak-anak dapat menyambut Anda.',
     'contact.addressTitle': 'Alamat',
     'contact.addressValue':
       'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, Jakarta Barat, Jakarta 11650, Indonesia',
@@ -434,7 +428,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.formNote': 'Kami biasanya membalas dalam 1–2 hari kerja.',
 
     'footer.tagline':
-      'Rumah penuh kasih bagi anak-anak Jakarta. Terima kasih telah menjadi bagian dari perjalanan kami.',
+      '20 anak, 6 pendamping, 1 rumah di Meruya Selatan. Didirikan oleh Ibu Lusia Owa — berbadan hukum sejak 2023.',
     'footer.quickLinks': 'Tautan Cepat',
     'footer.support': 'Dukung Kami',
     'footer.supportDonate': 'Donasi Keuangan',
@@ -452,18 +446,20 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.about': 'About',
     'nav.mission': 'Mission',
     'nav.programs': 'Programs',
-    'nav.impact': 'Impact',
+    'nav.team': 'Board',
+    'nav.daily': 'A day with us',
+    'nav.impact': 'Stories',
     'nav.donate': 'Donate',
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contact',
-    'nav.donateCta': 'Donate Now',
+    'nav.donateCta': 'Donate',
 
-    'hero.badge': 'Orphanage based in Jakarta, Indonesia',
-    'hero.title1': 'Giving hope,',
-    'hero.title2': 'nurturing the future',
-    'hero.title3': 'of our children.',
+    'hero.badge': 'Registered Indonesian foundation — West Jakarta, since 2023',
+    'hero.title1': '20 children,',
+    'hero.title2': 'one home',
+    'hero.title3': 'in Meruya Selatan.',
     'hero.subtitle':
-      'Yayasan Saint Lusia Angello is a home for orphaned children in Jakarta. We provide love, education, and a safe space for them to grow into strong, confident individuals.',
+      'Founded by Mother Lusia Owa. We cover school, meals, housing, and daily guidance — from newborns to teenagers. Running cost: IDR 22 million every month.',
     'hero.ctaPrimary': 'Donate Now',
     'hero.ctaSecondary': 'Learn More',
     'hero.ctaYoutube': 'Watch on YouTube',
@@ -526,27 +522,21 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'programs.p6Desc':
       'Shared prayers, character coaching, and life values that build identity.',
 
-    'impact.chip': 'Our Impact',
-    'impact.title': 'Stories that keep us going',
+    'impact.chip': 'One real story',
+    'impact.title': 'Ricky, from this home to the Indonesian Army',
     'impact.lead':
-      'Thanks to your kindness, our children find a home, dreams, and a brand-new future.',
-    'impact.testimonial1':
-      'After finishing high school, I told Mother Lusia I wanted to serve as a soldier. She supported me fully and helped me prepare for every single requirement. Today I wear the Indonesian Army uniform and serve in Papua — a dream come true thanks to the Foundation.',
-    'impact.testimonial1Author': 'Ricky (Rikardus Ndona Ndore)',
-    'impact.testimonial1Role': 'YSLA Alumnus • Indonesian Army, Papua',
-    'impact.testimonial2':
-      'I support this Foundation because I see firsthand how every gift directly reaches the children. The transparency and sincerity here is rare.',
-    'impact.testimonial2Author': 'Mr. Niko Wangsidi',
-    'impact.testimonial2Role': 'Regular donor',
-    'impact.testimonial3':
-      'Every time I visit, I go home with a full heart. The children here teach me the true meaning of gratitude and hope.',
-    'impact.testimonial3Author': 'Mrs. Wilona Nathania',
-    'impact.testimonial3Role': 'Regular donor',
+      'Rikardus Ndona Ndore (Ricky), born in Koporombo on 15 July 2005, grew up here. After graduating from senior high school he told Mother Lusia he wanted to serve as a soldier. She backed him fully and helped him prepare for every entry requirement. While he waited for the call, he helped look after the younger children in the home. Today he serves in the Indonesian Army, stationed in Papua.',
+    'impact.donorsTitle': 'Our regular donors',
+    'impact.donorsLead':
+      'Thank you for standing with the children, month after month.',
+    'impact.donor1': 'Mr. Niko Wangsidi',
+    'impact.donor2': 'Mrs. Wilona Nathania',
+    'impact.donor3': 'Mr. Vincent Saverio',
 
-    'donate.chip': 'Donate',
-    'donate.title': 'Ways you can help',
+    'donate.chip': 'Support',
+    'donate.title': 'Transfer, send goods, or visit us',
     'donate.lead':
-      'Every form of support — big or small — makes a real difference in the lives of our children.',
+      'Three channels, all open. The account below is the official Foundation account — not a personal one. Please confirm your transfer on WhatsApp so we can log it and say thank you.',
     'donate.financialTitle': 'Financial Donation',
     'donate.financialDesc':
       'Transfer directly to our official account. Every rupiah goes to food, education, and the daily needs of the children.',
@@ -661,9 +651,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'gallery.cap6': 'Morning prayers together',
 
     'contact.chip': 'Contact',
-    'contact.title': 'Let\'s get in touch',
+    'contact.title': 'Call, write, or visit us',
     'contact.lead':
-      'Have a question, want to donate, or just stop by? Please feel free to reach out.',
+      'WhatsApp to Mother Liez is the quickest way. Visitors are welcome too — give us a heads-up so the children can greet you.',
     'contact.addressTitle': 'Address',
     'contact.addressValue':
       'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, West Jakarta 11650, Indonesia',
@@ -681,7 +671,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.formNote': 'We usually reply within 1–2 business days.',
 
     'footer.tagline':
-      'A loving home for the children of Jakarta. Thank you for being part of our journey.',
+      '20 children, 6 caregivers, 1 home in Meruya Selatan. Founded by Mother Lusia Owa — legally registered since 2023.',
     'footer.quickLinks': 'Quick Links',
     'footer.support': 'Support Us',
     'footer.supportDonate': 'Financial Donation',

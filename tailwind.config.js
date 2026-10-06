@@ -31,8 +31,16 @@ export default {
         cream: '#fdf8f0',
       },
       fontFamily: {
-        sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Playfair Display"', 'serif'],
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+        ],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
