@@ -81,6 +81,27 @@ export type TranslationKey =
   | 'donate.financialAccount'
   | 'donate.financialName'
   | 'donate.financialCta'
+  | 'donate.financialCopied'
+  | 'donate.financialCopy'
+  | 'donate.budgetTitle'
+  | 'donate.budgetLead'
+  | 'donate.budgetFood'
+  | 'donate.budgetFoodDesc'
+  | 'donate.budgetSchool'
+  | 'donate.budgetSchoolDesc'
+  | 'donate.budgetTotal'
+  | 'donate.budgetTotalDesc'
+  | 'donate.urgentChip'
+  | 'donate.urgentTitle'
+  | 'donate.urgentLead'
+  | 'donate.urgent1Title'
+  | 'donate.urgent1Desc'
+  | 'donate.urgent2Title'
+  | 'donate.urgent2Desc'
+  | 'donate.urgent3Title'
+  | 'donate.urgent3Desc'
+  | 'donate.urgent4Title'
+  | 'donate.urgent4Desc'
   | 'donate.goodsTitle'
   | 'donate.goodsDesc'
   | 'donate.goodsList1'
@@ -103,6 +124,42 @@ export type TranslationKey =
   | 'donate.amount3Desc'
   | 'donate.amount4Desc'
   | 'donate.amountsTitle'
+  | 'team.chip'
+  | 'team.title'
+  | 'team.lead'
+  | 'team.founderRole'
+  | 'team.founderName'
+  | 'team.founderStory'
+  | 'team.pembinaRole'
+  | 'team.pengawasRole'
+  | 'team.ketuaRole'
+  | 'team.sekretarisRole'
+  | 'team.bendaharaRole'
+  | 'daily.chip'
+  | 'daily.title'
+  | 'daily.lead'
+  | 'daily.weekdaysTitle'
+  | 'daily.weekendTitle'
+  | 'daily.weekday1'
+  | 'daily.weekday2'
+  | 'daily.weekday3'
+  | 'daily.weekday4'
+  | 'daily.weekday5'
+  | 'daily.weekday6'
+  | 'daily.weekend1'
+  | 'daily.weekend2'
+  | 'daily.weekend3'
+  | 'footer.legalReg'
+  | 'footer.legalRegLabel'
+  | 'youtube.chip'
+  | 'youtube.title'
+  | 'youtube.lead'
+  | 'youtube.cta'
+  | 'youtube.secondary'
+  | 'youtube.feature1'
+  | 'youtube.feature2'
+  | 'youtube.feature3'
+  | 'hero.ctaYoutube'
   | 'gallery.chip'
   | 'gallery.title'
   | 'gallery.lead'
@@ -118,6 +175,8 @@ export type TranslationKey =
   | 'contact.addressTitle'
   | 'contact.addressValue'
   | 'contact.phoneTitle'
+  | 'contact.phoneRole'
+  | 'contact.whatsappCta'
   | 'contact.emailTitle'
   | 'contact.hoursTitle'
   | 'contact.hoursValue'
@@ -160,19 +219,20 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Yayasan Saint Lusia Angello adalah rumah bagi anak-anak yatim di Jakarta. Kami memberikan kasih sayang, pendidikan, dan tempat yang aman untuk tumbuh menjadi pribadi yang kuat dan percaya diri.',
     'hero.ctaPrimary': 'Donasi Sekarang',
     'hero.ctaSecondary': 'Pelajari Lebih Lanjut',
-    'hero.stat1Value': '120+',
-    'hero.stat1Label': 'Anak terlayani',
-    'hero.stat2Value': '15',
-    'hero.stat2Label': 'Tahun pelayanan',
-    'hero.stat3Value': '40+',
-    'hero.stat3Label': 'Relawan aktif',
+    'hero.ctaYoutube': 'Tonton di YouTube',
+    'hero.stat1Value': '20',
+    'hero.stat1Label': 'Anak di rumah kami',
+    'hero.stat2Value': '2021',
+    'hero.stat2Label': 'Mulai melayani',
+    'hero.stat3Value': '6',
+    'hero.stat3Label': 'Pendamping',
 
     'about.chip': 'Tentang Kami',
-    'about.title': 'Rumah penuh kasih untuk anak-anak Jakarta',
+    'about.title': 'Lahir dari belas kasih, tumbuh karena cinta',
     'about.p1':
-      'Yayasan Saint Lusia Angello berdiri sejak 2010 di Jakarta dengan satu tujuan sederhana: memberikan rumah yang hangat dan aman bagi anak-anak yatim piatu, terlantar, dan kurang mampu.',
+      'Yayasan Saint Lusia Angello (YSLA) didirikan oleh Ibu Lusia Owa, seorang perempuan sederhana dari Flores, Ende – Nusa Tenggara Timur. Setelah sembilan tahun hidup selibat sebagai suster dan melayani anak-anak berkebutuhan khusus, pada tahun 2017 beliau memilih kembali ke tengah masyarakat untuk melayani lebih luas lagi.',
     'about.p2':
-      'Kami percaya setiap anak layak mendapatkan kesempatan untuk belajar, bermain, dan bermimpi. Melalui dukungan Anda, kami memastikan mereka tumbuh dengan makanan sehat, pendidikan yang baik, dan pendampingan rohani.',
+      'Pelayanan kami dimulai sejak September 2021, lalu secara resmi berbadan hukum pada 11 Maret 2023. Hari ini, 20 anak hidup bersama kami di Jakarta Barat — dari bayi hingga remaja — bersama 6 pendamping yang mendampingi mereka setiap hari dengan penuh kasih.',
     'about.feature1Title': 'Tempat Aman',
     'about.feature1Desc': 'Lingkungan yang nyaman dan terlindungi 24 jam untuk setiap anak.',
     'about.feature2Title': 'Pendidikan',
@@ -182,19 +242,19 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.feature4Title': 'Kasih & Pendampingan',
     'about.feature4Desc': 'Konseling rohani dan dukungan emosional sepanjang pertumbuhan.',
 
-    'mission.chip': 'Visi & Misi',
+    'mission.chip': 'Visi, Misi & Tujuan',
     'mission.title': 'Mengapa kami hadir',
-    'mission.visionTitle': 'Visi Kami',
+    'mission.visionTitle': 'Visi Yayasan',
     'mission.visionText':
-      'Menjadi rumah yang membentuk generasi muda Indonesia yang berkarakter, berpendidikan, dan penuh harapan.',
-    'mission.missionTitle': 'Misi Kami',
+      'Memanusiakan manusia, dengan menghayati kehadiran Tuhan yang nyata dalam diri mereka yang dilayani.',
+    'mission.missionTitle': 'Misi Yayasan',
     'mission.missionText':
-      'Memberikan tempat tinggal, pendidikan, dan pendampingan menyeluruh kepada anak-anak yatim dan kurang mampu agar mereka dapat mencapai potensi penuh mereka.',
-    'mission.valuesTitle': 'Nilai Kami',
-    'mission.value1': 'Kasih tanpa syarat',
-    'mission.value2': 'Integritas & transparansi',
-    'mission.value3': 'Pendidikan berkualitas',
-    'mission.value4': 'Komunitas yang peduli',
+      'Melayani dengan penuh cinta tanpa membedakan suku, agama, ras, dan budaya; memberikan sandang, pangan, papan, dan pendidikan yang layak; serta melindungi dan menaungi anak-anak dengan penghidupan yang layak.',
+    'mission.valuesTitle': 'Tujuan Yayasan',
+    'mission.value1': 'Mencari dan merawat anak-anak',
+    'mission.value2': 'Mendidik untuk masa depan mereka',
+    'mission.value3': 'Membentuk manusia yang bermartabat',
+    'mission.value4': 'Berguna bagi diri, agama & bangsa',
 
     'programs.chip': 'Program Kami',
     'programs.title': 'Apa yang kami lakukan setiap hari',
@@ -222,19 +282,19 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.chip': 'Dampak Kami',
     'impact.title': 'Cerita yang membuat kami terus berjalan',
     'impact.lead':
-      'Berkat kebaikan Anda, ratusan anak telah menemukan rumah, mimpi, dan masa depan baru.',
+      'Berkat kebaikan Anda, anak-anak kami menemukan rumah, mimpi, dan masa depan yang baru.',
     'impact.testimonial1':
-      'Yayasan ini bukan sekadar tempat tinggal, tapi rumah yang membuat saya percaya pada mimpi lagi. Hari ini saya kuliah berkat dukungan mereka.',
-    'impact.testimonial1Author': 'Rina',
-    'impact.testimonial1Role': 'Alumni, Mahasiswi Keperawatan',
+      'Setelah lulus SMA, saya menyampaikan keinginan untuk menjadi tentara. Ibu Lusia mendukung penuh dan membantu saya mempersiapkan semua syarat. Hari ini saya mengenakan seragam TNI AD dan bertugas di Papua — ini adalah mimpi yang menjadi kenyataan berkat Yayasan.',
+    'impact.testimonial1Author': 'Ricky (Rikardus Ndona Ndore)',
+    'impact.testimonial1Role': 'Alumni YSLA • Anggota TNI AD, Papua',
     'impact.testimonial2':
-      'Kami bersyukur bisa ikut berbagi. Transparansi dan kehangatan tim di sini luar biasa.',
-    'impact.testimonial2Author': 'Keluarga Tanoto',
-    'impact.testimonial2Role': 'Donatur sejak 2018',
+      'Saya mendukung Yayasan ini karena saya melihat sendiri bagaimana setiap bantuan langsung berdampak pada kehidupan anak-anak. Transparansi dan ketulusan yang jarang saya temukan.',
+    'impact.testimonial2Author': 'Bapak Niko Wangsidi',
+    'impact.testimonial2Role': 'Donatur tetap',
     'impact.testimonial3':
-      'Melihat anak-anak tersenyum dan belajar bersama adalah pengalaman paling berarti dalam hidup saya.',
-    'impact.testimonial3Author': 'Michael',
-    'impact.testimonial3Role': 'Relawan pengajar',
+      'Setiap kali berkunjung, saya pulang dengan hati yang penuh. Anak-anak di sini mengajarkan arti syukur dan harapan yang sesungguhnya.',
+    'impact.testimonial3Author': 'Ibu Wilona Nathania',
+    'impact.testimonial3Role': 'Donatur tetap',
 
     'donate.chip': 'Donasi',
     'donate.title': 'Cara Anda bisa membantu',
@@ -243,10 +303,37 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.financialTitle': 'Donasi Keuangan',
     'donate.financialDesc':
       'Transfer langsung ke rekening resmi yayasan. Setiap rupiah digunakan untuk makanan, pendidikan, dan kebutuhan harian anak-anak.',
-    'donate.financialBank': 'Bank BCA',
-    'donate.financialAccount': '123-456-7890',
+    'donate.financialBank': 'Bank BRI',
+    'donate.financialAccount': '0378-01-002605-30-4',
     'donate.financialName': 'a.n. Yayasan Saint Lusia Angello',
-    'donate.financialCta': 'Transfer Sekarang',
+    'donate.financialCta': 'Konfirmasi Transfer',
+    'donate.financialCopied': 'Nomor rekening tersalin',
+    'donate.financialCopy': 'Salin nomor',
+    'donate.budgetTitle': 'Kebutuhan bulanan kami',
+    'donate.budgetLead':
+      'Transparansi adalah janji kami. Berikut rincian kebutuhan rutin bulanan untuk 20 anak di rumah kami.',
+    'donate.budgetFood': 'Rp 10.000.000',
+    'donate.budgetFoodDesc': 'Makan dan minum untuk seluruh anak selama satu bulan',
+    'donate.budgetSchool': 'Rp 12.000.000',
+    'donate.budgetSchoolDesc': 'Biaya sekolah, seragam, dan perlengkapan belajar',
+    'donate.budgetTotal': 'Rp 22.000.000',
+    'donate.budgetTotalDesc': 'Total kebutuhan dasar per bulan',
+    'donate.urgentChip': 'Kebutuhan Mendesak',
+    'donate.urgentTitle': 'Yang paling kami butuhkan saat ini',
+    'donate.urgentLead':
+      'Berikut empat kebutuhan paling mendesak Yayasan hari ini. Jika Anda ingin membantu secara khusus, hubungi kami.',
+    'donate.urgent1Title': 'Rumah tetap',
+    'donate.urgent1Desc':
+      'Tempat tinggal yang layak dan permanen untuk anak-anak kami.',
+    'donate.urgent2Title': 'Kendaraan',
+    'donate.urgent2Desc':
+      'Untuk antar-jemput sekolah, kebutuhan medis, dan kegiatan harian.',
+    'donate.urgent3Title': 'Biaya pendidikan',
+    'donate.urgent3Desc':
+      'SPP, seragam, buku, dan kebutuhan sekolah seluruh anak.',
+    'donate.urgent4Title': 'Operasional panti',
+    'donate.urgent4Desc':
+      'Listrik, air, perawatan rumah, dan kebutuhan harian lainnya.',
     'donate.goodsTitle': 'Pakaian & Perabotan',
     'donate.goodsDesc':
       'Kami menerima donasi berupa barang-barang berikut dalam kondisi baik dan layak pakai:',
@@ -272,6 +359,50 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.amount3Desc': 'Biaya pendidikan 1 anak selama 1 bulan',
     'donate.amount4Desc': 'Sesuai hati Anda',
 
+    'team.chip': 'Pengurus Yayasan',
+    'team.title': 'Tangan dan hati di balik rumah kami',
+    'team.lead':
+      'Yayasan Saint Lusia Angello dijalankan oleh pengurus resmi yang terdaftar secara hukum, dipandu oleh pendiri kami Ibu Lusia Owa.',
+    'team.founderRole': 'Pendiri & Pembina',
+    'team.founderName': 'Lusia Owa',
+    'team.founderStory':
+      'Berasal dari Ende, Flores – Nusa Tenggara Timur. Sembilan tahun hidup selibat sebagai suster yang melayani anak berkebutuhan khusus. Pada 2017 memilih kembali ke tengah masyarakat untuk melayani lebih luas, dan sejak 2021 mendirikan rumah ini bagi anak-anak yang membutuhkan.',
+    'team.pembinaRole': 'Pembina',
+    'team.pengawasRole': 'Pengawas',
+    'team.ketuaRole': 'Ketua',
+    'team.sekretarisRole': 'Sekretaris',
+    'team.bendaharaRole': 'Bendahara',
+
+    'daily.chip': 'Hidup Kami Setiap Hari',
+    'daily.title': 'Satu hari di Yayasan',
+    'daily.lead':
+      'Rutinitas yang kami jalani bersama anak-anak, dari pagi hingga malam. Transparan, agar Anda tahu apa yang Anda dukung.',
+    'daily.weekdaysTitle': 'Senin – Jumat',
+    'daily.weekendTitle': 'Sabtu – Minggu',
+    'daily.weekday1': '04.00 – 04.30 • Bangun pagi bersama',
+    'daily.weekday2': 'Persiapan dan berangkat ke sekolah',
+    'daily.weekday3': '12.00 – 13.00 • Pulang sekolah',
+    'daily.weekday4': 'Bangun sore, belajar bersama & snack',
+    'daily.weekday5': '18.00 • Doa Rosario bersama',
+    'daily.weekday6': 'Makan malam dan istirahat',
+    'daily.weekend1': '07.30 – 12.00 • Pelajaran tambahan',
+    'daily.weekend2':
+      'Bersama tamu/kunjungan — atau olahraga & bermain jika tidak ada tamu',
+    'daily.weekend3': 'Setelah makan malam: menonton atau rekreasi bersama',
+
+    'footer.legalReg': 'Berbadan hukum sejak 11 Maret 2023',
+    'footer.legalRegLabel': 'Status Resmi',
+
+    'youtube.chip': 'Kanal YouTube',
+    'youtube.title': 'Ikuti perjalanan kami di YouTube',
+    'youtube.lead':
+      'Setiap minggu kami membagikan kegiatan anak-anak, kunjungan donatur, dan momen keluarga di rumah kami. Berlangganan untuk ikut melihat setiap senyum dan setiap doa.',
+    'youtube.cta': 'Berlangganan di YouTube',
+    'youtube.secondary': '@ysla-25',
+    'youtube.feature1': 'Kegiatan harian anak-anak',
+    'youtube.feature2': 'Kunjungan relawan & donatur',
+    'youtube.feature3': 'Momen perayaan & doa',
+
     'gallery.chip': 'Galeri',
     'gallery.title': 'Momen bersama di rumah kami',
     'gallery.lead': 'Sekilas kehidupan sehari-hari di Yayasan Saint Lusia Angello.',
@@ -288,8 +419,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Ada pertanyaan, ingin berdonasi, atau sekadar mampir? Jangan ragu untuk menghubungi kami.',
     'contact.addressTitle': 'Alamat',
     'contact.addressValue':
-      'Jl. Melati Raya No. 12, Kemayoran, Jakarta Pusat 10620, Indonesia',
+      'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, Jakarta Barat, Jakarta 11650, Indonesia',
     'contact.phoneTitle': 'Telepon',
+    'contact.phoneRole': 'Penanggung Jawab Yayasan',
+    'contact.whatsappCta': 'Chat lewat WhatsApp',
     'contact.emailTitle': 'Email',
     'contact.hoursTitle': 'Jam Kunjungan',
     'contact.hoursValue': 'Senin – Sabtu, 09:00 – 17:00 WIB',
@@ -333,19 +466,20 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Yayasan Saint Lusia Angello is a home for orphaned children in Jakarta. We provide love, education, and a safe space for them to grow into strong, confident individuals.',
     'hero.ctaPrimary': 'Donate Now',
     'hero.ctaSecondary': 'Learn More',
-    'hero.stat1Value': '120+',
-    'hero.stat1Label': 'Children served',
-    'hero.stat2Value': '15',
-    'hero.stat2Label': 'Years of service',
-    'hero.stat3Value': '40+',
-    'hero.stat3Label': 'Active volunteers',
+    'hero.ctaYoutube': 'Watch on YouTube',
+    'hero.stat1Value': '20',
+    'hero.stat1Label': 'Children in our home',
+    'hero.stat2Value': '2021',
+    'hero.stat2Label': 'Serving since',
+    'hero.stat3Value': '6',
+    'hero.stat3Label': 'Caregivers',
 
     'about.chip': 'About Us',
-    'about.title': 'A loving home for the children of Jakarta',
+    'about.title': 'Born from compassion, growing through love',
     'about.p1':
-      'Yayasan Saint Lusia Angello was founded in 2010 in Jakarta with a simple purpose: to provide a warm, safe home for orphaned, abandoned, and underprivileged children.',
+      'Yayasan Saint Lusia Angello (YSLA) was founded by Mother Lusia Owa, a humble woman from Flores, Ende – East Nusa Tenggara. After nine years as a nun serving children with special needs, in 2017 she chose to return to lay life so she could serve more broadly.',
     'about.p2':
-      'We believe every child deserves a chance to learn, play, and dream. Through your support, we make sure they grow up with healthy meals, quality education, and spiritual guidance.',
+      'Our service began in September 2021 and the foundation was officially registered on 11 March 2023. Today, 20 children — from babies to teenagers — live with us in West Jakarta, together with 6 caregivers who walk beside them every single day.',
     'about.feature1Title': 'Safe Haven',
     'about.feature1Desc': 'A comfortable, protected environment, 24/7 for every child.',
     'about.feature2Title': 'Education',
@@ -355,19 +489,19 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.feature4Title': 'Love & Guidance',
     'about.feature4Desc': 'Spiritual counseling and emotional support through their growth.',
 
-    'mission.chip': 'Vision & Mission',
+    'mission.chip': 'Vision, Mission & Purpose',
     'mission.title': 'Why we exist',
     'mission.visionTitle': 'Our Vision',
     'mission.visionText':
-      'To be a home that shapes a generation of Indonesian youth with character, education, and hope.',
+      'To humanize humanity, by living out the real presence of God in those we serve.',
     'mission.missionTitle': 'Our Mission',
     'mission.missionText':
-      'To provide shelter, education, and holistic guidance to orphaned and underprivileged children so they can reach their full potential.',
-    'mission.valuesTitle': 'Our Values',
-    'mission.value1': 'Unconditional love',
-    'mission.value2': 'Integrity & transparency',
-    'mission.value3': 'Quality education',
-    'mission.value4': 'A caring community',
+      'To serve with love without distinction of ethnicity, religion, race, or culture; to provide proper clothing, food, shelter, and education; and to protect our children with a dignified life.',
+    'mission.valuesTitle': 'Our Purpose',
+    'mission.value1': 'Seek out and care for children',
+    'mission.value2': 'Educate them for their future',
+    'mission.value3': 'Shape dignified human beings',
+    'mission.value4': 'Useful to self, faith & nation',
 
     'programs.chip': 'Our Programs',
     'programs.title': 'What we do every day',
@@ -395,19 +529,19 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.chip': 'Our Impact',
     'impact.title': 'Stories that keep us going',
     'impact.lead':
-      'Thanks to your kindness, hundreds of children have found a home, dreams, and a new future.',
+      'Thanks to your kindness, our children find a home, dreams, and a brand-new future.',
     'impact.testimonial1':
-      'This foundation is more than a shelter — it is a home that made me believe in dreams again. Today I am in college because of them.',
-    'impact.testimonial1Author': 'Rina',
-    'impact.testimonial1Role': 'Alumna, Nursing Student',
+      'After finishing high school, I told Mother Lusia I wanted to serve as a soldier. She supported me fully and helped me prepare for every single requirement. Today I wear the Indonesian Army uniform and serve in Papua — a dream come true thanks to the Foundation.',
+    'impact.testimonial1Author': 'Ricky (Rikardus Ndona Ndore)',
+    'impact.testimonial1Role': 'YSLA Alumnus • Indonesian Army, Papua',
     'impact.testimonial2':
-      'We are grateful to share. The transparency and warmth of the team here is remarkable.',
-    'impact.testimonial2Author': 'The Tanoto Family',
-    'impact.testimonial2Role': 'Donors since 2018',
+      'I support this Foundation because I see firsthand how every gift directly reaches the children. The transparency and sincerity here is rare.',
+    'impact.testimonial2Author': 'Mr. Niko Wangsidi',
+    'impact.testimonial2Role': 'Regular donor',
     'impact.testimonial3':
-      'Seeing the children smile and learn together is the most meaningful experience of my life.',
-    'impact.testimonial3Author': 'Michael',
-    'impact.testimonial3Role': 'Volunteer teacher',
+      'Every time I visit, I go home with a full heart. The children here teach me the true meaning of gratitude and hope.',
+    'impact.testimonial3Author': 'Mrs. Wilona Nathania',
+    'impact.testimonial3Role': 'Regular donor',
 
     'donate.chip': 'Donate',
     'donate.title': 'Ways you can help',
@@ -416,10 +550,37 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.financialTitle': 'Financial Donation',
     'donate.financialDesc':
       'Transfer directly to our official account. Every rupiah goes to food, education, and the daily needs of the children.',
-    'donate.financialBank': 'Bank BCA',
-    'donate.financialAccount': '123-456-7890',
+    'donate.financialBank': 'Bank BRI',
+    'donate.financialAccount': '0378-01-002605-30-4',
     'donate.financialName': 'under Yayasan Saint Lusia Angello',
-    'donate.financialCta': 'Transfer Now',
+    'donate.financialCta': 'Confirm Your Transfer',
+    'donate.financialCopied': 'Account number copied',
+    'donate.financialCopy': 'Copy number',
+    'donate.budgetTitle': 'Our monthly needs',
+    'donate.budgetLead':
+      'Transparency is our promise. Here is the real monthly cost of running our home for 20 children.',
+    'donate.budgetFood': 'IDR 10,000,000',
+    'donate.budgetFoodDesc': 'Food and drink for all our children, one month',
+    'donate.budgetSchool': 'IDR 12,000,000',
+    'donate.budgetSchoolDesc': 'School fees, uniforms, and learning supplies',
+    'donate.budgetTotal': 'IDR 22,000,000',
+    'donate.budgetTotalDesc': 'Total essential needs per month',
+    'donate.urgentChip': 'Most Urgent Needs',
+    'donate.urgentTitle': 'What we need most right now',
+    'donate.urgentLead':
+      'These are the four most urgent needs of the Foundation today. If you would like to help with one in particular, please reach out.',
+    'donate.urgent1Title': 'A permanent home',
+    'donate.urgent1Desc':
+      'A dignified, permanent place for our children to call home.',
+    'donate.urgent2Title': 'A vehicle',
+    'donate.urgent2Desc':
+      'For school transport, medical visits, and daily activities.',
+    'donate.urgent3Title': 'Education costs',
+    'donate.urgent3Desc':
+      'Tuition, uniforms, books, and school supplies for every child.',
+    'donate.urgent4Title': 'Operational costs',
+    'donate.urgent4Desc':
+      'Electricity, water, home maintenance, and daily essentials.',
     'donate.goodsTitle': 'Clothing & Furniture',
     'donate.goodsDesc':
       'We accept the following items in good, usable condition:',
@@ -445,6 +606,50 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.amount3Desc': "1 month of a child's education",
     'donate.amount4Desc': 'As your heart leads',
 
+    'team.chip': 'Our Governance',
+    'team.title': 'The hands and hearts behind our home',
+    'team.lead':
+      'Yayasan Saint Lusia Angello is run by a legally registered board, guided by our founder Mother Lusia Owa.',
+    'team.founderRole': 'Founder & Supervisor',
+    'team.founderName': 'Lusia Owa',
+    'team.founderStory':
+      'Born in Ende, Flores – East Nusa Tenggara. Nine years of celibate life as a nun serving children with special needs. In 2017 she returned to lay life to serve more broadly, and in 2021 opened this home for children in need.',
+    'team.pembinaRole': 'Supervisor (Pembina)',
+    'team.pengawasRole': 'Overseer (Pengawas)',
+    'team.ketuaRole': 'Chair (Ketua)',
+    'team.sekretarisRole': 'Secretary (Sekretaris)',
+    'team.bendaharaRole': 'Treasurer (Bendahara)',
+
+    'daily.chip': 'Daily Life',
+    'daily.title': 'A day at the Foundation',
+    'daily.lead':
+      'The rhythm we live with the children, from early morning to late evening. Transparent, so you know exactly what you support.',
+    'daily.weekdaysTitle': 'Monday – Friday',
+    'daily.weekendTitle': 'Saturday – Sunday',
+    'daily.weekday1': '04:00 – 04:30 • Wake up together',
+    'daily.weekday2': 'Get ready and head to school',
+    'daily.weekday3': '12:00 – 13:00 • Return from school',
+    'daily.weekday4': 'Afternoon rest, study time & snacks',
+    'daily.weekday5': '18:00 • Rosary prayer together',
+    'daily.weekday6': 'Dinner and night rest',
+    'daily.weekend1': '07:30 – 12:00 • Extra lessons',
+    'daily.weekend2':
+      'Time with visitors — or sports & play when there are none',
+    'daily.weekend3': 'After dinner: movies or recreation together',
+
+    'footer.legalReg': 'Legally registered since 11 March 2023',
+    'footer.legalRegLabel': 'Official Status',
+
+    'youtube.chip': 'YouTube Channel',
+    'youtube.title': 'Follow our journey on YouTube',
+    'youtube.lead':
+      'Every week we share the children\'s activities, donor visits, and family moments at our home. Subscribe to be part of every smile and every prayer.',
+    'youtube.cta': 'Subscribe on YouTube',
+    'youtube.secondary': '@ysla-25',
+    'youtube.feature1': 'Daily life with the children',
+    'youtube.feature2': 'Volunteer & donor visits',
+    'youtube.feature3': 'Celebrations & prayer moments',
+
     'gallery.chip': 'Gallery',
     'gallery.title': 'Moments together at our home',
     'gallery.lead': 'A glimpse into daily life at Yayasan Saint Lusia Angello.',
@@ -461,8 +666,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Have a question, want to donate, or just stop by? Please feel free to reach out.',
     'contact.addressTitle': 'Address',
     'contact.addressValue':
-      'Jl. Melati Raya No. 12, Kemayoran, Central Jakarta 10620, Indonesia',
+      'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, West Jakarta 11650, Indonesia',
     'contact.phoneTitle': 'Phone',
+    'contact.phoneRole': 'Foundation Director',
+    'contact.whatsappCta': 'Chat on WhatsApp',
     'contact.emailTitle': 'Email',
     'contact.hoursTitle': 'Visiting Hours',
     'contact.hoursValue': 'Monday – Saturday, 09:00 – 17:00 WIB',

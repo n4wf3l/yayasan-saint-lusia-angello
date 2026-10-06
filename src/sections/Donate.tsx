@@ -1,17 +1,25 @@
 import { useState } from 'react'
 import {
+  AlertCircle,
   ArrowRight,
   Banknote,
+  Bus,
   Check,
   Copy,
   CreditCard,
+  GraduationCap,
   HandHeart,
+  Home,
+  Lightbulb,
   Shirt,
   Sofa,
   Sparkles,
+  Utensils,
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
+import { BANK } from '../config'
 
 type AmountOption = {
   valueKey: TranslationKey
@@ -32,7 +40,7 @@ export function Donate() {
 
   const copyAccount = async () => {
     try {
-      await navigator.clipboard.writeText('1234567890')
+      await navigator.clipboard.writeText(BANK.accountNumberRaw)
       setCopied(true)
       setTimeout(() => setCopied(false), 2200)
     } catch {
@@ -119,7 +127,7 @@ export function Donate() {
                   className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/20"
                 >
                   {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                  {copied ? 'Copied' : 'Copy'}
+                  {copied ? t('donate.financialCopied') : t('donate.financialCopy')}
                 </button>
               </div>
             </div>
@@ -161,6 +169,9 @@ export function Donate() {
             />
           </div>
         </div>
+
+        <MonthlyBudget />
+        <UrgentNeeds />
       </div>
     </section>
   )
@@ -218,6 +229,139 @@ function DonateCard({
         {ctaLabel}
         <ArrowRight className="h-4 w-4" />
       </a>
+    </div>
+  )
+}
+
+function MonthlyBudget() {
+  const { t } = useLanguage()
+  return (
+    <div className="mt-16 rounded-3xl bg-slate-900 p-7 sm:p-10 text-white shadow-2xl">
+      <div className="grid gap-8 lg:grid-cols-5 lg:items-center">
+        <div className="lg:col-span-2">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-300">
+            <Lightbulb className="h-3.5 w-3.5" />
+            Transparansi • Transparency
+          </div>
+          <h3 className="mt-4 text-2xl sm:text-3xl font-bold font-display">
+            {t('donate.budgetTitle')}
+          </h3>
+          <p className="mt-3 text-sm text-slate-300 leading-relaxed">
+            {t('donate.budgetLead')}
+          </p>
+        </div>
+
+        <div className="lg:col-span-3 grid gap-3 sm:grid-cols-3">
+          <BudgetItem
+            icon={<Utensils className="h-5 w-5" />}
+            value={t('donate.budgetFood')}
+            desc={t('donate.budgetFoodDesc')}
+          />
+          <BudgetItem
+            icon={<GraduationCap className="h-5 w-5" />}
+            value={t('donate.budgetSchool')}
+            desc={t('donate.budgetSchoolDesc')}
+          />
+          <BudgetItem
+            icon={<Sparkles className="h-5 w-5" />}
+            value={t('donate.budgetTotal')}
+            desc={t('donate.budgetTotalDesc')}
+            highlight
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function BudgetItem({
+  icon,
+  value,
+  desc,
+  highlight,
+}: {
+  icon: React.ReactNode
+  value: string
+  desc: string
+  highlight?: boolean
+}) {
+  return (
+    <div
+      className={`rounded-2xl p-5 ${
+        highlight
+          ? 'bg-gradient-to-br from-brand-500 to-brand-600 shadow-lg shadow-brand-500/30'
+          : 'bg-white/5 border border-white/10'
+      }`}
+    >
+      <div
+        className={`inline-flex items-center justify-center rounded-lg p-2 ${
+          highlight ? 'bg-white/20 text-white' : 'bg-brand-500/20 text-brand-300'
+        }`}
+      >
+        {icon}
+      </div>
+      <div className="mt-3 text-xl font-bold font-display text-white">{value}</div>
+      <div className="mt-1 text-xs text-white/80 leading-relaxed">{desc}</div>
+    </div>
+  )
+}
+
+type UrgentNeed = {
+  icon: LucideIcon
+  titleKey: TranslationKey
+  descKey: TranslationKey
+}
+
+const urgentNeeds: UrgentNeed[] = [
+  { icon: Home, titleKey: 'donate.urgent1Title', descKey: 'donate.urgent1Desc' },
+  { icon: Bus, titleKey: 'donate.urgent2Title', descKey: 'donate.urgent2Desc' },
+  { icon: GraduationCap, titleKey: 'donate.urgent3Title', descKey: 'donate.urgent3Desc' },
+  { icon: Lightbulb, titleKey: 'donate.urgent4Title', descKey: 'donate.urgent4Desc' },
+]
+
+function UrgentNeeds() {
+  const { t } = useLanguage()
+  return (
+    <div id="urgent-needs" className="mt-16">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-2xl">
+          <span className="inline-flex items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
+            <AlertCircle className="h-3.5 w-3.5" />
+            {t('donate.urgentChip')}
+          </span>
+          <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-slate-900 font-display">
+            {t('donate.urgentTitle')}
+          </h3>
+          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+            {t('donate.urgentLead')}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {urgentNeeds.map((n, i) => {
+          const Icon = n.icon
+          return (
+            <article
+              key={n.titleKey}
+              className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
+            >
+              <div className="absolute top-4 right-4 text-xs font-bold text-slate-300">
+                0{i + 1}
+              </div>
+              <div className="inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-rose-600 p-3 text-white shadow-lg shadow-red-500/30">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h4 className="mt-5 text-lg font-bold text-slate-900 font-display">
+                {t(n.titleKey)}
+              </h4>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                {t(n.descKey)}
+              </p>
+            </article>
+          )
+        })}
+      </div>
     </div>
   )
 }

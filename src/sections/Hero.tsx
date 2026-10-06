@@ -1,5 +1,6 @@
-import { ArrowRight, Heart, Sparkles } from 'lucide-react'
+import { ArrowRight, Heart, Play, Sparkles } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
+import { YOUTUBE_URL } from '../config'
 
 export function Hero() {
   const { t } = useLanguage()
@@ -55,6 +56,17 @@ export function Hero() {
               {t('hero.ctaSecondary')}
               <ArrowRight className="h-4 w-4" />
             </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-white px-5 py-3 text-sm font-semibold text-red-600 shadow-sm transition hover:border-red-500 hover:bg-red-50"
+            >
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-red-600 text-white">
+                <Play className="h-3 w-3 fill-current" />
+              </span>
+              {t('hero.ctaYoutube')}
+            </a>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6">
@@ -100,7 +112,7 @@ function HeroArtwork() {
               </div>
               <div className="text-sm">
                 <div className="font-semibold text-slate-900">
-                  120+ anak • 120+ kids
+                  20 anak • 20 kids
                 </div>
                 <div className="text-slate-500 text-xs">
                   Growing stronger every day
@@ -113,9 +125,9 @@ function HeroArtwork() {
 
       <div className="absolute -top-4 right-0 rounded-2xl bg-white px-4 py-3 shadow-xl animate-float">
         <div className="text-[11px] uppercase tracking-wider text-brand-600 font-bold">
-          Since 2010
+          Since 2021
         </div>
-        <div className="text-sm font-semibold text-slate-900">15 years of love</div>
+        <div className="text-sm font-semibold text-slate-900">Berbadan hukum 2023</div>
       </div>
     </div>
   )

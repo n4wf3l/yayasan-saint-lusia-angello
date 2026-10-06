@@ -7,9 +7,9 @@ import type { TranslationKey } from '../i18n/translations'
 
 const navItems: { href: string; key: TranslationKey }[] = [
   { href: '#about', key: 'nav.about' },
-  { href: '#mission', key: 'nav.mission' },
   { href: '#programs', key: 'nav.programs' },
   { href: '#impact', key: 'nav.impact' },
+  { href: '#donate', key: 'nav.donate' },
   { href: '#gallery', key: 'nav.gallery' },
   { href: '#contact', key: 'nav.contact' },
 ]
