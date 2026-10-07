@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://n4wf3l.github.io/yayasan-saint-lusia-angello/sitemap.xml

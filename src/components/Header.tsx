@@ -11,7 +11,6 @@ const navItems: { href: string; key: TranslationKey }[] = [
   { href: '#children', key: 'nav.children' },
   { href: '#daily', key: 'nav.daily' },
   { href: '#team', key: 'nav.team' },
-  { href: '#donate', key: 'nav.donate' },
   { href: '#contact', key: 'nav.contact' },
 ]
 
