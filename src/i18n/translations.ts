@@ -5,6 +5,7 @@ export type TranslationKey =
   | 'nav.mission'
   | 'nav.programs'
   | 'nav.team'
+  | 'nav.children'
   | 'nav.daily'
   | 'nav.impact'
   | 'nav.donate'
@@ -100,6 +101,37 @@ export type TranslationKey =
   | 'donate.urgent3Desc'
   | 'donate.urgent4Title'
   | 'donate.urgent4Desc'
+  | 'donate.frequencyOnce'
+  | 'donate.frequencyMonthly'
+  | 'donate.tierTitle'
+  | 'donate.tier1Amount'
+  | 'donate.tier1Desc'
+  | 'donate.tier2Amount'
+  | 'donate.tier2Desc'
+  | 'donate.tier3Amount'
+  | 'donate.tier3Desc'
+  | 'donate.tierCustom'
+  | 'donate.tierCustomDesc'
+  | 'donate.waOnceMsg'
+  | 'donate.waMonthlyMsg'
+  | 'donate.sendViaWa'
+  | 'donate.trustAccount'
+  | 'donate.trustLegal'
+  | 'donate.trustVisit'
+  | 'donate.commitLine'
+  | 'donate.currentMonthLabel'
+  | 'donate.currentMonthValue'
+  | 'children.chip'
+  | 'children.title'
+  | 'children.lead'
+  | 'children.ageBaby'
+  | 'children.ageToddler'
+  | 'children.ageSD'
+  | 'children.ageSMP'
+  | 'children.ageYouth'
+  | 'children.sampleIntro'
+  | 'children.privacy'
+  | 'sticky.cta'
   | 'donate.goodsTitle'
   | 'donate.goodsDesc'
   | 'donate.goodsList1'
@@ -204,6 +236,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.mission': 'Misi',
     'nav.programs': 'Program',
     'nav.team': 'Pengurus',
+    'nav.children': 'Anak-anak',
     'nav.daily': 'Keseharian',
     'nav.impact': 'Cerita',
     'nav.donate': 'Donasi',
@@ -328,6 +361,48 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.urgent4Title': 'Operasional panti',
     'donate.urgent4Desc':
       'Listrik, air, perawatan rumah, dan kebutuhan harian lainnya.',
+    'donate.frequencyOnce': 'Satu kali',
+    'donate.frequencyMonthly': 'Setiap bulan',
+    'donate.tierTitle': 'Berapa yang ingin Anda berikan?',
+    'donate.tier1Amount': 'Rp 150.000',
+    'donate.tier1Desc': 'Snack & kebutuhan harian untuk 1 anak selama seminggu',
+    'donate.tier2Amount': 'Rp 500.000',
+    'donate.tier2Desc': 'Perlengkapan sekolah untuk 1 anak',
+    'donate.tier3Amount': 'Rp 1.100.000',
+    'donate.tier3Desc': 'Biaya penuh (makan + sekolah) 1 anak selama 1 bulan',
+    'donate.tierCustom': 'Jumlah lain',
+    'donate.tierCustomDesc': 'Sesuai hati Anda',
+    'donate.waOnceMsg':
+      'Halo Ibu Liez, saya ingin berdonasi {amount} ke Yayasan Saint Lusia Angello. Mohon info berikutnya.',
+    'donate.waMonthlyMsg':
+      'Halo Ibu Liez, saya ingin menjadi donatur rutin dengan {amount} setiap bulan. Mohon info berikutnya.',
+    'donate.sendViaWa': 'Konfirmasi via WhatsApp',
+    'donate.trustAccount':
+      'Rekening resmi Bank BRI atas nama Yayasan Saint Lusia Angello — bukan rekening pribadi.',
+    'donate.trustLegal':
+      'Berbadan hukum Kemenkumham AHU-0000377.AH.01.05.TAHUN 2023.',
+    'donate.trustVisit':
+      'Kami menerima kunjungan langsung di Meruya Selatan setiap hari Senin–Sabtu, pukul 09.00–17.00.',
+    'donate.commitLine':
+      'Semua donasi masuk ke rekening Yayasan dan digunakan untuk kebutuhan anak-anak: makan, sekolah, kesehatan, dan tempat tinggal.',
+    'donate.currentMonthLabel': 'Kebutuhan bulan ini',
+    'donate.currentMonthValue':
+      'Rp 22.000.000 untuk 20 anak. Setiap kontribusi membantu.',
+
+    'children.chip': 'Komunitas Kami',
+    'children.title': 'Satu rumah, 20 anak, dari seluruh Indonesia',
+    'children.lead':
+      'Dari bayi berusia beberapa bulan hingga remaja SMA. Mereka datang dari Flores, Nusa Tenggara Timur, Jakarta, Tangerang, dan tempat-tempat lain.',
+    'children.ageBaby': 'Bayi (0–2 tahun)',
+    'children.ageToddler': 'Prasekolah (3–6 tahun)',
+    'children.ageSD': 'Sekolah Dasar',
+    'children.ageSMP': 'SMP & SMA',
+    'children.ageYouth': 'Alumni & muda-mudi',
+    'children.sampleIntro': 'Beberapa dari mereka',
+    'children.privacy':
+      'Kami hanya menampilkan nama panggilan untuk melindungi privasi anak-anak kami.',
+
+    'sticky.cta': 'Donasi',
     'donate.goodsTitle': 'Pakaian & Perabotan',
     'donate.goodsDesc':
       'Kami menerima donasi berupa barang-barang berikut dalam kondisi baik dan layak pakai:',
@@ -447,6 +522,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.mission': 'Mission',
     'nav.programs': 'Programs',
     'nav.team': 'Board',
+    'nav.children': 'Children',
     'nav.daily': 'A day with us',
     'nav.impact': 'Stories',
     'nav.donate': 'Donate',
@@ -571,6 +647,48 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.urgent4Title': 'Operational costs',
     'donate.urgent4Desc':
       'Electricity, water, home maintenance, and daily essentials.',
+    'donate.frequencyOnce': 'One-time',
+    'donate.frequencyMonthly': 'Every month',
+    'donate.tierTitle': 'How much would you like to give?',
+    'donate.tier1Amount': 'IDR 150,000',
+    'donate.tier1Desc': 'Snacks and daily essentials for 1 child, one week',
+    'donate.tier2Amount': 'IDR 500,000',
+    'donate.tier2Desc': 'School supplies for 1 child',
+    'donate.tier3Amount': 'IDR 1,100,000',
+    'donate.tier3Desc': "Full cost (meals + school) for 1 child, one month",
+    'donate.tierCustom': 'Other amount',
+    'donate.tierCustomDesc': 'As your heart leads',
+    'donate.waOnceMsg':
+      'Hello Mother Liez, I would like to donate {amount} to Yayasan Saint Lusia Angello. Please let me know the next steps.',
+    'donate.waMonthlyMsg':
+      'Hello Mother Liez, I would like to become a monthly donor with {amount} each month. Please let me know the next steps.',
+    'donate.sendViaWa': 'Confirm via WhatsApp',
+    'donate.trustAccount':
+      'Official Bank BRI account in the name of Yayasan Saint Lusia Angello — not a personal account.',
+    'donate.trustLegal':
+      'Legally registered under Kemenkumham AHU-0000377.AH.01.05.TAHUN 2023.',
+    'donate.trustVisit':
+      'Visitors welcome at our home in Meruya Selatan, Monday–Saturday, 9am–5pm.',
+    'donate.commitLine':
+      "All donations go into the Foundation's account and are used for the children's needs: food, school, healthcare, and housing.",
+    'donate.currentMonthLabel': 'This month we need',
+    'donate.currentMonthValue':
+      'IDR 22,000,000 for 20 children. Every contribution helps.',
+
+    'children.chip': 'Our Community',
+    'children.title': 'One home, 20 children, from across Indonesia',
+    'children.lead':
+      'From babies a few months old to high-school teenagers. They come from Flores, East Nusa Tenggara, Jakarta, Tangerang, and other places.',
+    'children.ageBaby': 'Babies (0–2 years)',
+    'children.ageToddler': 'Preschool (3–6 years)',
+    'children.ageSD': 'Primary school',
+    'children.ageSMP': 'Middle & high school',
+    'children.ageYouth': 'Alumni & young adults',
+    'children.sampleIntro': 'Some of them',
+    'children.privacy':
+      'We show nicknames only, to protect our children\'s privacy.',
+
+    'sticky.cta': 'Donate',
     'donate.goodsTitle': 'Clothing & Furniture',
     'donate.goodsDesc':
       'We accept the following items in good, usable condition:',
