@@ -1,5 +1,6 @@
 import { ArrowRight, Heart, Play } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
+import { IndonesiaMap } from '../components/IndonesiaMap'
 import { YOUTUBE_URL } from '../config'
 
 export function Hero() {
@@ -8,9 +9,14 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24"
+      className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24"
     >
-      <div className="container-page grid gap-10 lg:grid-cols-12 lg:items-center">
+      <IndonesiaMap
+        className="pointer-events-none absolute top-20 right-[-4%] w-[70%] max-w-3xl text-slate-200 opacity-70 lg:top-24 lg:right-[-2%] lg:w-[55%]"
+        showJakartaLabel
+      />
+
+      <div className="container-page relative grid gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
           <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('hero.badge')}
