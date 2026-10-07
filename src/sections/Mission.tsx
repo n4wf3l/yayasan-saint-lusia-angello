@@ -4,7 +4,7 @@ export function Mission() {
   const { t } = useLanguage()
 
   return (
-    <section id="mission" className="py-20 sm:py-28 bg-brand-50/40 border-y border-brand-100">
+    <section id="mission" className="py-16 sm:py-24 lg:py-28 bg-brand-50/40 border-y border-brand-100">
       <div className="container-page">
         <div className="grid gap-12 lg:grid-cols-2">
           <article>

@@ -4,7 +4,7 @@ export function About() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="py-20 sm:py-28 border-t border-slate-200">
+    <section id="about" className="py-16 sm:py-24 lg:py-28 border-t border-slate-200">
       <div className="container-page grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">

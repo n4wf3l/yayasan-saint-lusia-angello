@@ -4,14 +4,14 @@ export function Impact() {
   const { t } = useLanguage()
 
   return (
-    <section id="impact" className="py-20 sm:py-28 bg-slate-900 text-slate-100">
+    <section id="impact" className="py-16 sm:py-24 lg:py-28 bg-slate-900 text-slate-100">
       <div className="container-page">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <div className="text-xs font-semibold uppercase tracking-wider text-brand-300">
               {t('impact.chip')}
             </div>
-            <h2 className="mt-3 font-display text-3xl sm:text-5xl font-medium leading-tight text-white">
+            <h2 className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-white">
               {t('impact.title')}
             </h2>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-300">

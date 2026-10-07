@@ -62,24 +62,24 @@ export function Donate() {
   }, [frequency, selected, t])
 
   return (
-    <section id="donate" className="py-20 sm:py-28 border-t border-slate-200 bg-brand-50/30">
+    <section id="donate" className="py-16 sm:py-24 lg:py-28 border-t border-slate-200 bg-brand-50/30">
       <div className="container-page">
         <div className="max-w-2xl">
           <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('donate.chip')}
           </div>
-          <h2 className="mt-3 font-display text-3xl sm:text-5xl font-medium leading-tight text-slate-900">
+          <h2 className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-slate-900">
             {t('donate.title')}
           </h2>
-          <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700">
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-700">
             {t('donate.lead')}
           </p>
 
-          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand-300 bg-white px-4 py-2 text-sm">
+          <div className="mt-5 flex flex-col gap-1 rounded-xl border border-brand-300 bg-white px-4 py-3 sm:inline-flex sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:py-2">
             <span className="text-[11px] font-semibold uppercase tracking-wider text-brand-700">
               {t('donate.currentMonthLabel')}
             </span>
-            <span className="text-slate-800">
+            <span className="text-sm text-slate-800">
               {t('donate.currentMonthValue')}
             </span>
           </div>

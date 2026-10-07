@@ -32,13 +32,13 @@ export function Children() {
   const total = groups.reduce((s, g) => s + g.count, 0)
 
   return (
-    <section id="children" className="py-20 sm:py-28 border-t border-slate-200">
+    <section id="children" className="py-16 sm:py-24 lg:py-28 border-t border-slate-200">
       <div className="container-page">
         <div className="max-w-2xl">
           <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('children.chip')}
           </div>
-          <h2 className="mt-3 font-display text-3xl sm:text-5xl font-medium leading-tight text-slate-900">
+          <h2 className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-slate-900">
             {t('children.title')}
           </h2>
           <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700">

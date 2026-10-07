@@ -6,24 +6,27 @@ export function Hero() {
   const { t } = useLanguage()
 
   return (
-    <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
-      <div className="container-page grid gap-14 lg:grid-cols-12 lg:items-center">
+    <section
+      id="top"
+      className="relative pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24"
+    >
+      <div className="container-page grid gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
-          <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
+          <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('hero.badge')}
           </div>
 
-          <h1 className="mt-5 font-display text-[2.5rem] sm:text-6xl lg:text-[4.5rem] font-medium leading-[1.02] text-slate-900">
+          <h1 className="mt-4 font-display text-[2rem] sm:text-5xl lg:text-[4.5rem] font-medium leading-[1.05] text-slate-900">
             {t('hero.title1')}{' '}
             <em className="italic text-brand-600">{t('hero.title2')}</em>{' '}
             {t('hero.title3')}
           </h1>
 
-          <p className="mt-7 max-w-xl text-base sm:text-lg leading-relaxed text-slate-700">
+          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-slate-700">
             {t('hero.subtitle')}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-wrap items-center gap-3">
             <a href="#donate" className="btn-primary">
               <Heart className="h-4 w-4" />
               {t('hero.ctaPrimary')}
@@ -45,7 +48,7 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-slate-200 pt-8">
+          <dl className="mt-12 grid max-w-xl grid-cols-3 gap-4 sm:gap-6 border-t border-slate-200 pt-7">
             <Stat value={t('hero.stat1Value')} label={t('hero.stat1Label')} />
             <Stat value={t('hero.stat2Value')} label={t('hero.stat2Label')} />
             <Stat value={t('hero.stat3Value')} label={t('hero.stat3Label')} />
@@ -56,7 +59,7 @@ export function Hero() {
           <img
             src="/logo-yayasan.png"
             alt="Yayasan Saint Lusia Angello"
-            className="h-56 w-56 sm:h-72 sm:w-72 object-contain drop-shadow-xl"
+            className="h-40 w-40 sm:h-56 sm:w-56 lg:h-72 lg:w-72 object-contain drop-shadow-xl"
             loading="eager"
           />
         </div>
@@ -68,8 +71,12 @@ export function Hero() {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div>
-      <dt className="font-display text-3xl font-medium text-slate-900">{value}</dt>
-      <dd className="mt-1 text-xs text-slate-500">{label}</dd>
+      <dt className="font-display text-2xl sm:text-3xl font-medium text-slate-900">
+        {value}
+      </dt>
+      <dd className="mt-1 text-[11px] sm:text-xs leading-snug text-slate-500">
+        {label}
+      </dd>
     </div>
   )
 }
