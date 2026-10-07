@@ -1,75 +1,173 @@
-type Props = {
-  className?: string
-  showJakartaLabel?: boolean
+import { useEffect, useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
+import { geoMercator, geoPath } from 'd3-geo'
+import type { Feature, MultiPolygon, Polygon } from 'geojson'
+import indonesiaData from '../data/indonesia.json'
+
+const indonesiaFeature = indonesiaData as Feature<
+  Polygon | MultiPolygon,
+  { name: string }
+>
+
+type City = { name: string; lngLat: [number, number]; nickname?: string }
+
+const JAKARTA: City = {
+  name: 'Jakarta',
+  lngLat: [106.845599, -6.208763],
+  nickname: 'Rumah Kami',
 }
 
-/**
- * Simplified silhouette of the Indonesian archipelago.
- * Not cartographically precise — the main islands (Sumatra, Java,
- * Kalimantan, Sulawesi, Papua, Nusa Tenggara) are stylised blobs
- * placed in roughly the right positions. Jakarta is marked at (155, 164).
- */
-export function IndonesiaMap({ className = '', showJakartaLabel = false }: Props) {
+const PIN_DELAY = 2.7
+const NICKNAME_DELAY_MS = 3400
+const TYPE_INTERVAL_MS = 70
+
+interface Props {
+  className?: string
+  cities?: City[]
+  pinColor?: string
+  strokeColor?: string
+  fillColor?: string
+  fillOpacity?: number
+  strokeWidth?: number
+  width?: number
+  height?: number
+  padding?: number
+}
+
+export function IndonesiaMap({
+  className = '',
+  cities = [],
+  pinColor = '#f06108',
+  strokeColor = 'currentColor',
+  fillColor,
+  fillOpacity = 0.2,
+  strokeWidth = 1.4,
+  width = 1200,
+  height = 460,
+  padding = 20,
+}: Props) {
+  const { projection, pathD } = useMemo(() => {
+    const proj = geoMercator().fitExtent(
+      [
+        [padding, padding],
+        [width - padding, height - padding],
+      ],
+      indonesiaFeature,
+    )
+    const pathGen = geoPath(proj)
+    return { projection: proj, pathD: pathGen(indonesiaFeature) ?? '' }
+  }, [width, height, padding])
+
+  const allCities: City[] = useMemo(() => [JAKARTA, ...cities], [cities])
+  const fill = fillColor ?? strokeColor
+
+  const nickname = allCities[0]?.nickname ?? ''
+  const [typed, setTyped] = useState('')
+
+  useEffect(() => {
+    if (!nickname) return
+    setTyped('')
+    let i = 0
+    const kick = window.setTimeout(() => {
+      const int = window.setInterval(() => {
+        i += 1
+        setTyped(nickname.slice(0, i))
+        if (i >= nickname.length) window.clearInterval(int)
+      }, TYPE_INTERVAL_MS)
+    }, NICKNAME_DELAY_MS)
+    return () => window.clearTimeout(kick)
+  }, [nickname])
+
   return (
     <svg
-      viewBox="0 0 480 200"
+      viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMidYMid meet"
+      className={`block ${className}`}
       xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      className={className}
+      role="img"
+      aria-label="Jakarta on the map of Indonesia"
     >
-      <g fill="currentColor">
-        {/* Sumatra */}
-        <path d="M 18 58 Q 32 42, 58 50 Q 92 62, 128 92 Q 160 118, 190 148 Q 195 155, 188 158 Q 170 155, 142 142 Q 108 125, 78 102 Q 42 78, 18 58 Z" />
-        {/* Java */}
-        <path d="M 150 162 Q 190 158, 232 161 Q 272 165, 302 172 Q 268 178, 230 177 Q 190 176, 158 172 Q 146 168, 150 162 Z" />
-        {/* Kalimantan (Borneo) */}
-        <path d="M 196 52 Q 236 42, 282 54 Q 308 70, 312 100 Q 306 128, 282 140 Q 250 144, 222 134 Q 196 118, 188 92 Q 184 70, 196 52 Z" />
-        {/* Sulawesi */}
-        <path d="M 322 70 Q 338 68, 342 86 L 352 80 Q 362 86, 358 104 L 342 110 Q 338 120, 342 134 Q 350 142, 346 150 Q 332 148, 328 132 L 322 118 Q 316 110, 320 100 L 312 96 Q 310 82, 322 70 Z" />
-        {/* Papua (western half shown) */}
-        <path d="M 362 76 Q 400 68, 440 82 Q 470 100, 470 142 Q 462 174, 428 180 Q 396 178, 376 162 Q 356 140, 358 108 Q 358 90, 362 76 Z" />
-        {/* Bali */}
-        <circle cx="286" cy="178" r="3.5" />
-        {/* Nusa Tenggara (Lombok, Sumbawa, Flores, etc.) */}
-        <ellipse cx="305" cy="180" rx="7" ry="2.5" />
-        <ellipse cx="322" cy="182" rx="6" ry="2" />
-        <ellipse cx="340" cy="183" rx="9" ry="2.5" />
-        <ellipse cx="360" cy="186" rx="4" ry="2" />
-        {/* Maluku */}
-        <circle cx="368" cy="118" r="4" />
-        <circle cx="378" cy="128" r="3" />
-      </g>
+      <motion.path
+        d={pathD}
+        fill={fill}
+        stroke="none"
+        initial={{ fillOpacity: 0 }}
+        animate={{ fillOpacity }}
+        transition={{ duration: 0.6, delay: 2.4, ease: 'easeOut' }}
+      />
 
-      {/* Jakarta marker */}
-      <g transform="translate(155 164)">
-        <circle r="11" fill="#f06108" fillOpacity="0.15">
-          <animate
-            attributeName="r"
-            values="7;13;7"
-            dur="2.4s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="fill-opacity"
-            values="0.25;0.05;0.25"
-            dur="2.4s"
-            repeatCount="indefinite"
-          />
-        </circle>
-        <circle r="3.5" fill="#f06108" stroke="#ffffff" strokeWidth="1.2" />
-        {showJakartaLabel && (
-          <text
-            x="8"
-            y="-6"
-            fontSize="11"
-            fontWeight="600"
-            fill="#0f172a"
-            fontFamily="ui-sans-serif, system-ui, sans-serif"
+      <motion.path
+        d={pathD}
+        fill="none"
+        stroke={strokeColor}
+        strokeOpacity={0.95}
+        strokeWidth={strokeWidth}
+        strokeLinejoin="round"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 2.6, ease: [0.65, 0, 0.35, 1] }}
+      />
+
+      {allCities.map((city, i) => {
+        const projected = projection(city.lngLat)
+        if (!projected) return null
+        const [cx, cy] = projected
+        const isPrimary = i === 0
+        return (
+          <motion.g
+            key={city.name}
+            initial={{ opacity: 0, scale: 0.4 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: PIN_DELAY + i * 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{ transformOrigin: `${cx}px ${cy}px` }}
           >
-            Jakarta
-          </text>
-        )}
-      </g>
+            <motion.circle
+              cx={cx}
+              cy={cy}
+              r={16}
+              fill={pinColor}
+              initial={{ opacity: 0.4, scale: 0.5 }}
+              animate={{
+                opacity: [0.4, 0, 0.4],
+                scale: [0.5, 1.8, 0.5],
+              }}
+              transition={{
+                duration: 2.4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: 2.9 + i * 0.1,
+              }}
+            />
+            <circle cx={cx} cy={cy} r={8} fill={pinColor} />
+            <circle cx={cx} cy={cy} r={3} fill="#fff" fillOpacity={0.9} />
+
+            {isPrimary && city.nickname && typed && (
+              <text
+                x={cx + 20}
+                y={cy + 6}
+                fontSize={22}
+                fontFamily="'Fraunces', 'Georgia', serif"
+                fontStyle="italic"
+                fontWeight={500}
+                fill="#9a3b10"
+              >
+                {typed}
+                {typed.length < (city.nickname?.length ?? 0) && (
+                  <tspan className="animate-pulse" fontWeight={400}>
+                    |
+                  </tspan>
+                )}
+              </text>
+            )}
+          </motion.g>
+        )
+      })}
     </svg>
   )
 }

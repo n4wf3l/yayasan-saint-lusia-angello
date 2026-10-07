@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { ArrowRight, Heart, Play } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import { IndonesiaMap } from '../components/IndonesiaMap'
@@ -9,14 +10,25 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-24"
+      className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 lg:pt-40 lg:pb-28"
     >
-      <IndonesiaMap
-        className="pointer-events-none absolute top-20 right-[-4%] w-[70%] max-w-3xl text-slate-200 opacity-70 lg:top-24 lg:right-[-2%] lg:w-[55%]"
-        showJakartaLabel
-      />
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        className="pointer-events-none absolute inset-y-0 right-0 z-0 hidden w-[62%] items-center justify-center text-brand-400 sm:flex lg:w-[55%]"
+      >
+        <IndonesiaMap
+          className="h-full w-auto max-h-[520px] opacity-90"
+          pinColor="#dc2626"
+          strokeColor="currentColor"
+          fillOpacity={0.18}
+          strokeWidth={1.6}
+        />
+      </motion.div>
 
-      <div className="container-page relative grid gap-10 lg:grid-cols-12 lg:items-center">
+      <div className="container-page relative z-10 grid gap-10 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">
           <div className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('hero.badge')}
@@ -61,11 +73,11 @@ export function Hero() {
           </dl>
         </div>
 
-        <div className="lg:col-span-5 flex justify-center">
+        <div className="lg:col-span-5 flex justify-center sm:hidden">
           <img
             src="/logo-yayasan.png"
             alt="Yayasan Saint Lusia Angello"
-            className="h-40 w-40 sm:h-56 sm:w-56 lg:h-72 lg:w-72 object-contain drop-shadow-xl"
+            className="h-40 w-40 object-contain drop-shadow-xl"
             loading="eager"
           />
         </div>
