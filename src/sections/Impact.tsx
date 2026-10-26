@@ -28,9 +28,9 @@ export function Impact() {
                 {t('impact.donorsLead')}
               </p>
               <ul className="mt-5 space-y-2 text-sm text-white">
-                <li>— {t('impact.donor1')}</li>
-                <li>— {t('impact.donor2')}</li>
-                <li>— {t('impact.donor3')}</li>
+                <li>{t('impact.donor1')}</li>
+                <li>{t('impact.donor2')}</li>
+                <li>{t('impact.donor3')}</li>
               </ul>
             </div>
           </aside>

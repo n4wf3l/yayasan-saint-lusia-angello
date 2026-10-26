@@ -36,7 +36,7 @@ export function Team() {
               {t('team.founderName')}
             </div>
             <div className="text-sm text-slate-500">
-              Ende, Flores — Nusa Tenggara Timur
+              Ende, Flores, Nusa Tenggara Timur
             </div>
             <p className="mt-4 text-base leading-relaxed text-slate-700">
               {t('team.founderStory')}

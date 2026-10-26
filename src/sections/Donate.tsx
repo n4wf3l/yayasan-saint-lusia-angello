@@ -344,10 +344,10 @@ function GoodsCard() {
           </a>
         </div>
         <ul className="lg:col-span-3 grid gap-2 text-sm text-slate-800 sm:grid-cols-2">
-          <li>— {t('donate.goodsList1')}</li>
-          <li>— {t('donate.goodsList2')}</li>
-          <li>— {t('donate.goodsList3')}</li>
-          <li>— {t('donate.goodsList4')}</li>
+          <li>{t('donate.goodsList1')}</li>
+          <li>{t('donate.goodsList2')}</li>
+          <li>{t('donate.goodsList3')}</li>
+          <li>{t('donate.goodsList4')}</li>
         </ul>
       </div>
     </div>

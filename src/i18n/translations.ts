@@ -259,12 +259,12 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.contact': 'Kontak',
     'nav.donateCta': 'Donasi',
 
-    'hero.badge': 'Yayasan berbadan hukum, Jakarta Barat — melayani sejak 2021',
+    'hero.badge': 'Yayasan berbadan hukum, Jakarta Barat, melayani sejak 2021',
     'hero.title1': '20 anak,',
     'hero.title2': 'satu rumah',
     'hero.title3': 'di Meruya Selatan.',
     'hero.subtitle':
-      'Didirikan oleh Ibu Lusia Owa. Kami menanggung sekolah, makan, tempat tinggal, dan pendampingan harian — dari bayi hingga remaja. Rp 22 juta per bulan untuk membuat semuanya berjalan.',
+      'Didirikan oleh Ibu Lusia Owa. Kami menanggung sekolah, makan, tempat tinggal, dan pendampingan harian, dari bayi hingga remaja. Rp 22 juta per bulan untuk membuat semuanya berjalan.',
     'hero.ctaPrimary': 'Donasi Sekarang',
     'hero.ctaSecondary': 'Pelajari Lebih Lanjut',
     'hero.ctaYoutube': 'Tonton di YouTube',
@@ -278,9 +278,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.chip': 'Tentang Kami',
     'about.title': 'Lahir dari belas kasih, tumbuh karena cinta',
     'about.p1':
-      'Yayasan Saint Lusia Angello (YSLA) didirikan oleh Ibu Lusia Owa, seorang perempuan sederhana dari Flores, Ende – Nusa Tenggara Timur. Setelah sembilan tahun hidup selibat sebagai suster dan melayani anak-anak berkebutuhan khusus, pada tahun 2017 beliau memilih kembali ke tengah masyarakat untuk melayani lebih luas lagi.',
+      'Yayasan Saint Lusia Angello (YSLA) didirikan oleh Ibu Lusia Owa, seorang perempuan sederhana dari Flores, Ende, Nusa Tenggara Timur. Setelah sembilan tahun hidup selibat sebagai suster dan melayani anak-anak berkebutuhan khusus, pada tahun 2017 beliau memilih kembali ke tengah masyarakat untuk melayani lebih luas lagi.',
     'about.p2':
-      'Pelayanan kami dimulai sejak September 2021, lalu secara resmi berbadan hukum pada 11 Maret 2023. Hari ini, 20 anak hidup bersama kami di Jakarta Barat — dari bayi hingga remaja — bersama 6 pendamping yang mendampingi mereka setiap hari dengan penuh kasih.',
+      'Pelayanan kami dimulai sejak September 2021, lalu secara resmi berbadan hukum pada 11 Maret 2023. Hari ini, 20 anak, dari bayi hingga remaja, hidup bersama kami di Jakarta Barat bersama 6 pendamping yang mendampingi mereka setiap hari dengan penuh kasih.',
     'about.feature1Title': 'Tempat Aman',
     'about.feature1Desc': 'Lingkungan yang nyaman dan terlindungi 24 jam untuk setiap anak.',
     'about.feature2Title': 'Pendidikan',
@@ -307,7 +307,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'programs.chip': 'Program Kami',
     'programs.title': 'Apa yang kami lakukan setiap hari',
     'programs.lead':
-      'Setiap program dirancang untuk mendukung tumbuh kembang anak secara menyeluruh — dari fisik, mental, hingga rohani.',
+      'Setiap program dirancang untuk mendukung tumbuh kembang anak secara menyeluruh: fisik, mental, hingga rohani.',
     'programs.p1Title': 'Tempat Tinggal',
     'programs.p1Desc':
       'Kamar yang bersih, tempat tidur yang nyaman, dan lingkungan yang terasa seperti rumah.',
@@ -341,7 +341,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.chip': 'Dukungan',
     'donate.title': 'Transfer, kirim barang, atau datang langsung',
     'donate.lead':
-      'Tiga jalur, semuanya terbuka. Rekening resmi di bawah ini atas nama Yayasan — bukan rekening pribadi. Konfirmasi transfer via WhatsApp agar kami bisa catat dan berterima kasih.',
+      'Tiga jalur, semuanya terbuka. Rekening resmi di bawah ini atas nama Yayasan, bukan rekening pribadi. Konfirmasi transfer via WhatsApp agar kami bisa catat dan berterima kasih.',
     'donate.financialTitle': 'Donasi Keuangan',
     'donate.financialDesc':
       'Transfer langsung ke rekening resmi yayasan. Setiap rupiah digunakan untuk makanan, pendidikan, dan kebutuhan harian anak-anak.',
@@ -393,7 +393,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Halo Ibu Liez, saya ingin menjadi donatur rutin dengan {amount} setiap bulan. Mohon info berikutnya.',
     'donate.sendViaWa': 'Konfirmasi via WhatsApp',
     'donate.trustAccount':
-      'Rekening resmi Bank BRI atas nama Yayasan Saint Lusia Angello — bukan rekening pribadi.',
+      'Rekening resmi Bank BRI atas nama Yayasan Saint Lusia Angello, bukan rekening pribadi.',
     'donate.trustLegal':
       'Berbadan hukum Kemenkumham AHU-0000377.AH.01.05.TAHUN 2023.',
     'donate.trustVisit':
@@ -418,7 +418,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Kami hanya menampilkan nama panggilan untuk melindungi privasi anak-anak kami.',
 
     'sticky.cta': 'Donasi',
-    'donate.qrisTitle': 'QRIS — scan dengan aplikasi bank Anda',
+    'donate.qrisTitle': 'QRIS: scan dengan aplikasi bank Anda',
     'donate.qrisInstruction':
       'Buka aplikasi berlogo QRIS (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), pilih "Scan", lalu masukkan jumlah donasi Anda.',
     'donate.qrisNmid': 'NMID : ID2026488087738',
@@ -433,9 +433,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'moments.chip': 'Momen di rumah kami',
     'moments.title': 'Bukan foto stok. Ini kami, hari ini.',
     'moments.lead':
-      'Beberapa momen dari kehidupan sehari-hari — ulang tahun, kunjungan donatur, dan waktu belajar sore.',
+      'Beberapa momen dari kehidupan sehari-hari: ulang tahun, kunjungan donatur, dan waktu belajar sore.',
     'moments.cap1':
-      'Ulang tahun Chesco yang pertama — Oktober 2026.',
+      'Ulang tahun Chesco yang pertama, Oktober 2026.',
     'moments.cap2':
       'Kunjungan dari komunitas donatur ke rumah kami di Meruya Selatan.',
     'moments.cap3':
@@ -472,7 +472,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'team.founderRole': 'Pendiri & Pembina',
     'team.founderName': 'Lusia Owa',
     'team.founderStory':
-      'Berasal dari Ende, Flores – Nusa Tenggara Timur. Sembilan tahun hidup selibat sebagai suster yang melayani anak berkebutuhan khusus. Pada 2017 memilih kembali ke tengah masyarakat untuk melayani lebih luas, dan sejak 2021 mendirikan rumah ini bagi anak-anak yang membutuhkan.',
+      'Berasal dari Ende, Flores, Nusa Tenggara Timur. Sembilan tahun hidup selibat sebagai suster yang melayani anak berkebutuhan khusus. Pada 2017 memilih kembali ke tengah masyarakat untuk melayani lebih luas, dan sejak 2021 mendirikan rumah ini bagi anak-anak yang membutuhkan.',
     'team.pembinaRole': 'Pembina',
     'team.pengawasRole': 'Pengawas',
     'team.ketuaRole': 'Ketua',
@@ -493,7 +493,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'daily.weekday6': 'Makan malam dan istirahat',
     'daily.weekend1': '07.30 – 12.00 • Pelajaran tambahan',
     'daily.weekend2':
-      'Bersama tamu/kunjungan — atau olahraga & bermain jika tidak ada tamu',
+      'Bersama tamu/kunjungan, atau olahraga & bermain jika tidak ada tamu',
     'daily.weekend3': 'Setelah makan malam: menonton atau rekreasi bersama',
 
     'footer.legalReg': 'Berbadan hukum sejak 11 Maret 2023',
@@ -522,7 +522,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.chip': 'Kontak',
     'contact.title': 'Datang, telepon, atau tulis kami',
     'contact.lead':
-      'WhatsApp Ibu Liez adalah cara tercepat. Kami juga menerima kunjungan — beri tahu kami sebelumnya agar anak-anak dapat menyambut Anda.',
+      'WhatsApp Ibu Liez adalah cara tercepat. Kami juga menerima kunjungan. Beri tahu kami sebelumnya agar anak-anak dapat menyambut Anda.',
     'contact.addressTitle': 'Alamat',
     'contact.addressValue':
       'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, Jakarta Barat, Jakarta 11650, Indonesia',
@@ -540,7 +540,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.formNote': 'Kami biasanya membalas dalam 1–2 hari kerja.',
 
     'footer.tagline':
-      '20 anak, 6 pendamping, 1 rumah di Meruya Selatan. Didirikan oleh Ibu Lusia Owa — berbadan hukum sejak 2023.',
+      '20 anak, 6 pendamping, 1 rumah di Meruya Selatan. Didirikan oleh Ibu Lusia Owa, berbadan hukum sejak 2023.',
     'footer.quickLinks': 'Tautan Cepat',
     'footer.support': 'Dukung Kami',
     'footer.supportDonate': 'Donasi Keuangan',
@@ -567,12 +567,12 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.contact': 'Contact',
     'nav.donateCta': 'Donate',
 
-    'hero.badge': 'Registered Indonesian foundation — West Jakarta, serving since 2021',
+    'hero.badge': 'Registered Indonesian foundation in West Jakarta, serving since 2021',
     'hero.title1': '20 children,',
     'hero.title2': 'one home',
     'hero.title3': 'in Meruya Selatan.',
     'hero.subtitle':
-      'Founded by Mother Lusia Owa. We cover school, meals, housing, and daily guidance — from newborns to teenagers. Running cost: IDR 22 million every month.',
+      'Founded by Mother Lusia Owa. We cover school, meals, housing, and daily guidance, from newborns to teenagers. Running cost: IDR 22 million every month.',
     'hero.ctaPrimary': 'Donate Now',
     'hero.ctaSecondary': 'Learn More',
     'hero.ctaYoutube': 'Watch on YouTube',
@@ -586,9 +586,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'about.chip': 'About Us',
     'about.title': 'Born from compassion, growing through love',
     'about.p1':
-      'Yayasan Saint Lusia Angello (YSLA) was founded by Mother Lusia Owa, a humble woman from Flores, Ende – East Nusa Tenggara. After nine years as a nun serving children with special needs, in 2017 she chose to return to lay life so she could serve more broadly.',
+      'Yayasan Saint Lusia Angello (YSLA) was founded by Mother Lusia Owa, a humble woman from Flores, Ende, East Nusa Tenggara. After nine years as a nun serving children with special needs, in 2017 she chose to return to lay life so she could serve more broadly.',
     'about.p2':
-      'Our service began in September 2021 and the foundation was officially registered on 11 March 2023. Today, 20 children — from babies to teenagers — live with us in West Jakarta, together with 6 caregivers who walk beside them every single day.',
+      'Our service began in September 2021 and the foundation was officially registered on 11 March 2023. Today, 20 children, from babies to teenagers, live with us in West Jakarta, together with 6 caregivers who walk beside them every single day.',
     'about.feature1Title': 'Safe Haven',
     'about.feature1Desc': 'A comfortable, protected environment, 24/7 for every child.',
     'about.feature2Title': 'Education',
@@ -615,7 +615,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'programs.chip': 'Our Programs',
     'programs.title': 'What we do every day',
     'programs.lead':
-      'Every program is designed to support the full growth of each child — physical, mental, and spiritual.',
+      'Every program is designed to support the full growth of each child: physical, mental, and spiritual.',
     'programs.p1Title': 'Shelter & Housing',
     'programs.p1Desc':
       'Clean rooms, comfortable beds, and an environment that truly feels like home.',
@@ -649,7 +649,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.chip': 'Support',
     'donate.title': 'Transfer, send goods, or visit us',
     'donate.lead':
-      'Three channels, all open. The account below is the official Foundation account — not a personal one. Please confirm your transfer on WhatsApp so we can log it and say thank you.',
+      'Three channels, all open. The account below is the official Foundation account, not a personal one. Please confirm your transfer on WhatsApp so we can log it and say thank you.',
     'donate.financialTitle': 'Financial Donation',
     'donate.financialDesc':
       'Transfer directly to our official account. Every rupiah goes to food, education, and the daily needs of the children.',
@@ -701,7 +701,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Hello Mother Liez, I would like to become a monthly donor with {amount} each month. Please let me know the next steps.',
     'donate.sendViaWa': 'Confirm via WhatsApp',
     'donate.trustAccount':
-      'Official Bank BRI account in the name of Yayasan Saint Lusia Angello — not a personal account.',
+      'Official Bank BRI account in the name of Yayasan Saint Lusia Angello, not a personal account.',
     'donate.trustLegal':
       'Legally registered under Kemenkumham AHU-0000377.AH.01.05.TAHUN 2023.',
     'donate.trustVisit':
@@ -726,7 +726,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'We show nicknames only, to protect our children\'s privacy.',
 
     'sticky.cta': 'Donate',
-    'donate.qrisTitle': 'QRIS — scan with your banking app',
+    'donate.qrisTitle': 'QRIS: scan with your banking app',
     'donate.qrisInstruction':
       'Open any QRIS-enabled app (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), tap Scan, and enter your donation amount.',
     'donate.qrisNmid': 'NMID: ID2026488087738',
@@ -741,9 +741,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'moments.chip': 'Moments at our home',
     'moments.title': 'Not stock photos. This is us, today.',
     'moments.lead':
-      "Snapshots of daily life — a birthday party, a donor visit, and after-school study time.",
+      "Snapshots of daily life: a birthday party, a donor visit, and after-school study time.",
     'moments.cap1':
-      "Chesco's first birthday — October 2026.",
+      "Chesco's first birthday, October 2026.",
     'moments.cap2':
       'A donor community visiting our home in Meruya Selatan.',
     'moments.cap3':
@@ -780,7 +780,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'team.founderRole': 'Founder & Supervisor',
     'team.founderName': 'Lusia Owa',
     'team.founderStory':
-      'Born in Ende, Flores – East Nusa Tenggara. Nine years of celibate life as a nun serving children with special needs. In 2017 she returned to lay life to serve more broadly, and in 2021 opened this home for children in need.',
+      'Born in Ende, Flores, East Nusa Tenggara. Nine years of celibate life as a nun serving children with special needs. In 2017 she returned to lay life to serve more broadly, and in 2021 opened this home for children in need.',
     'team.pembinaRole': 'Supervisor (Pembina)',
     'team.pengawasRole': 'Overseer (Pengawas)',
     'team.ketuaRole': 'Chair (Ketua)',
@@ -801,7 +801,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'daily.weekday6': 'Dinner and night rest',
     'daily.weekend1': '07:30 – 12:00 • Extra lessons',
     'daily.weekend2':
-      'Time with visitors — or sports & play when there are none',
+      'Time with visitors, or sports & play when there are none',
     'daily.weekend3': 'After dinner: movies or recreation together',
 
     'footer.legalReg': 'Legally registered since 11 March 2023',
@@ -830,7 +830,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.chip': 'Contact',
     'contact.title': 'Call, write, or visit us',
     'contact.lead':
-      'WhatsApp to Mother Liez is the quickest way. Visitors are welcome too — give us a heads-up so the children can greet you.',
+      'WhatsApp to Mother Liez is the quickest way. Visitors are welcome too. Just give us a heads-up so the children can greet you.',
     'contact.addressTitle': 'Address',
     'contact.addressValue':
       'Komplek Perumahan Walikota, Jl. H. Sa’aba, Blok C3 No. 12, RT 04 / RW 03, Meruya Selatan, Kembangan, West Jakarta 11650, Indonesia',
@@ -848,7 +848,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'contact.formNote': 'We usually reply within 1–2 business days.',
 
     'footer.tagline':
-      '20 children, 6 caregivers, 1 home in Meruya Selatan. Founded by Mother Lusia Owa — legally registered since 2023.',
+      '20 children, 6 caregivers, 1 home in Meruya Selatan. Founded by Mother Lusia Owa, legally registered since 2023.',
     'footer.quickLinks': 'Quick Links',
     'footer.support': 'Support Us',
     'footer.supportDonate': 'Financial Donation',
