@@ -29,7 +29,7 @@ export function Team() {
           </h2>
 
           <div className="mt-8">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               {t('team.founderRole')}
             </div>
             <div className="mt-1 font-display text-2xl font-medium text-slate-900">

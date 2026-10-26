@@ -20,7 +20,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
-import { BANK } from '../config'
+import { BANK, MONTHLY_PROGRESS, asset } from '../config'
 import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
 import type { Currency } from '../currency/CurrencyProvider'
 
@@ -40,12 +40,13 @@ const tiers: Tier[] = [
   { amountKey: 'donate.tierCustom', descKey: 'donate.tierCustomDesc', rawAmount: '' },
 ]
 
-const MONTHLY_NEED_IDR = 22_000_000
+const MONTHLY_NEED_IDR = MONTHLY_PROGRESS.goalIdr
 
 export function Donate() {
   const { t } = useLanguage()
   const { convert } = useCurrency()
   const monthlyNeedConverted = convert(MONTHLY_NEED_IDR)
+  const hasProgress = MONTHLY_PROGRESS.raisedIdr !== null
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [selected, setSelected] = useState(2)
   const [copied, setCopied] = useState(false)
@@ -83,8 +84,11 @@ export function Donate() {
             {t('donate.lead')}
           </p>
 
+          {hasProgress ? (
+            <MonthlyProgress />
+          ) : (
           <div className="mt-5 flex flex-col gap-1 rounded-xl border border-brand-300 bg-white px-4 py-3 sm:inline-flex sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:py-2">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-brand-700">
+            <span className="text-xs font-semibold uppercase tracking-wider text-brand-700">
               {t('donate.currentMonthLabel')}
             </span>
             <span className="text-sm text-slate-800">
@@ -94,6 +98,7 @@ export function Donate() {
               )}
             </span>
           </div>
+          )}
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-5">
@@ -170,7 +175,7 @@ function GivingPicker({
               key={f}
               type="button"
               onClick={() => setFrequency(f)}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+              className={`min-h-11 rounded-full px-5 text-xs font-semibold transition ${
                 active
                   ? 'bg-slate-900 text-white'
                   : 'text-slate-600 hover:text-slate-900'
@@ -222,6 +227,8 @@ function GivingPicker({
         })}
       </div>
 
+      {frequency === 'monthly' && <SahabatPerks />}
+
       <a
         href={whatsappHref}
         target="_blank"
@@ -240,26 +247,94 @@ function GivingPicker({
   )
 }
 
+function MonthlyProgress() {
+  const { t, language } = useLanguage()
+  const { convert } = useCurrency()
+  const { month, goalIdr } = MONTHLY_PROGRESS
+  const raised = MONTHLY_PROGRESS.raisedIdr ?? 0
+  const pct = Math.min(100, Math.round((raised / goalIdr) * 100))
+  const locale = language === 'id' ? 'id-ID' : 'en-US'
+  const idr = (n: number) =>
+    new Intl.NumberFormat(locale, { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(n)
+  const monthName = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(
+    new Date(`${month}-01T00:00:00`),
+  )
+  const remaining = convert(Math.max(0, goalIdr - raised))
+
+  return (
+    <div className="mt-6 max-w-xl rounded-2xl border border-brand-300 bg-white p-5">
+      <div className="flex items-baseline justify-between gap-3">
+        <span className="text-xs font-semibold uppercase tracking-wider text-brand-700">
+          {monthName}
+        </span>
+        <span className="font-display text-2xl font-medium text-slate-900">{pct}%</span>
+      </div>
+      <div
+        className="mt-3 h-3 w-full overflow-hidden rounded-full bg-brand-100"
+        role="progressbar"
+        aria-valuenow={pct}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
+        <div className="h-full rounded-full bg-brand-600" style={{ width: `${pct}%` }} />
+      </div>
+      <p className="mt-3 text-sm text-slate-700">
+        {t('donate.progressRaised').replace('{raised}', idr(raised)).replace('{goal}', idr(goalIdr))}
+        {remaining && pct < 100 && (
+          <span className="text-slate-500">
+            {' '}
+            {t('donate.progressRemaining').replace('{amount}', remaining)}
+          </span>
+        )}
+      </p>
+    </div>
+  )
+}
+
+const sahabatPerks: TranslationKey[] = [
+  'donate.sahabatPerk1',
+  'donate.sahabatPerk2',
+  'donate.sahabatPerk3',
+]
+
+function SahabatPerks() {
+  const { t } = useLanguage()
+  return (
+    <div className="mt-6 rounded-xl bg-slate-900 p-5 text-white">
+      <div className="font-display text-lg font-medium">{t('donate.sahabatTitle')}</div>
+      <p className="mt-1 text-sm text-slate-300">{t('donate.sahabatLead')}</p>
+      <ul className="mt-4 space-y-2.5 text-sm">
+        {sahabatPerks.map((key) => (
+          <li key={key} className="flex gap-2.5">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-300" />
+            <span>{t(key)}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 function QrisCard() {
   const { t } = useLanguage()
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5">
-      <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
         {t('donate.qrisTitle')}
       </div>
       <div className="mt-3 mx-auto max-w-[260px]">
         <img
-          src="/images/qris.jpg"
+          src={asset('images/qris.jpg')}
           alt="QRIS Yayasan Saint Lusia Angello"
           loading="lazy"
           className="block w-full rounded-lg"
         />
       </div>
-      <div className="mt-3 text-center text-[11px] font-semibold tracking-wider text-slate-700">
+      <div className="mt-3 text-center text-xs font-semibold tracking-wider text-slate-700">
         {t('donate.qrisNmid')}
       </div>
       <a
-        href="/images/qris.jpg"
+        href={asset('images/qris.jpg')}
         download="QRIS-Yayasan-Saint-Lusia-Angello.jpg"
         className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-900 hover:bg-slate-50"
       >
@@ -280,7 +355,7 @@ function AccountCard({ copied, onCopy }: { copied: boolean; onCopy: () => void }
   const { t } = useLanguage()
   return (
     <div className="rounded-2xl border border-slate-200 bg-slate-900 p-6 text-white">
-      <div className="text-[11px] font-semibold uppercase tracking-wider text-brand-300">
+      <div className="text-xs font-semibold uppercase tracking-wider text-brand-300">
         {t('donate.financialBank')}
       </div>
       <div className="mt-2 font-display text-2xl sm:text-3xl font-medium tracking-wide">
@@ -291,7 +366,7 @@ function AccountCard({ copied, onCopy }: { copied: boolean; onCopy: () => void }
       </div>
       <button
         onClick={onCopy}
-        className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-slate-900 transition hover:bg-brand-500 hover:text-white"
+        className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full bg-white px-5 text-xs font-semibold text-slate-900 transition hover:bg-brand-500 hover:text-white"
       >
         {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
         {copied ? t('donate.financialCopied') : t('donate.financialCopy')}
@@ -337,7 +412,7 @@ function GoodsCard() {
           </p>
           <a
             href="#contact"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-900"
+            className="mt-2 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-900"
           >
             <HandHeart className="h-4 w-4" />
             {t('donate.goodsCta')}

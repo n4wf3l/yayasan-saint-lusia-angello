@@ -1,5 +1,6 @@
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
+import { asset } from '../config'
 
 type Moment = {
   src: string
@@ -7,9 +8,9 @@ type Moment = {
 }
 
 const moments: Moment[] = [
-  { src: '/images/birthday-chesco.jpg', captionKey: 'moments.cap1' },
-  { src: '/images/visit-donors.jpg', captionKey: 'moments.cap2' },
-  { src: '/images/study-time.jpg', captionKey: 'moments.cap3' },
+  { src: asset('images/birthday-chesco.jpg'), captionKey: 'moments.cap1' },
+  { src: asset('images/visit-donors.jpg'), captionKey: 'moments.cap2' },
+  { src: asset('images/study-time.jpg'), captionKey: 'moments.cap3' },
 ]
 
 export function Moments() {
@@ -30,9 +31,9 @@ export function Moments() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-3">
+        <div className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:px-0 md:pb-0">
           {moments.map((m) => (
-            <figure key={m.src}>
+            <figure key={m.src} className="w-[78%] shrink-0 snap-start sm:w-[45%] md:w-auto">
               <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-slate-100">
                 <img
                   src={m.src}

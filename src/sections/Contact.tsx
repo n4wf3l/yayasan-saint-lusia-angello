@@ -21,7 +21,7 @@ export function Contact() {
           </p>
 
           <div className="mt-8 rounded-xl border border-brand-200 bg-brand-50 p-5">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-brand-700">
+            <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
               {t('contact.phoneRole')}
             </div>
             <div className="mt-1 font-display text-xl font-medium text-slate-900">
@@ -63,7 +63,7 @@ export function Contact() {
             body={t('contact.hoursValue')}
           />
           <div className="pt-6 border-t border-slate-200">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Social
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -105,7 +105,7 @@ function Row({
     <div className="flex gap-4">
       <div className="shrink-0 text-brand-600 pt-0.5">{icon}</div>
       <div>
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+        <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
           {title}
         </div>
         {link ? (
@@ -134,7 +134,7 @@ function Social({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1.5 text-xs font-medium text-slate-700 hover:border-brand-500 hover:text-brand-700"
+      className="inline-flex min-h-11 items-center gap-2 rounded-full border border-slate-300 px-4 text-xs font-medium text-slate-700 hover:border-brand-500 hover:text-brand-700"
     >
       {icon}
       {label}

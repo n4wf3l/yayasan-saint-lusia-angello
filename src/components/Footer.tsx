@@ -15,7 +15,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden bg-slate-900 text-slate-300">
+    <footer className="relative overflow-hidden bg-slate-900 text-slate-300 pb-20 lg:pb-0">
       <div className="container-page relative py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -25,7 +25,7 @@ export function Footer() {
                 <div className="text-base font-bold text-white">
                   Saint Lusia Angello
                 </div>
-                <div className="text-[11px] uppercase tracking-wider text-brand-300">
+                <div className="text-xs uppercase tracking-wider text-brand-300">
                   Yayasan • Jakarta
                 </div>
               </div>
@@ -40,7 +40,7 @@ export function Footer() {
                   {t('footer.legalRegLabel')}
                 </div>
                 <div className="text-slate-400">{t('footer.legalReg')}</div>
-                <div className="mt-1 text-[10px] text-slate-500 font-mono">
+                <div className="mt-1 text-xs text-slate-500 font-mono">
                   Kemenkumham {LEGAL.kemenkumham}
                 </div>
               </div>
@@ -84,12 +84,12 @@ export function Footer() {
               {t('footer.quickLinks')}
             </h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><a href="#about" className="hover:text-brand-300">{t('nav.about')}</a></li>
-              <li><a href="#mission" className="hover:text-brand-300">{t('nav.mission')}</a></li>
-              <li><a href="#daily" className="hover:text-brand-300">{t('nav.daily')}</a></li>
-              <li><a href="#impact" className="hover:text-brand-300">{t('nav.impact')}</a></li>
-              <li><a href="#moments" className="hover:text-brand-300">{t('nav.gallery')}</a></li>
-              <li><a href="#contact" className="hover:text-brand-300">{t('nav.contact')}</a></li>
+              <li><a href="#about" className="inline-block py-1 hover:text-brand-300">{t('nav.about')}</a></li>
+              <li><a href="#mission" className="inline-block py-1 hover:text-brand-300">{t('nav.mission')}</a></li>
+              <li><a href="#daily" className="inline-block py-1 hover:text-brand-300">{t('nav.daily')}</a></li>
+              <li><a href="#impact" className="inline-block py-1 hover:text-brand-300">{t('nav.impact')}</a></li>
+              <li><a href="#moments" className="inline-block py-1 hover:text-brand-300">{t('nav.gallery')}</a></li>
+              <li><a href="#contact" className="inline-block py-1 hover:text-brand-300">{t('nav.contact')}</a></li>
             </ul>
           </div>
 
@@ -98,10 +98,10 @@ export function Footer() {
               {t('footer.support')}
             </h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><a href="#donate" className="hover:text-brand-300">{t('footer.supportDonate')}</a></li>
-              <li><a href="#donate" className="hover:text-brand-300">{t('footer.supportGoods')}</a></li>
-              <li><a href="#donate" className="hover:text-brand-300">{t('footer.supportVolunteer')}</a></li>
-              <li><a href="#contact" className="hover:text-brand-300">{t('footer.supportPartner')}</a></li>
+              <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportDonate')}</a></li>
+              <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportGoods')}</a></li>
+              <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportVolunteer')}</a></li>
+              <li><a href="#contact" className="inline-block py-1 hover:text-brand-300">{t('footer.supportPartner')}</a></li>
             </ul>
           </div>
 
@@ -120,7 +120,7 @@ export function Footer() {
                   <div className="font-semibold text-white">
                     {CONTACT.contactName}
                   </div>
-                  <div className="text-[11px] uppercase tracking-wider text-brand-300">
+                  <div className="text-xs uppercase tracking-wider text-brand-300">
                     {t('contact.phoneRole')}
                   </div>
                   <a

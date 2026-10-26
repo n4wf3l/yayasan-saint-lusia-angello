@@ -67,7 +67,7 @@ export function Header() {
               <span className="text-sm font-bold text-slate-900 truncate">
                 Yayasan Saint Lusia Angello
               </span>
-              <span className="text-[10px] font-medium uppercase tracking-wider text-brand-600">
+              <span className="text-xs font-medium uppercase tracking-wider text-brand-600">
                 Jakarta Barat
               </span>
             </div>

@@ -13,6 +13,7 @@ export type TranslationKey =
   | 'nav.contact'
   | 'nav.donateCta'
   | 'hero.badge'
+  | 'hero.photoAlt'
   | 'hero.title1'
   | 'hero.title2'
   | 'hero.title3'
@@ -66,6 +67,10 @@ export type TranslationKey =
   | 'impact.chip'
   | 'impact.title'
   | 'impact.lead'
+  | 'impact.cta'
+  | 'band.title'
+  | 'band.lead'
+  | 'band.cta'
   | 'impact.donorsTitle'
   | 'impact.donorsLead'
   | 'impact.donor1'
@@ -121,6 +126,13 @@ export type TranslationKey =
   | 'donate.commitLine'
   | 'donate.currentMonthLabel'
   | 'donate.currentMonthValue'
+  | 'donate.progressRaised'
+  | 'donate.progressRemaining'
+  | 'donate.sahabatTitle'
+  | 'donate.sahabatLead'
+  | 'donate.sahabatPerk1'
+  | 'donate.sahabatPerk2'
+  | 'donate.sahabatPerk3'
   | 'children.chip'
   | 'children.title'
   | 'children.lead'
@@ -260,6 +272,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.donateCta': 'Donasi',
 
     'hero.badge': 'Yayasan berbadan hukum, Jakarta Barat, melayani sejak 2021',
+    'hero.photoAlt': 'Anak-anak dan pendamping merayakan ulang tahun bersama di rumah',
     'hero.title1': '20 anak,',
     'hero.title2': 'satu rumah',
     'hero.title3': 'di Meruya Selatan.',
@@ -331,6 +344,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.title': 'Ricky, dari rumah ini ke seragam TNI',
     'impact.lead':
       'Rikardus Ndona Ndore (Ricky), lahir di Koporombo (15 Juli 2005), masuk Yayasan sebagai anak panti. Setelah lulus SMA, ia menyampaikan keinginan menjadi tentara. Ibu Lusia mendukung penuh dan membantunya mempersiapkan setiap syarat yang diwajibkan. Sambil menunggu panggilan, Ricky membantu mengurus adik-adiknya di panti. Hari ini ia anggota TNI Angkatan Darat, bertugas di Papua.',
+    'impact.cta': 'Bantu Ricky berikutnya',
+    'band.title': 'Rumah ini berjalan karena orang-orang seperti Anda.',
+    'band.lead': 'Setiap bulan, donatur dan komunitas memastikan 20 anak tetap makan, sekolah, dan punya tempat pulang.',
+    'band.cta': 'Ikut membantu',
     'impact.donorsTitle': 'Donatur tetap kami',
     'impact.donorsLead':
       'Terima kasih atas kehadiran berkelanjutan Anda bagi anak-anak kami.',
@@ -390,7 +407,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.waOnceMsg':
       'Halo Ibu Liez, saya ingin berdonasi {amount} ke Yayasan Saint Lusia Angello. Mohon info berikutnya.',
     'donate.waMonthlyMsg':
-      'Halo Ibu Liez, saya ingin menjadi donatur rutin dengan {amount} setiap bulan. Mohon info berikutnya.',
+      'Halo Ibu Liez, saya ingin bergabung sebagai Sahabat YSLA dengan {amount} setiap bulan. Mohon info berikutnya.',
     'donate.sendViaWa': 'Konfirmasi via WhatsApp',
     'donate.trustAccount':
       'Rekening resmi Bank BRI atas nama Yayasan Saint Lusia Angello, bukan rekening pribadi.',
@@ -403,6 +420,13 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.currentMonthLabel': 'Kebutuhan bulan ini',
     'donate.currentMonthValue':
       'Rp 22.000.000 untuk 20 anak. Setiap kontribusi membantu.',
+    'donate.progressRaised': '{raised} terkumpul dari {goal}.',
+    'donate.progressRemaining': 'Masih kurang sekitar {amount}.',
+    'donate.sahabatTitle': 'Bergabung sebagai Sahabat YSLA',
+    'donate.sahabatLead': 'Sahabat adalah sebutan untuk donatur bulanan kami. Sebagai Sahabat, Anda mendapat:',
+    'donate.sahabatPerk1': 'Kabar dan foto dari rumah kami setiap bulan lewat WhatsApp',
+    'donate.sahabatPerk2': 'Laporan tahunan tentang penggunaan dana',
+    'donate.sahabatPerk3': 'Bebas mengubah jumlah atau berhenti kapan saja',
 
     'children.chip': 'Komunitas Kami',
     'children.title': 'Satu rumah, 20 anak, dari seluruh Indonesia',
@@ -568,6 +592,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.donateCta': 'Donate',
 
     'hero.badge': 'Registered Indonesian foundation in West Jakarta, serving since 2021',
+    'hero.photoAlt': 'Children and caregivers celebrating a birthday together at home',
     'hero.title1': '20 children,',
     'hero.title2': 'one home',
     'hero.title3': 'in Meruya Selatan.',
@@ -639,6 +664,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.title': 'Ricky, from this home to the Indonesian Army',
     'impact.lead':
       'Rikardus Ndona Ndore (Ricky), born in Koporombo on 15 July 2005, grew up here. After graduating from senior high school he told Mother Lusia he wanted to serve as a soldier. She backed him fully and helped him prepare for every entry requirement. While he waited for the call, he helped look after the younger children in the home. Today he serves in the Indonesian Army, stationed in Papua.',
+    'impact.cta': 'Help the next Ricky',
+    'band.title': 'This home runs on people like you.',
+    'band.lead': 'Every month, donors and community groups keep 20 children fed, in school, and with a place to come home to.',
+    'band.cta': 'Join them',
     'impact.donorsTitle': 'Our regular donors',
     'impact.donorsLead':
       'Thank you for standing with the children, month after month.',
@@ -698,7 +727,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.waOnceMsg':
       'Hello Mother Liez, I would like to donate {amount} to Yayasan Saint Lusia Angello. Please let me know the next steps.',
     'donate.waMonthlyMsg':
-      'Hello Mother Liez, I would like to become a monthly donor with {amount} each month. Please let me know the next steps.',
+      'Hello Mother Liez, I would like to join Sahabat YSLA with {amount} each month. Please let me know the next steps.',
     'donate.sendViaWa': 'Confirm via WhatsApp',
     'donate.trustAccount':
       'Official Bank BRI account in the name of Yayasan Saint Lusia Angello, not a personal account.',
@@ -711,6 +740,13 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.currentMonthLabel': 'This month we need',
     'donate.currentMonthValue':
       'IDR 22,000,000 for 20 children. Every contribution helps.',
+    'donate.progressRaised': '{raised} raised of {goal}.',
+    'donate.progressRemaining': 'About {amount} still to go.',
+    'donate.sahabatTitle': 'Become a Sahabat YSLA',
+    'donate.sahabatLead': 'Sahabat means friend. It is what we call our monthly donors, and as one you get:',
+    'donate.sahabatPerk1': 'A monthly WhatsApp update with photos from our home',
+    'donate.sahabatPerk2': 'A yearly report on how the money was spent',
+    'donate.sahabatPerk3': 'Change your amount or stop anytime',
 
     'children.chip': 'Our Community',
     'children.title': 'One home, 20 children, from across Indonesia',

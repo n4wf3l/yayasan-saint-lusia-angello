@@ -9,6 +9,7 @@ import { Children } from './sections/Children'
 import { DailyLife } from './sections/DailyLife'
 import { Team } from './sections/Team'
 import { Mission } from './sections/Mission'
+import { PhotoBand } from './sections/PhotoBand'
 import { Donate } from './sections/Donate'
 import { Contact } from './sections/Contact'
 
@@ -25,12 +26,12 @@ export default function App() {
         <DailyLife />
         <Team />
         <Mission />
+        <PhotoBand />
         <Donate />
         <Contact />
       </main>
       <Footer />
       <StickyDonate />
-      <div className="h-20 lg:hidden" aria-hidden />
     </div>
   )
 }

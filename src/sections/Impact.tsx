@@ -1,3 +1,4 @@
+import { Heart } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 
 export function Impact() {
@@ -17,6 +18,10 @@ export function Impact() {
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-slate-300">
               {t('impact.lead')}
             </p>
+            <a href="#donate" className="btn-primary mt-8">
+              <Heart className="h-4 w-4" />
+              {t('impact.cta')}
+            </a>
           </div>
 
           <aside className="lg:col-span-4 lg:col-start-9 self-end">

@@ -74,7 +74,7 @@ export function Children() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+            <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               {t('children.sampleIntro')}
             </div>
             <ul className="mt-4 divide-y divide-slate-200 border-y border-slate-200">

@@ -34,3 +34,17 @@ export const LEGAL = {
   kemenkumham: 'AHU-0000377.AH.01.05.TAHUN 2023',
   npwp: '96.350.421.2-011.000',
 }
+
+/** Resolves a file in /public against the deploy base (GitHub Pages serves under a subpath). */
+export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
+/**
+ * Monthly fundraising progress shown in the Donate section.
+ * Update `month` and `raisedIdr` at the start of each month; while `raisedIdr`
+ * is null the progress bar stays hidden and only the monthly need is shown.
+ */
+export const MONTHLY_PROGRESS: { month: string; raisedIdr: number | null; goalIdr: number } = {
+  month: '2026-10',
+  raisedIdr: null,
+  goalIdr: 22_000_000,
+}
