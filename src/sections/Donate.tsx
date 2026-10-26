@@ -21,6 +21,8 @@ import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
 import { BANK } from '../config'
+import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
+import type { Currency } from '../currency/CurrencyProvider'
 
 type Frequency = 'once' | 'monthly'
 
@@ -28,17 +30,22 @@ type Tier = {
   amountKey: TranslationKey
   descKey: TranslationKey
   rawAmount: string
+  idr?: number
 }
 
 const tiers: Tier[] = [
-  { amountKey: 'donate.tier1Amount', descKey: 'donate.tier1Desc', rawAmount: 'Rp 150.000' },
-  { amountKey: 'donate.tier2Amount', descKey: 'donate.tier2Desc', rawAmount: 'Rp 500.000' },
-  { amountKey: 'donate.tier3Amount', descKey: 'donate.tier3Desc', rawAmount: 'Rp 1.100.000' },
+  { amountKey: 'donate.tier1Amount', descKey: 'donate.tier1Desc', rawAmount: 'Rp 150.000', idr: 150_000 },
+  { amountKey: 'donate.tier2Amount', descKey: 'donate.tier2Desc', rawAmount: 'Rp 500.000', idr: 500_000 },
+  { amountKey: 'donate.tier3Amount', descKey: 'donate.tier3Desc', rawAmount: 'Rp 1.100.000', idr: 1_100_000 },
   { amountKey: 'donate.tierCustom', descKey: 'donate.tierCustomDesc', rawAmount: '' },
 ]
 
+const MONTHLY_NEED_IDR = 22_000_000
+
 export function Donate() {
   const { t } = useLanguage()
+  const { convert } = useCurrency()
+  const monthlyNeedConverted = convert(MONTHLY_NEED_IDR)
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [selected, setSelected] = useState(2)
   const [copied, setCopied] = useState(false)
@@ -82,6 +89,9 @@ export function Donate() {
             </span>
             <span className="text-sm text-slate-800">
               {t('donate.currentMonthValue')}
+              {monthlyNeedConverted && (
+                <span className="text-slate-500"> (≈ {monthlyNeedConverted})</span>
+              )}
             </span>
           </div>
         </div>
@@ -126,10 +136,27 @@ function GivingPicker({
   whatsappHref: string
 }) {
   const { t } = useLanguage()
+  const { currency, setCurrency, convert } = useCurrency()
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
-      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-        {t('donate.tierTitle')}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          {t('donate.tierTitle')}
+        </div>
+        <label className="inline-flex items-center gap-2 text-xs text-slate-600">
+          {t('donate.showIn')}
+          <select
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value as Currency)}
+            className="min-h-9 rounded-full border border-slate-300 bg-white px-3 text-xs font-semibold text-slate-900"
+          >
+            {CURRENCIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
 
       <div
@@ -161,6 +188,7 @@ function GivingPicker({
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {tiers.map((tier, i) => {
           const active = selected === i
+          const converted = tier.idr ? convert(tier.idr) : null
           return (
             <button
               key={tier.amountKey}
@@ -183,6 +211,9 @@ function GivingPicker({
                   </span>
                 )}
               </div>
+              {converted && (
+                <div className="text-xs font-medium text-brand-700">≈ {converted}</div>
+              )}
               <div className="mt-1 text-xs text-slate-600 leading-relaxed">
                 {t(tier.descKey)}
               </div>
@@ -203,6 +234,7 @@ function GivingPicker({
       </a>
       <p className="mt-3 text-xs text-slate-500 leading-relaxed">
         {t('donate.commitLine')}
+        {currency !== 'IDR' && <> {t('donate.fxNote')}</>}
       </p>
     </div>
   )
@@ -340,15 +372,18 @@ function MonthlyBudget() {
           <BudgetItem
             icon={<Utensils className="h-4 w-4" />}
             value={t('donate.budgetFood')}
+            idr={10_000_000}
             desc={t('donate.budgetFoodDesc')}
           />
           <BudgetItem
             icon={<GraduationCap className="h-4 w-4" />}
             value={t('donate.budgetSchool')}
+            idr={12_000_000}
             desc={t('donate.budgetSchoolDesc')}
           />
           <BudgetItem
             value={t('donate.budgetTotal')}
+            idr={MONTHLY_NEED_IDR}
             desc={t('donate.budgetTotalDesc')}
             highlight
           />
@@ -361,14 +396,17 @@ function MonthlyBudget() {
 function BudgetItem({
   icon,
   value,
+  idr,
   desc,
   highlight,
 }: {
   icon?: React.ReactNode
   value: string
+  idr: number
   desc: string
   highlight?: boolean
 }) {
+  const converted = useCurrency().convert(idr)
   return (
     <div
       className={`rounded-xl p-5 ${
@@ -385,6 +423,11 @@ function BudgetItem({
         </div>
       )}
       <div className="mt-2 font-display text-xl font-medium">{value}</div>
+      {converted && (
+        <div className={`text-xs font-medium ${highlight ? 'text-white' : 'text-brand-700'}`}>
+          ≈ {converted}
+        </div>
+      )}
       <div
         className={`mt-1 text-xs leading-relaxed ${
           highlight ? 'text-white/80' : 'text-slate-500'

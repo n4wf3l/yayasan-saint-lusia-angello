@@ -136,6 +136,8 @@ export type TranslationKey =
   | 'donate.qrisInstruction'
   | 'donate.qrisNmid'
   | 'donate.qrisDownload'
+  | 'donate.showIn'
+  | 'donate.fxNote'
   | 'donate.qrisMobileHint'
   | 'children.months'
   | 'children.years'
@@ -421,6 +423,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Buka aplikasi berlogo QRIS (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), pilih "Scan", lalu masukkan jumlah donasi Anda.',
     'donate.qrisNmid': 'NMID : ID2026488087738',
     'donate.qrisDownload': 'Simpan gambar QRIS',
+    'donate.showIn': 'Tampilkan dalam',
+    'donate.fxNote': 'Transfer dilakukan dalam Rupiah; jumlah dalam mata uang lain hanya perkiraan.',
     'donate.qrisMobileHint':
       'Dari HP? Simpan gambarnya, lalu di aplikasi bank pilih Scan → unggah dari galeri.',
     'children.months': '{n} bulan',
@@ -727,6 +731,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Open any QRIS-enabled app (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), tap Scan, and enter your donation amount.',
     'donate.qrisNmid': 'NMID: ID2026488087738',
     'donate.qrisDownload': 'Save QRIS image',
+    'donate.showIn': 'Show in',
+    'donate.fxNote': 'Transfers are made in IDR; amounts in other currencies are approximate.',
     'donate.qrisMobileHint':
       'On your phone? Save the image, then in your banking app tap Scan → upload from gallery.',
     'children.months': '{n} months',
