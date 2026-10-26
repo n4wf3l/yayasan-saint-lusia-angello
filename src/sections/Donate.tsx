@@ -214,9 +214,9 @@ function QrisCard() {
       <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
         {t('donate.qrisTitle')}
       </div>
-      <div className="mt-3 mx-auto max-w-[220px]">
+      <div className="mt-3 mx-auto max-w-[260px]">
         <img
-          src="/images/qris.png"
+          src="/images/qris.jpg"
           alt="QRIS Yayasan Saint Lusia Angello"
           loading="lazy"
           className="block w-full rounded-lg"
