@@ -3,6 +3,7 @@ import { Footer } from './components/Footer'
 import { StickyDonate } from './components/StickyDonate'
 import { Hero } from './sections/Hero'
 import { About } from './sections/About'
+import { Moments } from './sections/Moments'
 import { Impact } from './sections/Impact'
 import { Children } from './sections/Children'
 import { DailyLife } from './sections/DailyLife'
@@ -18,6 +19,7 @@ export default function App() {
       <main className="flex-1">
         <Hero />
         <About />
+        <Moments />
         <Impact />
         <Children />
         <DailyLife />

@@ -97,6 +97,7 @@ export function Donate() {
           </div>
 
           <div className="lg:col-span-2 space-y-5">
+            <QrisCard />
             <AccountCard copied={copied} onCopy={copyAccount} />
             <TrustStrip />
           </div>
@@ -201,6 +202,31 @@ function GivingPicker({
       </a>
       <p className="mt-3 text-xs text-slate-500 leading-relaxed">
         {t('donate.commitLine')}
+      </p>
+    </div>
+  )
+}
+
+function QrisCard() {
+  const { t } = useLanguage()
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+      <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+        {t('donate.qrisTitle')}
+      </div>
+      <div className="mt-3 mx-auto max-w-[220px]">
+        <img
+          src="/images/qris.png"
+          alt="QRIS Yayasan Saint Lusia Angello"
+          loading="lazy"
+          className="block w-full rounded-lg"
+        />
+      </div>
+      <div className="mt-3 text-center text-[11px] font-semibold tracking-wider text-slate-700">
+        {t('donate.qrisNmid')}
+      </div>
+      <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+        {t('donate.qrisInstruction')}
       </p>
     </div>
   )

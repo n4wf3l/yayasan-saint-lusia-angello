@@ -132,6 +132,15 @@ export type TranslationKey =
   | 'children.sampleIntro'
   | 'children.privacy'
   | 'sticky.cta'
+  | 'donate.qrisTitle'
+  | 'donate.qrisInstruction'
+  | 'donate.qrisNmid'
+  | 'moments.chip'
+  | 'moments.title'
+  | 'moments.lead'
+  | 'moments.cap1'
+  | 'moments.cap2'
+  | 'moments.cap3'
   | 'donate.goodsTitle'
   | 'donate.goodsDesc'
   | 'donate.goodsList1'
@@ -403,6 +412,21 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Kami hanya menampilkan nama panggilan untuk melindungi privasi anak-anak kami.',
 
     'sticky.cta': 'Donasi',
+    'donate.qrisTitle': 'QRIS — scan dengan aplikasi bank Anda',
+    'donate.qrisInstruction':
+      'Buka aplikasi berlogo QRIS (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), pilih "Scan", lalu masukkan jumlah donasi Anda.',
+    'donate.qrisNmid': 'NMID : ID2026488087738',
+
+    'moments.chip': 'Momen di rumah kami',
+    'moments.title': 'Bukan foto stok. Ini kami, hari ini.',
+    'moments.lead':
+      'Beberapa momen dari kehidupan sehari-hari — ulang tahun, kunjungan donatur, dan waktu belajar sore.',
+    'moments.cap1':
+      'Ulang tahun Chesco yang pertama — Oktober 2026.',
+    'moments.cap2':
+      'Kunjungan dari komunitas donatur ke rumah kami di Meruya Selatan.',
+    'moments.cap3':
+      'Waktu belajar sore bersama relawan muda.',
     'donate.goodsTitle': 'Pakaian & Perabotan',
     'donate.goodsDesc':
       'Kami menerima donasi berupa barang-barang berikut dalam kondisi baik dan layak pakai:',
@@ -689,6 +713,21 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'We show nicknames only, to protect our children\'s privacy.',
 
     'sticky.cta': 'Donate',
+    'donate.qrisTitle': 'QRIS — scan with your banking app',
+    'donate.qrisInstruction':
+      'Open any QRIS-enabled app (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), tap Scan, and enter your donation amount.',
+    'donate.qrisNmid': 'NMID: ID2026488087738',
+
+    'moments.chip': 'Moments at our home',
+    'moments.title': 'Not stock photos. This is us, today.',
+    'moments.lead':
+      "Snapshots of daily life — a birthday party, a donor visit, and after-school study time.",
+    'moments.cap1':
+      "Chesco's first birthday — October 2026.",
+    'moments.cap2':
+      'A donor community visiting our home in Meruya Selatan.',
+    'moments.cap3':
+      'Afternoon study time with young volunteers.',
     'donate.goodsTitle': 'Clothing & Furniture',
     'donate.goodsDesc':
       'We accept the following items in good, usable condition:',
