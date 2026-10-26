@@ -5,6 +5,7 @@ import {
   Bus,
   Check,
   Copy,
+  Download,
   GraduationCap,
   HandHeart,
   Home,
@@ -225,8 +226,19 @@ function QrisCard() {
       <div className="mt-3 text-center text-[11px] font-semibold tracking-wider text-slate-700">
         {t('donate.qrisNmid')}
       </div>
+      <a
+        href="/images/qris.jpg"
+        download="QRIS-Yayasan-Saint-Lusia-Angello.jpg"
+        className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+      >
+        <Download className="h-4 w-4" />
+        {t('donate.qrisDownload')}
+      </a>
       <p className="mt-3 text-xs text-slate-600 leading-relaxed">
         {t('donate.qrisInstruction')}
+      </p>
+      <p className="mt-2 text-xs text-slate-600 leading-relaxed lg:hidden">
+        {t('donate.qrisMobileHint')}
       </p>
     </div>
   )

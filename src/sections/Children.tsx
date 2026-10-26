@@ -16,15 +16,15 @@ const groups: AgeGroup[] = [
 
 type SampleChild = {
   nick: string
-  age: string
+  age: { n: number; unit: 'months' | 'years' }
   birthplace: string
 }
 
 const samples: SampleChild[] = [
-  { nick: 'Liam', age: '10 bulan', birthplace: 'Jakarta' },
-  { nick: 'Edgar', age: '3 tahun', birthplace: 'Jakarta' },
-  { nick: 'Tommy', age: '9 tahun', birthplace: 'Ende, Flores' },
-  { nick: 'Vianney', age: '14 tahun', birthplace: 'Nangaroro' },
+  { nick: 'Liam', age: { n: 10, unit: 'months' }, birthplace: 'Jakarta' },
+  { nick: 'Edgar', age: { n: 3, unit: 'years' }, birthplace: 'Jakarta' },
+  { nick: 'Tommy', age: { n: 9, unit: 'years' }, birthplace: 'Ende, Flores' },
+  { nick: 'Vianney', age: { n: 14, unit: 'years' }, birthplace: 'Nangaroro' },
 ]
 
 export function Children() {
@@ -89,7 +89,9 @@ export function Children() {
                     </div>
                     <div className="text-xs text-slate-500">{c.birthplace}</div>
                   </div>
-                  <div className="text-sm text-slate-700">{c.age}</div>
+                  <div className="text-sm text-slate-700">
+                    {t(`children.${c.age.unit}`).replace('{n}', String(c.age.n))}
+                  </div>
                 </li>
               ))}
             </ul>

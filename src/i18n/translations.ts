@@ -135,6 +135,10 @@ export type TranslationKey =
   | 'donate.qrisTitle'
   | 'donate.qrisInstruction'
   | 'donate.qrisNmid'
+  | 'donate.qrisDownload'
+  | 'donate.qrisMobileHint'
+  | 'children.months'
+  | 'children.years'
   | 'moments.chip'
   | 'moments.title'
   | 'moments.lead'
@@ -253,7 +257,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.contact': 'Kontak',
     'nav.donateCta': 'Donasi',
 
-    'hero.badge': 'Yayasan sosial, Jakarta Barat — berbadan hukum sejak 2023',
+    'hero.badge': 'Yayasan berbadan hukum, Jakarta Barat — melayani sejak 2021',
     'hero.title1': '20 anak,',
     'hero.title2': 'satu rumah',
     'hero.title3': 'di Meruya Selatan.',
@@ -416,6 +420,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.qrisInstruction':
       'Buka aplikasi berlogo QRIS (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), pilih "Scan", lalu masukkan jumlah donasi Anda.',
     'donate.qrisNmid': 'NMID : ID2026488087738',
+    'donate.qrisDownload': 'Simpan gambar QRIS',
+    'donate.qrisMobileHint':
+      'Dari HP? Simpan gambarnya, lalu di aplikasi bank pilih Scan → unggah dari galeri.',
+    'children.months': '{n} bulan',
+    'children.years': '{n} tahun',
 
     'moments.chip': 'Momen di rumah kami',
     'moments.title': 'Bukan foto stok. Ini kami, hari ini.',
@@ -554,7 +563,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.contact': 'Contact',
     'nav.donateCta': 'Donate',
 
-    'hero.badge': 'Registered Indonesian foundation — West Jakarta, since 2023',
+    'hero.badge': 'Registered Indonesian foundation — West Jakarta, serving since 2021',
     'hero.title1': '20 children,',
     'hero.title2': 'one home',
     'hero.title3': 'in Meruya Selatan.',
@@ -717,6 +726,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.qrisInstruction':
       'Open any QRIS-enabled app (BCA, Mandiri, BRI, GoPay, OVO, DANA, ShopeePay…), tap Scan, and enter your donation amount.',
     'donate.qrisNmid': 'NMID: ID2026488087738',
+    'donate.qrisDownload': 'Save QRIS image',
+    'donate.qrisMobileHint':
+      'On your phone? Save the image, then in your banking app tap Scan → upload from gallery.',
+    'children.months': '{n} months',
+    'children.years': '{n} years',
 
     'moments.chip': 'Moments at our home',
     'moments.title': 'Not stock photos. This is us, today.',

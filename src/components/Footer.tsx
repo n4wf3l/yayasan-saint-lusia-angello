@@ -86,9 +86,9 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               <li><a href="#about" className="hover:text-brand-300">{t('nav.about')}</a></li>
               <li><a href="#mission" className="hover:text-brand-300">{t('nav.mission')}</a></li>
-              <li><a href="#programs" className="hover:text-brand-300">{t('nav.programs')}</a></li>
+              <li><a href="#daily" className="hover:text-brand-300">{t('nav.daily')}</a></li>
               <li><a href="#impact" className="hover:text-brand-300">{t('nav.impact')}</a></li>
-              <li><a href="#gallery" className="hover:text-brand-300">{t('nav.gallery')}</a></li>
+              <li><a href="#moments" className="hover:text-brand-300">{t('nav.gallery')}</a></li>
               <li><a href="#contact" className="hover:text-brand-300">{t('nav.contact')}</a></li>
             </ul>
           </div>
@@ -178,10 +178,8 @@ export function Footer() {
           <div>
             © {year} Yayasan Saint Lusia Angello. {t('footer.rights')}
           </div>
-          <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-brand-300">{t('footer.legalPrivacy')}</a>
-            <a href="#" className="hover:text-brand-300">{t('footer.legalTerms')}</a>
-            <a href="#" className="hover:text-brand-300">{t('footer.legalTransparency')}</a>
+          <div>
+            {t('footer.legalReg')} · AHU-0000377.AH.01.05.TAHUN 2023
           </div>
         </div>
       </div>
