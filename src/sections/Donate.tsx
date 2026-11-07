@@ -2,9 +2,11 @@ import { useMemo, useState } from 'react'
 import {
   AlertCircle,
   ArrowRight,
+  ArrowUpRight,
   Bus,
   Check,
   Copy,
+  CreditCard,
   Download,
   GraduationCap,
   HandHeart,
@@ -20,7 +22,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
-import { BANK, MONTHLY_PROGRESS, asset } from '../config'
+import { BANK, MONTHLY_PROGRESS, PAYPAL_URL, asset } from '../config'
 import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
 import type { Currency } from '../currency/CurrencyProvider'
 
@@ -44,7 +46,7 @@ const MONTHLY_NEED_IDR = MONTHLY_PROGRESS.goalIdr
 
 export function Donate() {
   const { t } = useLanguage()
-  const { convert } = useCurrency()
+  const { currency, convert } = useCurrency()
   const monthlyNeedConverted = convert(MONTHLY_NEED_IDR)
   const hasProgress = MONTHLY_PROGRESS.raisedIdr !== null
   const [frequency, setFrequency] = useState<Frequency>('monthly')
@@ -113,8 +115,11 @@ export function Donate() {
           </div>
 
           <div className="lg:col-span-2 space-y-5">
+            {/* Visitors outside Indonesia see PayPal first: QRIS and BRI transfers are local rails. */}
+            {currency !== 'IDR' && <PaypalCard />}
             <QrisCard />
             <AccountCard copied={copied} onCopy={copyAccount} />
+            {currency === 'IDR' && <PaypalCard />}
             <TrustStrip />
           </div>
         </div>
@@ -347,6 +352,29 @@ function QrisCard() {
       <p className="mt-2 text-xs text-slate-600 leading-relaxed lg:hidden">
         {t('donate.qrisMobileHint')}
       </p>
+    </div>
+  )
+}
+
+function PaypalCard() {
+  const { t } = useLanguage()
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+        <CreditCard className="h-4 w-4 text-brand-700" />
+        {t('donate.paypalTitle')}
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-slate-700">{t('donate.paypalLead')}</p>
+      <a
+        href={PAYPAL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 rounded-full bg-[#0070ba] px-5 text-sm font-semibold text-white transition hover:bg-[#005ea6]"
+      >
+        {t('donate.paypalCta')}
+        <ArrowUpRight className="h-4 w-4" />
+      </a>
+      <p className="mt-3 text-xs leading-relaxed text-slate-600">{t('donate.paypalNote')}</p>
     </div>
   )
 }

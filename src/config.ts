@@ -15,6 +15,9 @@ export const BANK = {
   holder: 'Yayasan Saint Lusia Angello',
 }
 
+/** Hosted PayPal checkout: card or PayPal account, for donors outside Indonesia. */
+export const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/B54EN5XNRU2YS'
+
 export const CONTACT = {
   phone: '+62 812 3112 1166',
   phoneHref: 'tel:+6281231121166',

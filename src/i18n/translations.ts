@@ -151,6 +151,10 @@ export type TranslationKey =
   | 'donate.showIn'
   | 'donate.fxNote'
   | 'donate.qrisMobileHint'
+  | 'donate.paypalTitle'
+  | 'donate.paypalLead'
+  | 'donate.paypalCta'
+  | 'donate.paypalNote'
   | 'children.months'
   | 'children.years'
   | 'moments.chip'
@@ -453,6 +457,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.fxNote': 'Transfer dilakukan dalam Rupiah; jumlah dalam mata uang lain hanya perkiraan.',
     'donate.qrisMobileHint':
       'Dari HP? Simpan gambarnya, lalu di aplikasi bank pilih Scan → unggah dari galeri.',
+    'donate.paypalTitle': 'Dari luar negeri',
+    'donate.paypalLead': 'Bayar dengan kartu kredit/debit atau akun PayPal, dari negara mana pun.',
+    'donate.paypalCta': 'Donasi lewat PayPal',
+    'donate.paypalNote': 'Pembayaran aman di halaman resmi PayPal.',
     'children.months': '{n} bulan',
     'children.years': '{n} tahun',
 
@@ -775,6 +783,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.fxNote': 'Transfers are made in IDR; amounts in other currencies are approximate.',
     'donate.qrisMobileHint':
       'On your phone? Save the image, then in your banking app tap Scan → upload from gallery.',
+    'donate.paypalTitle': 'Giving from abroad',
+    'donate.paypalLead': 'Pay by credit/debit card or with a PayPal account, from any country.',
+    'donate.paypalCta': 'Donate with PayPal',
+    'donate.paypalNote': "Secure checkout on PayPal's own page.",
     'children.months': '{n} months',
     'children.years': '{n} years',
 
