@@ -18,6 +18,24 @@ const navItems: { href: string; key: TranslationKey }[] = [
 
 const HIDE_THRESHOLD = 80
 
+const EASE = [0.22, 1, 0.36, 1] as const
+
+// The panel drives its children: items stagger in top-down and leave bottom-up before the panel fades out.
+const menuPanel = {
+  closed: { opacity: 0, transition: { duration: 0.25, ease: 'easeIn', when: 'afterChildren' } },
+  open: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut', when: 'beforeChildren', staggerChildren: 0.04 } },
+} as const
+
+const menuList = {
+  closed: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
+  open: { transition: { staggerChildren: 0.04 } },
+} as const
+
+const menuItem = {
+  closed: { opacity: 0, y: -10, transition: { duration: 0.18, ease: 'easeIn' } },
+  open: { opacity: 1, y: 0, transition: { duration: 0.35, ease: EASE } },
+} as const
+
 export function Header() {
   const { t } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
@@ -112,7 +130,18 @@ export function Header() {
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
             >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={open ? 'close' : 'open'}
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.15 }}
+                  className="inline-flex"
+                >
+                  {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </motion.span>
+              </AnimatePresence>
             </button>
           </div>
         </div>
@@ -123,32 +152,31 @@ export function Header() {
         {open && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            variants={menuPanel}
+            initial="closed"
+            animate="open"
+            exit="closed"
             // The header carries a transform, so `fixed` would resolve against it: size against the viewport instead.
             className="lg:hidden absolute inset-x-0 top-16 flex h-[calc(100dvh-4rem)] flex-col overflow-y-auto bg-white"
           >
-            <nav className="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-8">
-              {navItems.map((item, i) => (
+            <motion.nav
+              variants={menuList}
+              className="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-8"
+            >
+              {navItems.map((item) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, y: 14 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: 0.04 * i, ease: [0.22, 1, 0.36, 1] }}
+                  variants={menuItem}
                   className="w-full max-w-xs rounded-2xl px-4 py-3 text-center font-display text-[1.75rem] font-medium leading-tight text-slate-900 active:bg-brand-50 active:text-brand-700"
                 >
                   {t(item.key)}
                 </motion.a>
               ))}
-            </nav>
+            </motion.nav>
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.04 * navItems.length, ease: [0.22, 1, 0.36, 1] }}
+              variants={menuItem}
               className="flex flex-col items-center gap-4 border-t border-slate-200 px-6 pt-6"
               style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
             >
