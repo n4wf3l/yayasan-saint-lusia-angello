@@ -42,7 +42,6 @@ export function Hero() {
               alt={t('hero.photoAlt')}
               className="aspect-[4/3] w-full object-cover"
               loading="eager"
-              fetchPriority="high"
             />
             <figcaption className="mt-2 text-center font-display text-sm italic text-slate-700">
               Meruya Selatan
