@@ -1,5 +1,6 @@
 import { Instagram, Mail, MapPin, Phone, ShieldCheck, Youtube } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageProvider'
+import { useHomeHref, useLanguage } from '../i18n/LanguageProvider'
+import { pagePath } from '../i18n/routes'
 import { Logo } from './Logo'
 import { TikTokIcon } from './TikTokIcon'
 import {
@@ -8,11 +9,12 @@ import {
   LEGAL,
   TIKTOK_URL,
   YOUTUBE_URL,
-  home,
 } from '../config'
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const home = useHomeHref()
+  const legal = pagePath('legal', language)
   const year = new Date().getFullYear()
 
   return (
@@ -179,8 +181,14 @@ export function Footer() {
           <div>
             © {year} Yayasan Saint Lusia Angello. {t('footer.rights')}
           </div>
-          <div>
-            {t('footer.legalReg')} · AHU-0000377.AH.01.05.TAHUN 2023
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <a href={`${legal}#privasi`} className="inline-block py-1 hover:text-slate-300">
+              {t('footer.legalPrivacy')}
+            </a>
+            <a href={`${legal}#hukum`} className="inline-block py-1 hover:text-slate-300">
+              {t('footer.legalInfo')}
+            </a>
+            <span>{t('footer.legalReg')} · AHU-0000377.AH.01.05.TAHUN 2023</span>
           </div>
         </div>
       </div>

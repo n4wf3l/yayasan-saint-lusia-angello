@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Heart, Menu, X } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageProvider'
+import { useHomeHref, useLanguage } from '../i18n/LanguageProvider'
 import { Logo } from './Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { ScrambleText } from './ScrambleText'
 import type { TranslationKey } from '../i18n/translations'
-import { home } from '../config'
 
-const navItems: { href: string; key: TranslationKey }[] = [
-  { href: home('#about'), key: 'nav.about' },
-  { href: home('#impact'), key: 'nav.impact' },
-  { href: home('#children'), key: 'nav.children' },
-  { href: home('#daily'), key: 'nav.daily' },
-  { href: home('#team'), key: 'nav.team' },
-  { href: home('#contact'), key: 'nav.contact' },
+const navSections: { hash: string; key: TranslationKey }[] = [
+  { hash: '#about', key: 'nav.about' },
+  { hash: '#impact', key: 'nav.impact' },
+  { hash: '#children', key: 'nav.children' },
+  { hash: '#daily', key: 'nav.daily' },
+  { hash: '#team', key: 'nav.team' },
+  { hash: '#contact', key: 'nav.contact' },
 ]
 
 const HIDE_THRESHOLD = 80
@@ -39,6 +38,8 @@ const menuItem = {
 
 export function Header() {
   const { t } = useLanguage()
+  const homeHref = useHomeHref()
+  const navItems = navSections.map((s) => ({ href: homeHref(s.hash), key: s.key }))
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
@@ -85,7 +86,7 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-3">
-          <a href={home()} className="flex items-center gap-2.5 min-w-0" aria-label="Yayasan Saint Lusia Angello">
+          <a href={homeHref()} className="flex items-center gap-2.5 min-w-0" aria-label="Yayasan Saint Lusia Angello">
             <Logo className="h-9 w-9 shrink-0" />
             <div className="hidden sm:flex flex-col leading-tight min-w-0">
               <span className="text-sm font-bold text-slate-900 truncate">

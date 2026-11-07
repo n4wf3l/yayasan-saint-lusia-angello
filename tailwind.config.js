@@ -40,7 +40,7 @@ export default {
           'Arial',
           'sans-serif',
         ],
-        display: ['"Fraunces"', 'Georgia', 'serif'],
+        display: ['"Fraunces Variable"', 'Georgia', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

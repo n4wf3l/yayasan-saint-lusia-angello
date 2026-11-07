@@ -11,9 +11,9 @@ type Moment = {
 }
 
 const moments: Moment[] = [
-  { src: asset('images/birthday-chesco.jpg'), captionKey: 'moments.cap1' },
-  { src: asset('images/visit-donors.jpg'), captionKey: 'moments.cap2' },
-  { src: asset('images/study-time.jpg'), captionKey: 'moments.cap3' },
+  { src: asset('images/birthday-chesco.webp'), captionKey: 'moments.cap1' },
+  { src: asset('images/visit-donors.webp'), captionKey: 'moments.cap2' },
+  { src: asset('images/study-time.webp'), captionKey: 'moments.cap3' },
 ]
 
 const EASE = [0.22, 1, 0.36, 1] as const

@@ -12,6 +12,13 @@ export type TranslationKey =
   | 'nav.gallery'
   | 'nav.contact'
   | 'nav.donateCta'
+  | 'legal.docTitle'
+  | 'legal.title'
+  | 'footer.legalInfo'
+  | 'meta.homeTitle'
+  | 'langSuggest.text'
+  | 'langSuggest.cta'
+  | 'langSuggest.dismiss'
   | 'hero.badge'
   | 'hero.photoAlt'
   | 'hero.title1'
@@ -292,6 +299,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.gallery': 'Galeri',
     'nav.contact': 'Kontak',
     'nav.donateCta': 'Donasi',
+    'meta.homeTitle': 'Yayasan Saint Lusia Angello | Panti asuhan di Jakarta Barat',
+    'langSuggest.text': 'Halaman ini tersedia dalam Bahasa Indonesia.',
+    'langSuggest.cta': 'Baca dalam Bahasa Indonesia',
+    'langSuggest.dismiss': 'Tutup',
 
     'hero.badge': 'Yayasan berbadan hukum, Jakarta Barat, melayani sejak 2021',
     'hero.photoAlt': 'Anak-anak dan pendamping merayakan ulang tahun bersama di rumah',
@@ -615,6 +626,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'footer.supportPartner': 'Jadi Mitra',
     'footer.legal': 'Legal',
     'footer.legalPrivacy': 'Kebijakan Privasi',
+    'footer.legalInfo': 'Informasi Hukum',
+    'legal.docTitle': 'Privasi & Informasi Hukum | Yayasan Saint Lusia Angello',
+    'legal.title': 'Privasi & Informasi Hukum',
     'footer.legalTerms': 'Syarat & Ketentuan',
     'footer.legalTransparency': 'Laporan Transparansi',
     'footer.rights': 'Hak cipta dilindungi.',
@@ -632,6 +646,10 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contact',
     'nav.donateCta': 'Donate',
+    'meta.homeTitle': 'Yayasan Saint Lusia Angello | Orphanage in West Jakarta',
+    'langSuggest.text': 'This page is also available in English.',
+    'langSuggest.cta': 'Read in English',
+    'langSuggest.dismiss': 'Close',
 
     'hero.badge': 'Registered Indonesian foundation in West Jakarta, serving since 2021',
     'hero.photoAlt': 'Children and caregivers celebrating a birthday together at home',
@@ -955,6 +973,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'footer.supportPartner': 'Become a Partner',
     'footer.legal': 'Legal',
     'footer.legalPrivacy': 'Privacy Policy',
+    'footer.legalInfo': 'Legal Information',
+    'legal.docTitle': 'Privacy & Legal | Yayasan Saint Lusia Angello',
+    'legal.title': 'Privacy & Legal',
     'footer.legalTerms': 'Terms & Conditions',
     'footer.legalTransparency': 'Transparency Report',
     'footer.rights': 'All rights reserved.',

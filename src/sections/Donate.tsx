@@ -25,7 +25,8 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
-import { BANK, DONATE_PAGE_URL, MONTHLY_PROGRESS, PAYPAL_URL, asset } from '../config'
+import { BANK, MONTHLY_PROGRESS, PAYPAL_URL, asset } from '../config'
+import { publicUrl } from '../i18n/routes'
 import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
 import type { Currency } from '../currency/CurrencyProvider'
 
@@ -53,7 +54,9 @@ const CUSTOM_PRESETS = [20_000, 50_000, 100_000]
 
 const formatRupiah = (idr: number) => `Rp ${idr.toLocaleString('id-ID')}`
 
-export function Donate() {
+/** `standalone` on /donasi/, where this section is the page and its title is the page's h1. */
+export function Donate({ standalone = false }: { standalone?: boolean }) {
+  const Title = standalone ? 'h1' : 'h2'
   const { t } = useLanguage()
   const { currency, convert } = useCurrency()
   const monthlyNeedConverted = convert(MONTHLY_NEED_IDR)
@@ -92,9 +95,9 @@ export function Donate() {
           <div className="text-xs font-semibold uppercase tracking-wider text-brand-700">
             {t('donate.chip')}
           </div>
-          <h2 className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-slate-900">
+          <Title className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-slate-900">
             {t('donate.title')}
-          </h2>
+          </Title>
           <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-700">
             {t('donate.lead')}
           </p>
@@ -474,20 +477,21 @@ function QrisCard() {
 
 /** Native share sheet on phones (WhatsApp, Instagram...), clipboard copy elsewhere. */
 function ShareDonateLink() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [copied, setCopied] = useState(false)
+  const url = publicUrl('donate', language)
 
   const share = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ text: t('donate.shareText'), url: DONATE_PAGE_URL })
+        await navigator.share({ text: t('donate.shareText'), url })
       } catch {
         /* dismissed */
       }
       return
     }
     try {
-      await navigator.clipboard.writeText(DONATE_PAGE_URL)
+      await navigator.clipboard.writeText(url)
       setCopied(true)
       setTimeout(() => setCopied(false), 2200)
     } catch {

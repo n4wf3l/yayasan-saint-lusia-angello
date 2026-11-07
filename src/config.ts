@@ -36,13 +36,21 @@ export const LEGAL = {
   izinKegiatan: '1/F.3/31.73.08.1003.19.SPU-3/4/TM.17.02/e/2023',
   kemenkumham: 'AHU-0000377.AH.01.05.TAHUN 2023',
   npwp: '96.350.421.2-011.000',
+  chair: 'Maximus Ali Perajaka',
 }
 
-/** Link to the home page, optionally to one of its sections; works from /donasi/ too. */
-export const home = (hash = '') => `${import.meta.env.BASE_URL}${hash}`
+/** Where the site is served from; update if it moves (for example to Hostinger). */
+export const HOSTING = {
+  name: 'GitHub Pages',
+  company: 'GitHub, Inc.',
+  address: '88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA',
+  country: { id: 'Amerika Serikat', en: 'United States' },
+}
 
-/** Public address of the standalone donation page, for sharing. */
-export const DONATE_PAGE_URL = 'https://n4wf3l.github.io/yayasan-saint-lusia-angello/donasi/'
+export const DEVELOPER = {
+  name: 'Nawfel Ajari',
+  country: { id: 'Belgia', en: 'Belgium' },
+}
 
 /** Resolves a file in /public against the deploy base (GitHub Pages serves under a subpath). */
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`

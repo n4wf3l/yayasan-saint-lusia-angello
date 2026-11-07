@@ -16,7 +16,7 @@ export function PhotoBand() {
   return (
     <section ref={ref} aria-label={t('band.title')} className="relative isolate overflow-hidden">
       <motion.img
-        src={asset('images/visit-donors.jpg')}
+        src={asset('images/visit-donors.webp')}
         alt=""
         loading="lazy"
         style={{ y, scale }}

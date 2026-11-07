@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n/LanguageProvider'
 import { IndonesiaMap } from '../components/IndonesiaMap'
 import { YOUTUBE_URL, asset } from '../config'
 
-const HERO_PHOTO = asset('images/birthday-chesco.jpg')
+const HERO_PHOTO = asset('images/birthday-chesco.webp')
 
 export function Hero() {
   const { t } = useLanguage()

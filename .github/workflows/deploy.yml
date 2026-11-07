@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Weekly rebuild so the exchange rates baked into the site stay fresh.
+  schedule:
+    - cron: '0 2 * * 1'
   workflow_dispatch:
 
 permissions:

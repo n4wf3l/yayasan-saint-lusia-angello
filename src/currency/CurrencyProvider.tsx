@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useLanguage } from '../i18n/LanguageProvider'
+import RATES from '../data/rates.json'
 
 // Donations are always paid in IDR (BRI / QRIS). Other currencies are only an
 // approximate conversion shown next to the IDR amount.
@@ -23,27 +24,10 @@ export const CURRENCIES = [
 ] as const
 export type Currency = (typeof CURRENCIES)[number]
 
-// IDR per 1 unit, used until live rates load or if the rates API is unreachable.
-const FALLBACK_IDR_PER_UNIT: Record<Currency, number> = {
-  IDR: 1,
-  USD: 18180,
-  EUR: 20410,
-  GBP: 24390,
-  AUD: 12660,
-  SGD: 14080,
-  CHF: 21740,
-  CAD: 12820,
-  JPY: 115,
-  MYR: 4425,
-  NZD: 10310,
-  HKD: 2304,
-  CNY: 2703,
-  KRW: 13.7,
-}
-
-const RATES_URL = 'https://open.er-api.com/v6/latest/IDR'
-const RATES_CACHE_KEY = 'yayasan-rates'
-const RATES_TTL_MS = 12 * 60 * 60 * 1000
+// IDR per 1 unit, fetched once per build by scripts/fetch-rates.mjs: visitors' browsers never call a rates API.
+const IDR_PER_UNIT: Record<Currency, number> = RATES.idrPerUnit
+// Older versions cached live rates in the browser; removed on first visit.
+const LEGACY_RATES_KEY = 'yayasan-rates'
 const CURRENCY_KEY = 'yayasan-currency'
 
 // Timezones that don't follow their region's default below.
@@ -117,17 +101,6 @@ function detectInitialCurrency(): Currency {
   return currencyFromTimezone(tz) ?? 'USD'
 }
 
-function readCachedRates(): Record<string, number> | null {
-  try {
-    const raw = window.localStorage.getItem(RATES_CACHE_KEY)
-    if (!raw) return null
-    const { at, rates } = JSON.parse(raw)
-    return Date.now() - at < RATES_TTL_MS ? rates : null
-  } catch {
-    return null
-  }
-}
-
 type CurrencyContextValue = {
   currency: Currency
   setCurrency: (c: Currency) => void
@@ -139,37 +112,16 @@ const CurrencyContext = createContext<CurrencyContextValue | undefined>(undefine
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
   const { language } = useLanguage()
-  const [currency, setCurrencyState] = useState<Currency>(detectInitialCurrency)
-  // Units of each currency per 1 IDR, as returned by the rates API.
-  const [rates, setRates] = useState<Record<string, number> | null>(() =>
-    typeof window === 'undefined' ? null : readCachedRates(),
-  )
-
+  // Start in IDR so the prerendered HTML and the first browser render agree, then switch to the visitor's currency.
+  const [currency, setCurrencyState] = useState<Currency>('IDR')
   useEffect(() => {
-    if (rates || currency === 'IDR') return
-    let cancelled = false
-    fetch(RATES_URL)
-      .then((r) => r.json())
-      .then((data) => {
-        if (cancelled || data?.result !== 'success') return
-        setRates(data.rates)
-        try {
-          window.localStorage.setItem(
-            RATES_CACHE_KEY,
-            JSON.stringify({ at: Date.now(), rates: data.rates }),
-          )
-        } catch {
-          /* storage unavailable */
-        }
-      })
-      .catch(() => {
-        /* keep fallback rates */
-      })
-    return () => {
-      cancelled = true
+    setCurrencyState(detectInitialCurrency())
+    try {
+      window.localStorage.removeItem(LEGACY_RATES_KEY)
+    } catch {
+      /* storage unavailable */
     }
-  }, [rates, currency])
-
+  }, [])
   const setCurrency = useCallback((c: Currency) => {
     setCurrencyState(c)
     try {
@@ -182,9 +134,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
   const convert = useCallback(
     (idr: number) => {
       if (currency === 'IDR') return null
-      const value = rates?.[currency]
-        ? idr * rates[currency]
-        : idr / FALLBACK_IDR_PER_UNIT[currency]
+      const value = idr / IDR_PER_UNIT[currency]
       // Match the page language so "€24.50" sits next to "IDR 500,000" consistently.
       return new Intl.NumberFormat(language === 'id' ? 'id-ID' : 'en-US', {
         style: 'currency',
@@ -192,7 +142,7 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
         ...(value >= 100 && { minimumFractionDigits: 0, maximumFractionDigits: 0 }),
       }).format(value)
     },
-    [currency, rates, language],
+    [currency, language],
   )
 
   const value = useMemo(() => ({ currency, setCurrency, convert }), [currency, setCurrency, convert])
