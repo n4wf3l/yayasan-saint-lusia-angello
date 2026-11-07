@@ -12,6 +12,7 @@ export type TranslationKey =
   | 'nav.gallery'
   | 'nav.contact'
   | 'nav.donateCta'
+  | 'backToTop'
   | 'legal.docTitle'
   | 'legal.title'
   | 'footer.legalInfo'
@@ -299,6 +300,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.gallery': 'Galeri',
     'nav.contact': 'Kontak',
     'nav.donateCta': 'Donasi',
+    'backToTop': 'Kembali ke atas',
     'meta.homeTitle': 'Yayasan Saint Lusia Angello | Panti asuhan di Jakarta Barat',
     'langSuggest.text': 'Halaman ini tersedia dalam Bahasa Indonesia.',
     'langSuggest.cta': 'Baca dalam Bahasa Indonesia',
@@ -646,6 +648,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contact',
     'nav.donateCta': 'Donate',
+    'backToTop': 'Back to top',
     'meta.homeTitle': 'Yayasan Saint Lusia Angello | Orphanage in West Jakarta',
     'langSuggest.text': 'This page is also available in English.',
     'langSuggest.cta': 'Read in English',

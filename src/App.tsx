@@ -2,6 +2,7 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { StickyDonate } from './components/StickyDonate'
 import { LanguageSuggest } from './components/LanguageSuggest'
+import { BackToTop } from './components/BackToTop'
 import { Hero } from './sections/Hero'
 import { About } from './sections/About'
 import { Moments } from './sections/Moments'
@@ -33,6 +34,7 @@ export default function App() {
       </main>
       <Footer />
       <StickyDonate />
+      <BackToTop aboveStickyBar />
       <LanguageSuggest />
     </div>
   )

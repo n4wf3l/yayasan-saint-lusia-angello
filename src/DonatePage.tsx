@@ -4,6 +4,7 @@ import { Footer } from './components/Footer'
 import { Donate } from './sections/Donate'
 import { Contact } from './sections/Contact'
 import { LanguageSuggest } from './components/LanguageSuggest'
+import { BackToTop } from './components/BackToTop'
 import { useHomeHref, useLanguage } from './i18n/LanguageProvider'
 
 /** Standalone donation page (/donasi/): a direct link to share on WhatsApp, Instagram or in campaigns. */
@@ -28,6 +29,7 @@ export function DonatePage() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
       <LanguageSuggest />
     </div>
   )

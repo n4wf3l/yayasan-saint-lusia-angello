@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { LanguageSuggest } from './components/LanguageSuggest'
+import { BackToTop } from './components/BackToTop'
 import { useHomeHref, useLanguage } from './i18n/LanguageProvider'
 import { legalContent } from './legal/content'
 import type { LegalBlock } from './legal/content'
@@ -59,6 +60,7 @@ export function LegalPage() {
         </div>
       </main>
       <Footer />
+      <BackToTop />
       <LanguageSuggest />
     </div>
   )
