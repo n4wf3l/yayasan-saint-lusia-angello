@@ -159,6 +159,8 @@ export type TranslationKey =
   | 'moments.cap1'
   | 'moments.cap2'
   | 'moments.cap3'
+  | 'moments.open'
+  | 'moments.close'
   | 'donate.goodsTitle'
   | 'donate.goodsDesc'
   | 'donate.goodsList1'
@@ -464,6 +466,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Kunjungan dari komunitas donatur ke rumah kami di Meruya Selatan.',
     'moments.cap3':
       'Waktu belajar sore bersama relawan muda.',
+    'moments.open': 'Perbesar foto',
+    'moments.close': 'Tutup',
     'donate.goodsTitle': 'Pakaian & Perabotan',
     'donate.goodsDesc':
       'Kami menerima donasi berupa barang-barang berikut dalam kondisi baik dan layak pakai:',
@@ -784,6 +788,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'A donor community visiting our home in Meruya Selatan.',
     'moments.cap3':
       'Afternoon study time with young volunteers.',
+    'moments.open': 'Enlarge photo',
+    'moments.close': 'Close',
     'donate.goodsTitle': 'Clothing & Furniture',
     'donate.goodsDesc':
       'We accept the following items in good, usable condition:',

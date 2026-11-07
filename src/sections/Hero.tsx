@@ -37,11 +37,14 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 3.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute left-[24%] top-[90%] hidden w-44 bg-white p-2 pb-3 shadow-xl shadow-slate-900/20 ring-1 ring-slate-900/5 lg:block xl:w-52"
           >
-            <img
+            {/* Slow drift once pinned, like a print stirring in a breeze. */}
+            <motion.img
               src={HERO_PHOTO}
               alt={t('hero.photoAlt')}
               className="aspect-[4/3] w-full object-cover"
               loading="eager"
+              animate={{ scale: [1, 1.06, 1] }}
+              transition={{ duration: 14, delay: 3.8, repeat: Infinity, ease: 'easeInOut' }}
             />
             <figcaption className="mt-2 text-center font-display text-sm italic text-slate-700">
               Meruya Selatan
@@ -90,16 +93,20 @@ export function Hero() {
 
           {/* Below lg the map sits behind the text, so the photo goes in the flow instead. */}
           <motion.figure
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
+            initial={{ clipPath: 'inset(0% 0% 100% 0% round 1.5rem)' }}
+            animate={{ clipPath: 'inset(0% 0% 0% 0% round 1.5rem)' }}
+            transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 overflow-hidden rounded-3xl bg-slate-100 shadow-2xl shadow-slate-900/15 ring-1 ring-slate-900/5 lg:hidden"
           >
-            <img
+            {/* Curtain opens top-down while the photo settles from a slight zoom. */}
+            <motion.img
               src={HERO_PHOTO}
               alt={t('hero.photoAlt')}
               className="aspect-[4/3] w-full object-cover object-[50%_40%]"
               loading="eager"
+              initial={{ scale: 1.15 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             />
           </motion.figure>
 
