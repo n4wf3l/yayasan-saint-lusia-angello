@@ -4,6 +4,7 @@ import { Heart, Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import { Logo } from './Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { ScrambleText } from './ScrambleText'
 import type { TranslationKey } from '../i18n/translations'
 import { home } from '../config'
 
@@ -103,7 +104,7 @@ export function Header() {
                 href={item.href}
                 className="rounded-full px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
               >
-                {t(item.key)}
+                <ScrambleText text={t(item.key)} />
               </a>
             ))}
           </nav>
@@ -112,7 +113,7 @@ export function Header() {
             <LanguageSwitcher compact />
             <a href="#donate" className="btn-primary">
               <Heart className="h-4 w-4" />
-              {t('nav.donateCta')}
+              <ScrambleText text={t('nav.donateCta')} />
             </a>
           </div>
 
@@ -122,7 +123,7 @@ export function Header() {
               className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 h-11 text-sm font-semibold text-white shadow-sm active:bg-brand-700"
             >
               <Heart className="h-4 w-4" />
-              {t('nav.donateCta')}
+              <ScrambleText text={t('nav.donateCta')} />
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -171,7 +172,7 @@ export function Header() {
                   variants={menuItem}
                   className="w-full max-w-xs rounded-2xl px-4 py-3 text-center font-display text-[1.75rem] font-medium leading-tight text-slate-900 active:bg-brand-50 active:text-brand-700"
                 >
-                  {t(item.key)}
+                  <ScrambleText text={t(item.key)} />
                 </motion.a>
               ))}
             </motion.nav>
@@ -187,7 +188,7 @@ export function Header() {
                 className="flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand-600 px-6 text-base font-semibold text-white shadow-lg shadow-brand-900/20 active:bg-brand-700"
               >
                 <Heart className="h-5 w-5" />
-                {t('nav.donateCta')}
+                <ScrambleText text={t('nav.donateCta')} />
               </a>
             </motion.div>
           </motion.div>
