@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   AlertCircle,
@@ -46,6 +46,11 @@ const tiers: Tier[] = [
 ]
 
 const MONTHLY_NEED_IDR = MONTHLY_PROGRESS.goalIdr
+const CUSTOM_TIER = tiers.findIndex((tier) => !tier.idr)
+// Small presets so a modest gift feels as welcome as the larger tiers.
+const CUSTOM_PRESETS = [20_000, 50_000, 100_000]
+
+const formatRupiah = (idr: number) => `Rp ${idr.toLocaleString('id-ID')}`
 
 export function Donate() {
   const { t } = useLanguage()
@@ -55,6 +60,7 @@ export function Donate() {
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [selected, setSelected] = useState(2)
   const [copied, setCopied] = useState(false)
+  const [customIdr, setCustomIdr] = useState(0)
   // No method is shown until the donor says where they give from: QRIS and BRI only work inside Indonesia.
   const [origin, setOrigin] = useState<Origin | null>(null)
 
@@ -70,12 +76,13 @@ export function Donate() {
 
   const whatsappHref = useMemo(() => {
     const tier = tiers[selected]
-    const amount = tier.rawAmount || '____'
+    const amount =
+      selected === CUSTOM_TIER ? (customIdr > 0 ? formatRupiah(customIdr) : '____') : tier.rawAmount
     const template =
       frequency === 'monthly' ? t('donate.waMonthlyMsg') : t('donate.waOnceMsg')
     const message = template.replace('{amount}', amount)
     return `https://wa.me/6281231121166?text=${encodeURIComponent(message)}`
-  }, [frequency, selected, t])
+  }, [frequency, selected, customIdr, t])
 
   return (
     <section id="donate" className="py-16 sm:py-24 lg:py-28 border-t border-slate-200 bg-brand-50/30">
@@ -115,6 +122,8 @@ export function Donate() {
               setFrequency={setFrequency}
               selected={selected}
               setSelected={setSelected}
+              customIdr={customIdr}
+              setCustomIdr={setCustomIdr}
               whatsappHref={whatsappHref}
             />
           </div>
@@ -163,16 +172,22 @@ function GivingPicker({
   setFrequency,
   selected,
   setSelected,
+  customIdr,
+  setCustomIdr,
   whatsappHref,
 }: {
   frequency: Frequency
   setFrequency: (f: Frequency) => void
   selected: number
   setSelected: (n: number) => void
+  customIdr: number
+  setCustomIdr: (n: number) => void
   whatsappHref: string
 }) {
   const { t } = useLanguage()
   const { currency, setCurrency, convert } = useCurrency()
+  const customInput = useRef<HTMLInputElement>(null)
+  const customConverted = customIdr > 0 ? convert(customIdr) : null
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -229,7 +244,10 @@ function GivingPicker({
             <button
               key={tier.amountKey}
               type="button"
-              onClick={() => setSelected(i)}
+              onClick={() => {
+                setSelected(i)
+                if (i === CUSTOM_TIER) requestAnimationFrame(() => customInput.current?.focus())
+              }}
               className={`text-left rounded-xl border p-4 transition ${
                 active
                   ? 'border-brand-600 bg-brand-50'
@@ -257,6 +275,53 @@ function GivingPicker({
           )
         })}
       </div>
+
+      {selected === CUSTOM_TIER && (
+        <div className="mt-4 rounded-xl border border-brand-300 bg-brand-50/50 p-4">
+          <label htmlFor="custom-amount" className="text-xs font-semibold uppercase tracking-wider text-brand-700">
+            {t('donate.customLabel')}
+          </label>
+          <div className="mt-2 flex min-h-11 items-center rounded-lg border border-slate-300 bg-white px-3 focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-600/20">
+            <span className="text-base font-semibold text-slate-500">Rp</span>
+            <input
+              ref={customInput}
+              id="custom-amount"
+              type="text"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="0"
+              value={customIdr > 0 ? customIdr.toLocaleString('id-ID') : ''}
+              onChange={(e) => {
+                // Keep digits only and cap at 1 billion so a stray paste cannot produce an absurd figure.
+                const digits = e.target.value.replace(/\D/g, '').slice(0, 10)
+                setCustomIdr(Math.min(Number(digits) || 0, 1_000_000_000))
+              }}
+              className="w-full bg-transparent px-2 py-2 font-display text-lg text-slate-900 outline-none placeholder:text-slate-300"
+            />
+            {customConverted && (
+              <span className="shrink-0 text-xs font-medium text-brand-700">≈ {customConverted}</span>
+            )}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {CUSTOM_PRESETS.map((idr) => (
+              <button
+                key={idr}
+                type="button"
+                onClick={() => setCustomIdr(idr)}
+                aria-pressed={customIdr === idr}
+                className={`min-h-9 rounded-full border px-3 text-xs font-semibold transition ${
+                  customIdr === idr
+                    ? 'border-brand-600 bg-brand-600 text-white'
+                    : 'border-slate-300 bg-white text-slate-700 hover:border-slate-500'
+                }`}
+              >
+                {formatRupiah(idr)}
+              </button>
+            ))}
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-slate-600">{t('donate.customHint')}</p>
+        </div>
+      )}
 
       {frequency === 'monthly' && <SahabatPerks />}
 

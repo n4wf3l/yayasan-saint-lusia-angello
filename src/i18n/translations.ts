@@ -117,6 +117,8 @@ export type TranslationKey =
   | 'donate.tier3Desc'
   | 'donate.tierCustom'
   | 'donate.tierCustomDesc'
+  | 'donate.customLabel'
+  | 'donate.customHint'
   | 'donate.waOnceMsg'
   | 'donate.waMonthlyMsg'
   | 'donate.sendViaWa'
@@ -417,6 +419,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.tier3Desc': 'Biaya penuh (makan + sekolah) 1 anak selama 1 bulan',
     'donate.tierCustom': 'Jumlah lain',
     'donate.tierCustomDesc': 'Sesuai hati Anda',
+    'donate.customLabel': 'Jumlah Anda (Rupiah)',
+    'donate.customHint': 'Setiap rupiah berarti. Bahkan Rp 10.000 sudah membantu.',
     'donate.waOnceMsg':
       'Halo Ibu Liez, saya ingin berdonasi {amount} ke Yayasan Saint Lusia Angello. Mohon info berikutnya.',
     'donate.waMonthlyMsg':
@@ -750,6 +754,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.tier3Desc': "Full cost (meals + school) for 1 child, one month",
     'donate.tierCustom': 'Other amount',
     'donate.tierCustomDesc': 'As your heart leads',
+    'donate.customLabel': 'Your amount (IDR)',
+    'donate.customHint': 'Every rupiah counts. Even Rp 10,000 helps.',
     'donate.waOnceMsg':
       'Hello Mother Liez, I would like to donate {amount} to Yayasan Saint Lusia Angello. Please let me know the next steps.',
     'donate.waMonthlyMsg':
