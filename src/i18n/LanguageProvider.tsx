@@ -1,8 +1,9 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { translations } from './translations'
 import type { Language, TranslationKey } from './translations'
 import { pagePath } from './routes'
+import { prefersReducedMotion, scrambleVisibleText } from '../lib/scramble'
 import type { Page } from './routes'
 
 type LanguageContextValue = {
@@ -60,6 +61,17 @@ export function LanguageProvider({
     document.documentElement.lang = language
     document.title = t(TITLE_KEY[page])
   }, [language, page, t])
+
+  // On a switch (not on first load), the visible page text scrambles into the new
+  // language like the nav labels do. The header animates its own labels.
+  // Compared against the previous language, so StrictMode's double effect run on mount is a no-op.
+  const shownLanguage = useRef(language)
+  useEffect(() => {
+    if (shownLanguage.current === language) return
+    shownLanguage.current = language
+    if (prefersReducedMotion()) return
+    return scrambleVisibleText([...document.querySelectorAll('main, footer')])
+  }, [language])
 
   const value = useMemo(() => ({ language, page, setLanguage, t }), [language, page, setLanguage, t])
 
