@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Heart, Menu, X } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import { Logo } from './Logo'
@@ -43,8 +44,11 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    if (open) document.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKey)
     }
   }, [open])
 
@@ -114,25 +118,53 @@ export function Header() {
         </div>
       </div>
 
-      {open && (
-        <div className="lg:hidden bg-white border-b border-slate-200 shadow-lg max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <div className="container-page py-5 flex flex-col gap-1">
-            {navItems.map((item) => (
+      {/* Phone menu: full screen under the bar, big centred links, language and donate at the bottom. */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            // The header carries a transform, so `fixed` would resolve against it: size against the viewport instead.
+            className="lg:hidden absolute inset-x-0 top-16 flex h-[calc(100dvh-4rem)] flex-col overflow-y-auto bg-white"
+          >
+            <nav className="flex flex-1 flex-col items-center justify-center gap-1 px-6 py-8">
+              {navItems.map((item, i) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.04 * i, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full max-w-xs rounded-2xl px-4 py-3 text-center font-display text-[1.75rem] font-medium leading-tight text-slate-900 active:bg-brand-50 active:text-brand-700"
+                >
+                  {t(item.key)}
+                </motion.a>
+              ))}
+            </nav>
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: 0.04 * navItems.length, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center gap-4 border-t border-slate-200 px-6 pt-6"
+              style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}
+            >
+              <LanguageSwitcher large />
               <a
-                key={item.href}
-                href={item.href}
+                href="#donate"
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 text-base font-medium text-slate-800 active:bg-slate-100"
+                className="flex min-h-12 w-full max-w-xs items-center justify-center gap-2 rounded-full bg-brand-600 px-6 text-base font-semibold text-white shadow-lg shadow-brand-900/20 active:bg-brand-700"
               >
-                {t(item.key)}
+                <Heart className="h-5 w-5" />
+                {t('nav.donateCta')}
               </a>
-            ))}
-            <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between gap-3">
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
-      )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

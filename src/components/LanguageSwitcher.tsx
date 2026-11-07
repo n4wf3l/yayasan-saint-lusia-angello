@@ -7,13 +7,13 @@ const options: { code: Language; label: string }[] = [
   { code: 'en', label: 'EN' },
 ]
 
-export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
+export function LanguageSwitcher({ compact = false, large = false }: { compact?: boolean; large?: boolean }) {
   const { language, setLanguage } = useLanguage()
 
   return (
     <div
       className={`inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/70 p-1 backdrop-blur ${
-        compact ? 'text-xs' : 'text-sm'
+        compact ? 'text-xs' : large ? 'text-base' : 'text-sm'
       }`}
       role="group"
       aria-label="Language"
@@ -25,7 +25,7 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
           <button
             key={opt.code}
             onClick={() => setLanguage(opt.code)}
-            className={`rounded-full px-3 py-1 font-semibold transition ${
+            className={`rounded-full font-semibold transition ${large ? 'min-h-11 px-6' : 'px-3 py-1'} ${
               active
                 ? 'bg-brand-500 text-white shadow'
                 : 'text-slate-600 hover:text-slate-900'
