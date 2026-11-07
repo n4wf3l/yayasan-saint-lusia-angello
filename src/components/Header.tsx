@@ -4,14 +4,15 @@ import { useLanguage } from '../i18n/LanguageProvider'
 import { Logo } from './Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import type { TranslationKey } from '../i18n/translations'
+import { home } from '../config'
 
 const navItems: { href: string; key: TranslationKey }[] = [
-  { href: '#about', key: 'nav.about' },
-  { href: '#impact', key: 'nav.impact' },
-  { href: '#children', key: 'nav.children' },
-  { href: '#daily', key: 'nav.daily' },
-  { href: '#team', key: 'nav.team' },
-  { href: '#contact', key: 'nav.contact' },
+  { href: home('#about'), key: 'nav.about' },
+  { href: home('#impact'), key: 'nav.impact' },
+  { href: home('#children'), key: 'nav.children' },
+  { href: home('#daily'), key: 'nav.daily' },
+  { href: home('#team'), key: 'nav.team' },
+  { href: home('#contact'), key: 'nav.contact' },
 ]
 
 const HIDE_THRESHOLD = 80
@@ -61,7 +62,7 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-16 items-center justify-between gap-3">
-          <a href="#top" className="flex items-center gap-2.5 min-w-0" aria-label="Yayasan Saint Lusia Angello">
+          <a href={home()} className="flex items-center gap-2.5 min-w-0" aria-label="Yayasan Saint Lusia Angello">
             <Logo className="h-9 w-9 shrink-0" />
             <div className="hidden sm:flex flex-col leading-tight min-w-0">
               <span className="text-sm font-bold text-slate-900 truncate">

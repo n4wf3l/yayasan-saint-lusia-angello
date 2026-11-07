@@ -38,6 +38,12 @@ export const LEGAL = {
   npwp: '96.350.421.2-011.000',
 }
 
+/** Link to the home page, optionally to one of its sections; works from /donasi/ too. */
+export const home = (hash = '') => `${import.meta.env.BASE_URL}${hash}`
+
+/** Public address of the standalone donation page, for sharing. */
+export const DONATE_PAGE_URL = 'https://n4wf3l.github.io/yayasan-saint-lusia-angello/donasi/'
+
 /** Resolves a file in /public against the deploy base (GitHub Pages serves under a subpath). */
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 

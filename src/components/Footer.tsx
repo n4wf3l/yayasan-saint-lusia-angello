@@ -8,6 +8,7 @@ import {
   LEGAL,
   TIKTOK_URL,
   YOUTUBE_URL,
+  home,
 } from '../config'
 
 export function Footer() {
@@ -84,12 +85,12 @@ export function Footer() {
               {t('footer.quickLinks')}
             </h4>
             <ul className="mt-5 space-y-3 text-sm">
-              <li><a href="#about" className="inline-block py-1 hover:text-brand-300">{t('nav.about')}</a></li>
-              <li><a href="#mission" className="inline-block py-1 hover:text-brand-300">{t('nav.mission')}</a></li>
-              <li><a href="#daily" className="inline-block py-1 hover:text-brand-300">{t('nav.daily')}</a></li>
-              <li><a href="#impact" className="inline-block py-1 hover:text-brand-300">{t('nav.impact')}</a></li>
-              <li><a href="#moments" className="inline-block py-1 hover:text-brand-300">{t('nav.gallery')}</a></li>
-              <li><a href="#contact" className="inline-block py-1 hover:text-brand-300">{t('nav.contact')}</a></li>
+              <li><a href={home('#about')} className="inline-block py-1 hover:text-brand-300">{t('nav.about')}</a></li>
+              <li><a href={home('#mission')} className="inline-block py-1 hover:text-brand-300">{t('nav.mission')}</a></li>
+              <li><a href={home('#daily')} className="inline-block py-1 hover:text-brand-300">{t('nav.daily')}</a></li>
+              <li><a href={home('#impact')} className="inline-block py-1 hover:text-brand-300">{t('nav.impact')}</a></li>
+              <li><a href={home('#moments')} className="inline-block py-1 hover:text-brand-300">{t('nav.gallery')}</a></li>
+              <li><a href={home('#contact')} className="inline-block py-1 hover:text-brand-300">{t('nav.contact')}</a></li>
             </ul>
           </div>
 
@@ -101,7 +102,7 @@ export function Footer() {
               <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportDonate')}</a></li>
               <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportGoods')}</a></li>
               <li><a href="#donate" className="inline-block py-1 hover:text-brand-300">{t('footer.supportVolunteer')}</a></li>
-              <li><a href="#contact" className="inline-block py-1 hover:text-brand-300">{t('footer.supportPartner')}</a></li>
+              <li><a href={home('#contact')} className="inline-block py-1 hover:text-brand-300">{t('footer.supportPartner')}</a></li>
             </ul>
           </div>
 

@@ -119,6 +119,11 @@ export type TranslationKey =
   | 'donate.tierCustomDesc'
   | 'donate.customLabel'
   | 'donate.customHint'
+  | 'donatePage.docTitle'
+  | 'donatePage.back'
+  | 'donate.share'
+  | 'donate.shareCopied'
+  | 'donate.shareText'
   | 'donate.waOnceMsg'
   | 'donate.waMonthlyMsg'
   | 'donate.sendViaWa'
@@ -421,6 +426,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.tierCustomDesc': 'Sesuai hati Anda',
     'donate.customLabel': 'Jumlah Anda (Rupiah)',
     'donate.customHint': 'Setiap rupiah berarti. Bahkan Rp 10.000 sudah membantu.',
+    'donatePage.docTitle': 'Donasi | Yayasan Saint Lusia Angello',
+    'donatePage.back': 'Kembali ke beranda',
+    'donate.share': 'Bagikan link donasi',
+    'donate.shareCopied': 'Link disalin',
+    'donate.shareText': 'Bantu 20 anak di Yayasan Saint Lusia Angello, Jakarta Barat:',
     'donate.waOnceMsg':
       'Halo Ibu Liez, saya ingin berdonasi {amount} ke Yayasan Saint Lusia Angello. Mohon info berikutnya.',
     'donate.waMonthlyMsg':
@@ -756,6 +766,11 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.tierCustomDesc': 'As your heart leads',
     'donate.customLabel': 'Your amount (IDR)',
     'donate.customHint': 'Every rupiah counts. Even Rp 10,000 helps.',
+    'donatePage.docTitle': 'Donate | Yayasan Saint Lusia Angello',
+    'donatePage.back': 'Back to home',
+    'donate.share': 'Share the donation link',
+    'donate.shareCopied': 'Link copied',
+    'donate.shareText': 'Help 20 children at Yayasan Saint Lusia Angello, West Jakarta:',
     'donate.waOnceMsg':
       'Hello Mother Liez, I would like to donate {amount} to Yayasan Saint Lusia Angello. Please let me know the next steps.',
     'donate.waMonthlyMsg':

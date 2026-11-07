@@ -17,6 +17,7 @@ import {
   MapPin,
   MessageCircle,
   ScrollText,
+  Share2,
   Shield,
   Shirt,
   Utensils,
@@ -24,7 +25,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageProvider'
 import type { TranslationKey } from '../i18n/translations'
-import { BANK, MONTHLY_PROGRESS, PAYPAL_URL, asset } from '../config'
+import { BANK, DONATE_PAGE_URL, MONTHLY_PROGRESS, PAYPAL_URL, asset } from '../config'
 import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
 import type { Currency } from '../currency/CurrencyProvider'
 
@@ -113,6 +114,8 @@ export function Donate() {
             </span>
           </div>
           )}
+
+          <ShareDonateLink />
         </div>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-5">
@@ -444,6 +447,41 @@ function QrisCard() {
         {t('donate.qrisMobileHint')}
       </p>
     </div>
+  )
+}
+
+/** Native share sheet on phones (WhatsApp, Instagram...), clipboard copy elsewhere. */
+function ShareDonateLink() {
+  const { t } = useLanguage()
+  const [copied, setCopied] = useState(false)
+
+  const share = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ text: t('donate.shareText'), url: DONATE_PAGE_URL })
+      } catch {
+        /* dismissed */
+      }
+      return
+    }
+    try {
+      await navigator.clipboard.writeText(DONATE_PAGE_URL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch {
+      /* no-op */
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={share}
+      className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800"
+    >
+      {copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
+      {copied ? t('donate.shareCopied') : t('donate.share')}
+    </button>
   )
 }
 
