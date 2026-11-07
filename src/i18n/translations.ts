@@ -124,6 +124,8 @@ export type TranslationKey =
   | 'donate.share'
   | 'donate.shareCopied'
   | 'donate.shareText'
+  | 'donate.confirmTitle'
+  | 'donate.confirmLead'
   | 'donate.waOnceMsg'
   | 'donate.waMonthlyMsg'
   | 'donate.sendViaWa'
@@ -376,9 +378,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.donor3': 'Bapak Vincent Saverio',
 
     'donate.chip': 'Dukungan',
-    'donate.title': 'Transfer, kirim barang, atau datang langsung',
-    'donate.lead':
-      'Tiga jalur, semuanya terbuka. Rekening resmi di bawah ini atas nama Yayasan, bukan rekening pribadi. Konfirmasi transfer via WhatsApp agar kami bisa catat dan berterima kasih.',
+    'donate.title': 'Bantu 20 anak hari ini',
+    'donate.lead': 'Pilih jumlah, bayar lewat QRIS, transfer bank, atau PayPal, lalu kabari kami. Hanya satu menit.',
     'donate.financialTitle': 'Donasi Keuangan',
     'donate.financialDesc':
       'Transfer langsung ke rekening resmi yayasan. Setiap rupiah digunakan untuk makanan, pendidikan, dan kebutuhan harian anak-anak.',
@@ -415,7 +416,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Listrik, air, perawatan rumah, dan kebutuhan harian lainnya.',
     'donate.frequencyOnce': 'Satu kali',
     'donate.frequencyMonthly': 'Setiap bulan',
-    'donate.tierTitle': 'Berapa yang ingin Anda berikan?',
+    'donate.tierTitle': 'Pilih jumlah',
     'donate.tier1Amount': 'Rp 150.000',
     'donate.tier1Desc': 'Snack & kebutuhan harian untuk 1 anak selama seminggu',
     'donate.tier2Amount': 'Rp 500.000',
@@ -431,6 +432,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.share': 'Bagikan link donasi',
     'donate.shareCopied': 'Link disalin',
     'donate.shareText': 'Bantu 20 anak di Yayasan Saint Lusia Angello, Jakarta Barat:',
+    'donate.confirmTitle': 'Kabari kami',
+    'donate.confirmLead': 'Setelah membayar, kirim pesan singkat agar kami bisa mencatat dan berterima kasih.',
     'donate.waOnceMsg':
       'Halo Ibu Liez, saya ingin berdonasi {amount} ke Yayasan Saint Lusia Angello. Mohon info berikutnya.',
     'donate.waMonthlyMsg':
@@ -445,8 +448,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.commitLine':
       'Semua donasi masuk ke rekening Yayasan dan digunakan untuk kebutuhan anak-anak: makan, sekolah, kesehatan, dan tempat tinggal.',
     'donate.currentMonthLabel': 'Kebutuhan bulan ini',
-    'donate.currentMonthValue':
-      'Rp 22.000.000 untuk 20 anak. Setiap kontribusi membantu.',
+    'donate.currentMonthValue': 'Rp 22.000.000 untuk 20 anak',
     'donate.progressRaised': '{raised} terkumpul dari {goal}.',
     'donate.progressRemaining': 'Masih kurang sekitar {amount}.',
     'donate.sahabatTitle': 'Bergabung sebagai Sahabat YSLA',
@@ -482,7 +484,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.paypalLead': 'Bayar dengan kartu kredit/debit atau akun PayPal, dari negara mana pun.',
     'donate.paypalCta': 'Donasi lewat PayPal',
     'donate.paypalNote': 'Pembayaran aman di halaman resmi PayPal.',
-    'donate.originTitle': 'Dari mana Anda berdonasi?',
+    'donate.originTitle': 'Bayar dari mana?',
     'donate.originLocal': 'Dari Indonesia',
     'donate.originLocalHint': 'QRIS atau transfer Bank BRI',
     'donate.originAbroad': 'Dari luar negeri',
@@ -716,9 +718,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'impact.donor3': 'Mr. Vincent Saverio',
 
     'donate.chip': 'Support',
-    'donate.title': 'Transfer, send goods, or visit us',
-    'donate.lead':
-      'Three channels, all open. The account below is the official Foundation account, not a personal one. Please confirm your transfer on WhatsApp so we can log it and say thank you.',
+    'donate.title': 'Help 20 children today',
+    'donate.lead': 'Pick an amount, pay by QRIS, bank transfer or PayPal, then let us know. It takes a minute.',
     'donate.financialTitle': 'Financial Donation',
     'donate.financialDesc':
       'Transfer directly to our official account. Every rupiah goes to food, education, and the daily needs of the children.',
@@ -755,7 +756,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       'Electricity, water, home maintenance, and daily essentials.',
     'donate.frequencyOnce': 'One-time',
     'donate.frequencyMonthly': 'Every month',
-    'donate.tierTitle': 'How much would you like to give?',
+    'donate.tierTitle': 'Choose an amount',
     'donate.tier1Amount': 'IDR 150,000',
     'donate.tier1Desc': 'Snacks and daily essentials for 1 child, one week',
     'donate.tier2Amount': 'IDR 500,000',
@@ -771,6 +772,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.share': 'Share the donation link',
     'donate.shareCopied': 'Link copied',
     'donate.shareText': 'Help 20 children at Yayasan Saint Lusia Angello, West Jakarta:',
+    'donate.confirmTitle': 'Let us know',
+    'donate.confirmLead': 'Once you have paid, send a quick message so we can log it and say thank you.',
     'donate.waOnceMsg':
       'Hello Mother Liez, I would like to donate {amount} to Yayasan Saint Lusia Angello. Please let me know the next steps.',
     'donate.waMonthlyMsg':
@@ -785,8 +788,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.commitLine':
       "All donations go into the Foundation's account and are used for the children's needs: food, school, healthcare, and housing.",
     'donate.currentMonthLabel': 'This month we need',
-    'donate.currentMonthValue':
-      'IDR 22,000,000 for 20 children. Every contribution helps.',
+    'donate.currentMonthValue': 'IDR 22,000,000 for 20 children',
     'donate.progressRaised': '{raised} raised of {goal}.',
     'donate.progressRemaining': 'About {amount} still to go.',
     'donate.sahabatTitle': 'Become a Sahabat YSLA',
@@ -822,7 +824,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.paypalLead': 'Pay by credit/debit card or with a PayPal account, from any country.',
     'donate.paypalCta': 'Donate with PayPal',
     'donate.paypalNote': "Secure checkout on PayPal's own page.",
-    'donate.originTitle': 'Where are you giving from?',
+    'donate.originTitle': 'Where are you paying from?',
     'donate.originLocal': 'From Indonesia',
     'donate.originLocalHint': 'QRIS or Bank BRI transfer',
     'donate.originAbroad': 'From abroad',

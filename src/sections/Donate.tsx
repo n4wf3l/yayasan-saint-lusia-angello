@@ -95,31 +95,27 @@ export function Donate() {
           <h2 className="mt-3 font-display text-[1.75rem] sm:text-4xl lg:text-5xl font-medium leading-tight text-slate-900">
             {t('donate.title')}
           </h2>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-700">
+          <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-700">
             {t('donate.lead')}
           </p>
 
           {hasProgress ? (
             <MonthlyProgress />
           ) : (
-          <div className="mt-5 flex flex-col gap-1 rounded-xl border border-brand-300 bg-white px-4 py-3 sm:inline-flex sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:py-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-brand-700">
-              {t('donate.currentMonthLabel')}
-            </span>
-            <span className="text-sm text-slate-800">
+            <p className="mt-4 text-sm text-slate-700">
+              <span className="font-semibold text-brand-700">{t('donate.currentMonthLabel')}:</span>{' '}
               {t('donate.currentMonthValue')}
               {monthlyNeedConverted && (
                 <span className="text-slate-500"> (≈ {monthlyNeedConverted})</span>
               )}
-            </span>
-          </div>
+            </p>
           )}
-
-          <ShareDonateLink />
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-3">
+        {/* DOM order is the phone order: amount, then payment, then confirm.
+            From lg the confirm card sits under the amount picker and payment fills the right column. */}
+        <div className="mt-8 grid gap-5 sm:mt-12 lg:grid-cols-5 lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-10 lg:gap-y-5">
+          <div className="lg:col-span-3 lg:row-start-1">
             <GivingPicker
               frequency={frequency}
               setFrequency={setFrequency}
@@ -127,11 +123,10 @@ export function Donate() {
               setSelected={setSelected}
               customIdr={customIdr}
               setCustomIdr={setCustomIdr}
-              whatsappHref={whatsappHref}
             />
           </div>
 
-          <div className="lg:col-span-2 space-y-5">
+          <div className="space-y-5 lg:col-span-2 lg:col-start-4 lg:row-span-2 lg:row-start-1">
             <OriginPicker
               origin={origin}
               setOrigin={setOrigin}
@@ -158,9 +153,19 @@ export function Donate() {
                 </motion.div>
               )}
             </AnimatePresence>
+            <div className="hidden lg:block">
+              <TrustStrip />
+            </div>
+          </div>
+
+          <ConfirmCard whatsappHref={whatsappHref} />
+          {/* On phones the trust notes come after the last step so they don't split the flow. */}
+          <div className="lg:hidden">
             <TrustStrip />
           </div>
         </div>
+
+        <ShareDonateLink />
 
         <GoodsCard />
         <MonthlyBudget />
@@ -177,7 +182,6 @@ function GivingPicker({
   setSelected,
   customIdr,
   setCustomIdr,
-  whatsappHref,
 }: {
   frequency: Frequency
   setFrequency: (f: Frequency) => void
@@ -185,18 +189,15 @@ function GivingPicker({
   setSelected: (n: number) => void
   customIdr: number
   setCustomIdr: (n: number) => void
-  whatsappHref: string
 }) {
   const { t } = useLanguage()
   const { currency, setCurrency, convert } = useCurrency()
   const customInput = useRef<HTMLInputElement>(null)
   const customConverted = customIdr > 0 ? convert(customIdr) : null
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-8">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-          {t('donate.tierTitle')}
-        </div>
+        <StepTitle n={1}>{t('donate.tierTitle')}</StepTitle>
         <label className="inline-flex items-center gap-2 text-xs text-slate-600">
           {t('donate.showIn')}
           <select
@@ -239,7 +240,7 @@ function GivingPicker({
         })}
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      <div className="mt-5 grid grid-cols-2 gap-3">
         {tiers.map((tier, i) => {
           const active = selected === i
           const converted = tier.idr ? convert(tier.idr) : null
@@ -251,7 +252,7 @@ function GivingPicker({
                 setSelected(i)
                 if (i === CUSTOM_TIER) requestAnimationFrame(() => customInput.current?.focus())
               }}
-              className={`text-left rounded-xl border p-4 transition ${
+              className={`text-left rounded-xl border p-3 sm:p-4 transition ${
                 active
                   ? 'border-brand-600 bg-brand-50'
                   : 'border-slate-200 bg-white hover:border-slate-400'
@@ -259,7 +260,7 @@ function GivingPicker({
               aria-pressed={active}
             >
               <div className="flex items-center justify-between gap-2">
-                <span className="font-display text-lg font-medium text-slate-900">
+                <span className="font-display text-base sm:text-lg font-medium text-slate-900">
                   {t(tier.amountKey)}
                 </span>
                 {active && (
@@ -328,20 +329,41 @@ function GivingPicker({
 
       {frequency === 'monthly' && <SahabatPerks />}
 
+      {currency !== 'IDR' && (
+        <p className="mt-4 text-xs text-slate-500 leading-relaxed">{t('donate.fxNote')}</p>
+      )}
+    </div>
+  )
+}
+
+function StepTitle({ n, children }: { n: number; children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-2.5">
+      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-900 text-xs font-semibold text-white">
+        {n}
+      </span>
+      <span className="text-sm font-semibold text-slate-900">{children}</span>
+    </div>
+  )
+}
+
+function ConfirmCard({ whatsappHref }: { whatsappHref: string }) {
+  const { t } = useLanguage()
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-8 lg:col-span-3 lg:row-start-2">
+      <StepTitle n={3}>{t('donate.confirmTitle')}</StepTitle>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">{t('donate.confirmLead')}</p>
       <a
         href={whatsappHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-700"
+        className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-700"
       >
         <MessageCircle className="h-4 w-4" />
         {t('donate.sendViaWa')}
         <ArrowRight className="h-4 w-4" />
       </a>
-      <p className="mt-3 text-xs text-slate-500 leading-relaxed">
-        {t('donate.commitLine')}
-        {currency !== 'IDR' && <> {t('donate.fxNote')}</>}
-      </p>
+      <p className="mt-3 text-xs text-slate-500 leading-relaxed">{t('donate.commitLine')}</p>
     </div>
   )
 }
@@ -399,10 +421,10 @@ const sahabatPerks: TranslationKey[] = [
 function SahabatPerks() {
   const { t } = useLanguage()
   return (
-    <div className="mt-6 rounded-xl bg-slate-900 p-5 text-white">
-      <div className="font-display text-lg font-medium">{t('donate.sahabatTitle')}</div>
-      <p className="mt-1 text-sm text-slate-300">{t('donate.sahabatLead')}</p>
-      <ul className="mt-4 space-y-2.5 text-sm">
+    <div className="mt-5 rounded-xl bg-slate-900 p-4 text-white sm:p-5">
+      <div className="font-display text-base font-medium sm:text-lg">{t('donate.sahabatTitle')}</div>
+      <p className="mt-1 hidden text-sm text-slate-300 sm:block">{t('donate.sahabatLead')}</p>
+      <ul className="mt-3 space-y-2 text-xs sm:mt-4 sm:space-y-2.5 sm:text-sm">
         {sahabatPerks.map((key) => (
           <li key={key} className="flex gap-2.5">
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-300" />
@@ -477,7 +499,7 @@ function ShareDonateLink() {
     <button
       type="button"
       onClick={share}
-      className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800"
+      className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800"
     >
       {copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
       {copied ? t('donate.shareCopied') : t('donate.share')}
@@ -501,9 +523,7 @@ function OriginPicker({
   ]
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5">
-      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-        {t('donate.originTitle')}
-      </div>
+      <StepTitle n={2}>{t('donate.originTitle')}</StepTitle>
       <div className="mt-3 grid grid-cols-2 gap-3" role="group">
         {options.map(({ id, icon: Icon, label, hint }) => {
           const active = origin === id
