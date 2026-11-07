@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import {
   AlertCircle,
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   Copy,
   CreditCard,
   Download,
+  Globe,
   GraduationCap,
   HandHeart,
   Home,
@@ -27,6 +29,7 @@ import { CURRENCIES, useCurrency } from '../currency/CurrencyProvider'
 import type { Currency } from '../currency/CurrencyProvider'
 
 type Frequency = 'once' | 'monthly'
+type Origin = 'local' | 'abroad'
 
 type Tier = {
   amountKey: TranslationKey
@@ -52,6 +55,8 @@ export function Donate() {
   const [frequency, setFrequency] = useState<Frequency>('monthly')
   const [selected, setSelected] = useState(2)
   const [copied, setCopied] = useState(false)
+  // No method is shown until the donor says where they give from: QRIS and BRI only work inside Indonesia.
+  const [origin, setOrigin] = useState<Origin | null>(null)
 
   const copyAccount = async () => {
     try {
@@ -115,11 +120,32 @@ export function Donate() {
           </div>
 
           <div className="lg:col-span-2 space-y-5">
-            {/* Visitors outside Indonesia see PayPal first: QRIS and BRI transfers are local rails. */}
-            {currency !== 'IDR' && <PaypalCard />}
-            <QrisCard />
-            <AccountCard copied={copied} onCopy={copyAccount} />
-            {currency === 'IDR' && <PaypalCard />}
+            <OriginPicker
+              origin={origin}
+              setOrigin={setOrigin}
+              suggested={currency === 'IDR' ? 'local' : 'abroad'}
+            />
+            <AnimatePresence mode="wait" initial={false}>
+              {origin && (
+                <motion.div
+                  key={origin}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="space-y-5"
+                >
+                  {origin === 'local' ? (
+                    <>
+                      <QrisCard />
+                      <AccountCard copied={copied} onCopy={copyAccount} />
+                    </>
+                  ) : (
+                    <PaypalCard />
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <TrustStrip />
           </div>
         </div>
@@ -352,6 +378,59 @@ function QrisCard() {
       <p className="mt-2 text-xs text-slate-600 leading-relaxed lg:hidden">
         {t('donate.qrisMobileHint')}
       </p>
+    </div>
+  )
+}
+
+function OriginPicker({
+  origin,
+  setOrigin,
+  suggested,
+}: {
+  origin: Origin | null
+  setOrigin: (o: Origin) => void
+  suggested: Origin
+}) {
+  const { t } = useLanguage()
+  const options: { id: Origin; icon: LucideIcon; label: TranslationKey; hint: TranslationKey }[] = [
+    { id: 'local', icon: MapPin, label: 'donate.originLocal', hint: 'donate.originLocalHint' },
+    { id: 'abroad', icon: Globe, label: 'donate.originAbroad', hint: 'donate.originAbroadHint' },
+  ]
+  return (
+    <div className="rounded-2xl border border-slate-200 bg-white p-5">
+      <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+        {t('donate.originTitle')}
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-3" role="group">
+        {options.map(({ id, icon: Icon, label, hint }) => {
+          const active = origin === id
+          return (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setOrigin(id)}
+              aria-pressed={active}
+              className={`relative flex min-h-11 flex-col items-start gap-1 rounded-xl border p-3 text-left transition ${
+                active
+                  ? 'border-brand-600 bg-brand-50'
+                  : 'border-slate-200 bg-white hover:border-slate-400'
+              }`}
+            >
+              <Icon className={`h-5 w-5 ${active ? 'text-brand-700' : 'text-slate-500'}`} />
+              <span className="text-sm font-semibold text-slate-900">{t(label)}</span>
+              <span className="text-xs leading-snug text-slate-600">{t(hint)}</span>
+              {id === suggested && !origin && (
+                <span className="absolute right-2 top-2 rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brand-700">
+                  {t('donate.originSuggested')}
+                </span>
+              )}
+            </button>
+          )
+        })}
+      </div>
+      {!origin && (
+        <p className="mt-3 text-xs leading-relaxed text-slate-600">{t('donate.originPrompt')}</p>
+      )}
     </div>
   )
 }

@@ -155,6 +155,13 @@ export type TranslationKey =
   | 'donate.paypalLead'
   | 'donate.paypalCta'
   | 'donate.paypalNote'
+  | 'donate.originTitle'
+  | 'donate.originLocal'
+  | 'donate.originLocalHint'
+  | 'donate.originAbroad'
+  | 'donate.originAbroadHint'
+  | 'donate.originSuggested'
+  | 'donate.originPrompt'
   | 'children.months'
   | 'children.years'
   | 'moments.chip'
@@ -454,13 +461,20 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.qrisNmid': 'NMID : ID2026488087738',
     'donate.qrisDownload': 'Simpan gambar QRIS',
     'donate.showIn': 'Tampilkan dalam',
-    'donate.fxNote': 'Transfer dilakukan dalam Rupiah; jumlah dalam mata uang lain hanya perkiraan.',
+    'donate.fxNote': 'Jumlah dalam mata uang lain hanya perkiraan.',
     'donate.qrisMobileHint':
       'Dari HP? Simpan gambarnya, lalu di aplikasi bank pilih Scan → unggah dari galeri.',
-    'donate.paypalTitle': 'Dari luar negeri',
+    'donate.paypalTitle': 'Kartu atau PayPal',
     'donate.paypalLead': 'Bayar dengan kartu kredit/debit atau akun PayPal, dari negara mana pun.',
     'donate.paypalCta': 'Donasi lewat PayPal',
     'donate.paypalNote': 'Pembayaran aman di halaman resmi PayPal.',
+    'donate.originTitle': 'Dari mana Anda berdonasi?',
+    'donate.originLocal': 'Dari Indonesia',
+    'donate.originLocalHint': 'QRIS atau transfer Bank BRI',
+    'donate.originAbroad': 'Dari luar negeri',
+    'donate.originAbroadHint': 'Kartu kredit/debit atau PayPal',
+    'donate.originSuggested': 'Disarankan',
+    'donate.originPrompt': 'Pilih salah satu untuk melihat cara pembayaran yang sesuai.',
     'children.months': '{n} bulan',
     'children.years': '{n} tahun',
 
@@ -780,13 +794,20 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     'donate.qrisNmid': 'NMID: ID2026488087738',
     'donate.qrisDownload': 'Save QRIS image',
     'donate.showIn': 'Show in',
-    'donate.fxNote': 'Transfers are made in IDR; amounts in other currencies are approximate.',
+    'donate.fxNote': 'Amounts in other currencies are approximate.',
     'donate.qrisMobileHint':
       'On your phone? Save the image, then in your banking app tap Scan → upload from gallery.',
-    'donate.paypalTitle': 'Giving from abroad',
+    'donate.paypalTitle': 'Card or PayPal',
     'donate.paypalLead': 'Pay by credit/debit card or with a PayPal account, from any country.',
     'donate.paypalCta': 'Donate with PayPal',
     'donate.paypalNote': "Secure checkout on PayPal's own page.",
+    'donate.originTitle': 'Where are you giving from?',
+    'donate.originLocal': 'From Indonesia',
+    'donate.originLocalHint': 'QRIS or Bank BRI transfer',
+    'donate.originAbroad': 'From abroad',
+    'donate.originAbroadHint': 'Credit/debit card or PayPal',
+    'donate.originSuggested': 'Suggested',
+    'donate.originPrompt': 'Pick one to see the payment options that work for you.',
     'children.months': '{n} months',
     'children.years': '{n} years',
 
