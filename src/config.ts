@@ -39,12 +39,12 @@ export const LEGAL = {
   chair: 'Maximus Ali Perajaka',
 }
 
-/** Where the site is served from; update if it moves (for example to Hostinger). */
+/** Where the site is served from: the contracting Hostinger entity for this account. */
 export const HOSTING = {
-  name: 'GitHub Pages',
-  company: 'GitHub, Inc.',
-  address: '88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA',
-  country: { id: 'Amerika Serikat', en: 'United States' },
+  name: 'Hostinger',
+  company: 'Hostinger International Ltd.',
+  address: '61 Lordou Vironos Street, 6023 Larnaca, Cyprus',
+  country: { id: 'Siprus', en: 'Cyprus' },
 }
 
 export const DEVELOPER = {
@@ -52,7 +52,7 @@ export const DEVELOPER = {
   country: { id: 'Belgia', en: 'Belgium' },
 }
 
-/** Resolves a file in /public against the deploy base (GitHub Pages serves under a subpath). */
+/** Resolves a file in /public against the deploy base. */
 export const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 /**

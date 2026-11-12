@@ -8,7 +8,7 @@ const SLUG: Record<Page, string> = { home: '', donate: 'donasi/', legal: 'legal/
 const BASE = import.meta.env.BASE_URL
 
 /** Production address, used where a link must work outside the site (sharing). */
-export const PUBLIC_BASE = 'https://n4wf3l.github.io/yayasan-saint-lusia-angello/'
+export const PUBLIC_BASE = 'https://yayasansaintlusiaangello.org/'
 
 const suffix = (page: Page, lang: Language) => `${lang === 'en' ? 'en/' : ''}${SLUG[page]}`
 
@@ -18,7 +18,7 @@ export const pagePath = (page: Page, lang: Language) => `${BASE}${suffix(page, l
 /** Absolute public URL of a page in a language. */
 export const publicUrl = (page: Page, lang: Language) => `${PUBLIC_BASE}${suffix(page, lang)}`
 
-/** Reads the page and language from a pathname such as /yayasan-saint-lusia-angello/en/donasi/. */
+/** Reads the page and language from a pathname such as /en/donasi/. */
 export function parsePath(pathname: string): { page: Page; lang: Language } {
   const rest = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname.replace(/^\//, '')
   const parts = rest.split('/').filter(Boolean)

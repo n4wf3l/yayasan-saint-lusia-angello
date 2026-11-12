@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Production is served from GitHub Pages under /yayasan-saint-lusia-angello/.
-export default defineConfig(({ command, isPreview }) => ({
-  base: command === 'build' || isPreview ? '/yayasan-saint-lusia-angello/' : '/',
+// Production is served from the root of yayasansaintlusiaangello.org (Hostinger).
+export default defineConfig({
   plugins: [react()],
   // HTML entries: home, the shareable /donasi/ page and /legal/, each in Indonesian and under /en/.
   build: {
@@ -22,4 +21,4 @@ export default defineConfig(({ command, isPreview }) => ({
     port: 5173,
     open: true,
   },
-}))
+})

@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to Hostinger
 
 on:
   push:
@@ -10,16 +10,18 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    # The Hostinger secrets live in this GitHub environment (repo Settings > Environments).
+    environment:
+      name: HOSTINGER_HOST
+      url: https://yayasansaintlusiaangello.org/
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,16 +30,21 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      # Environment secrets, values from hPanel > Advanced > SSH Access:
+      # HOSTINGER_HOST (IP), HOSTINGER_PORT (65002), HOSTINGER_USER (u123456789), HOSTINGER_SSH_KEY (private key).
+      - name: Upload to public_html
+        env:
+          HOST: ${{ secrets.HOSTINGER_HOST }}
+          PORT: ${{ secrets.HOSTINGER_PORT }}
+          USER: ${{ secrets.HOSTINGER_USER }}
+          SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # --delete removes files of older builds; .well-known holds the SSL certificate checks, so it stays.
+          rsync -rlz --delete --exclude '.well-known/' \
+            -e "ssh -i ~/.ssh/deploy_key -p $PORT" \
+            dist/ "$USER@$HOST:domains/yayasansaintlusiaangello.org/public_html/"
