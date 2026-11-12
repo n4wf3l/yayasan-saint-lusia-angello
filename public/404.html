@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f06108" />
+    <link rel="icon" type="image/png" href="/yayasan-saint-lusia-angello/logo-yayasan.png" />
+    <title>Halaman tidak ditemukan | Yayasan Saint Lusia Angello</title>
+    <!-- GitHub Pages serves this file for any unknown URL. Static on purpose: it works whatever the path. -->
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body {
+        min-height: 100vh;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+        background: #fdf8f0;
+        color: #0f172a;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        text-align: center;
+      }
+      main { max-width: 32rem; }
+      img { width: 72px; height: 72px; object-fit: contain; }
+      .code {
+        margin: 24px 0 0;
+        font-family: Georgia, serif;
+        font-size: 4.5rem;
+        line-height: 1;
+        color: #f06108;
+      }
+      h1 { margin: 12px 0 0; font-family: Georgia, serif; font-weight: 500; font-size: 1.75rem; line-height: 1.2; }
+      p { margin: 12px 0 0; color: #475569; line-height: 1.6; }
+      .actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+      a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .primary { background: #f06108; color: #fff; }
+      .primary:hover { background: #c74909; }
+      .secondary { border: 1px solid #cbd5e1; background: #fff; color: #1e293b; }
+      .secondary:hover { border-color: #0f172a; }
+      a:focus-visible { outline: 2px solid #f06108; outline-offset: 2px; }
+      [data-lang="en"] .id, [data-lang="id"] .en { display: none; }
+    </style>
+  </head>
+  <body data-lang="id">
+    <main>
+      <img src="/yayasan-saint-lusia-angello/logo-yayasan.png" alt="Yayasan Saint Lusia Angello" />
+      <p class="code" aria-hidden="true">404</p>
+
+      <div class="id">
+        <h1>Halaman tidak ditemukan</h1>
+        <p>Alamat ini tidak ada atau sudah dipindahkan. Kembali ke beranda atau langsung ke halaman donasi.</p>
+        <div class="actions">
+          <a class="primary" href="/yayasan-saint-lusia-angello/">Ke beranda</a>
+          <a class="secondary" href="/yayasan-saint-lusia-angello/donasi/">Donasi</a>
+          <a class="secondary" href="/yayasan-saint-lusia-angello/en/" lang="en">English</a>
+        </div>
+      </div>
+
+      <div class="en" lang="en">
+        <h1>Page not found</h1>
+        <p>This address does not exist or has moved. Go back to the home page or straight to the donation page.</p>
+        <div class="actions">
+          <a class="primary" href="/yayasan-saint-lusia-angello/en/">Go to home page</a>
+          <a class="secondary" href="/yayasan-saint-lusia-angello/en/donasi/">Donate</a>
+          <a class="secondary" href="/yayasan-saint-lusia-angello/" lang="id">Bahasa Indonesia</a>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Same rule as the site: an /en/ URL is English, otherwise the language the visitor picked before.
+      ;(function () {
+        var lang = /\/en(\/|$)/.test(location.pathname) ? 'en' : null
+        if (!lang) {
+          try { lang = localStorage.getItem('yayasan-lang') } catch (e) {}
+        }
+        if (lang !== 'en') return
+        document.body.setAttribute('data-lang', 'en')
+        document.documentElement.lang = 'en'
+        document.title = 'Page not found | Yayasan Saint Lusia Angello'
+      })()
+    </script>
+  </body>
+</html>
