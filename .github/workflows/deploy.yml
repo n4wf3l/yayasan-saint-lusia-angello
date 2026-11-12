@@ -41,8 +41,11 @@ jobs:
           SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          # A key pasted from Windows can carry \r line endings, which OpenSSH refuses.
+          printf '%s\n' "$SSH_KEY" | tr -d '\r' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          ssh-keygen -y -f ~/.ssh/deploy_key > /dev/null \
+            || { echo "::error::HOSTINGER_SSH_KEY is not a valid private key: paste the whole file, BEGIN to END lines included."; exit 1; }
           ssh-keyscan -p "$PORT" "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
           # --delete removes files of older builds; .well-known holds the SSL certificate checks, so it stays.
           rsync -rlz --delete --exclude '.well-known/' \
