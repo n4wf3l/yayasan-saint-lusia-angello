@@ -5,6 +5,8 @@ import { LANGUAGE_STORAGE_KEY, useLanguage } from '../i18n/LanguageProvider'
 import { translations } from '../i18n/translations'
 import type { Language } from '../i18n/translations'
 
+const AUTO_HIDE_MS = 30_000
+
 /**
  * First visit only: if the browser's language differs from the page's, offer the
  * other version instead of redirecting (redirects would hide a language from Google).
@@ -35,6 +37,14 @@ export function LanguageSuggest() {
     }
   }
 
+  // Left alone for 30 s counts as a no: it goes away and, like the close button, does not come back.
+  useEffect(() => {
+    if (!suggested) return
+    const timer = window.setTimeout(dismiss, AUTO_HIDE_MS)
+    return () => window.clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [suggested])
+
   const copy = suggested ? translations[suggested] : null
 
   return (
@@ -48,7 +58,8 @@ export function LanguageSuggest() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.35, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-3 bottom-24 z-50 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 pl-4 shadow-xl shadow-slate-900/10 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:max-w-sm"
+          // Shown on arrival, while the phone's sticky Donate bar is still hidden: it can sit at the very bottom.
+          className="fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-50 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 pl-4 shadow-xl shadow-slate-900/10 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:max-w-sm"
         >
           <Globe className="h-5 w-5 shrink-0 text-brand-700" aria-hidden />
           <div className="min-w-0 flex-1">
