@@ -85,8 +85,15 @@ export function Header() {
             : 'bg-transparent'
         }`}
       >
-        <div className="container-page flex h-16 items-center justify-between gap-3">
-          <a href={homeHref()} className="flex items-center gap-2.5 min-w-0" aria-label="Yayasan Saint Lusia Angello">
+        <div className="container-page relative flex h-16 items-center justify-between gap-3">
+          {/* With the phone menu open the logo glides to the centre (layout animation, no transform clash). */}
+          <motion.a
+            layout="position"
+            transition={{ duration: 0.35, ease: EASE }}
+            href={homeHref()}
+            className={`flex items-center gap-2.5 min-w-0 ${open ? 'absolute inset-x-0 mx-auto w-fit lg:static lg:mx-0' : ''}`}
+            aria-label="Yayasan Saint Lusia Angello"
+          >
             <Logo className="h-9 w-9 shrink-0" />
             <div className="hidden sm:flex flex-col leading-tight min-w-0">
               <span className="text-sm font-bold text-slate-900 truncate">
@@ -96,7 +103,7 @@ export function Header() {
                 Jakarta Barat
               </span>
             </div>
-          </a>
+          </motion.a>
 
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
@@ -118,14 +125,25 @@ export function Header() {
             </a>
           </div>
 
-          <div className="lg:hidden flex items-center gap-2">
-            <a
-              href="#donate"
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 h-11 text-sm font-semibold text-white shadow-sm active:bg-brand-700"
-            >
-              <Heart className="h-4 w-4" />
-              <ScrambleText text={t('nav.donateCta')} />
-            </a>
+          {/* ml-auto keeps the close button on the right once the logo leaves the flow. */}
+          <div className="lg:hidden ml-auto flex items-center gap-2">
+            {/* The open menu has its own big Donate button at the bottom: no need for this one too. */}
+            <AnimatePresence initial={false}>
+              {!open && (
+                <motion.a
+                  key="top-donate"
+                  href="#donate"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 h-11 text-sm font-semibold text-white shadow-sm active:bg-brand-700"
+                >
+                  <Heart className="h-4 w-4" />
+                  <ScrambleText text={t('nav.donateCta')} />
+                </motion.a>
+              )}
+            </AnimatePresence>
             <button
               onClick={() => setOpen((v) => !v)}
               className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white w-11 h-11 text-slate-700 active:bg-slate-100"
