@@ -1,0 +1,57 @@
+name: Redirect old GitHub Pages site
+
+# The site moved to yayasansaintlusiaangello.org. GitHub Pages cannot send a 301, so every
+# old address gets a page with rel=canonical, an instant meta refresh and a JS redirect,
+# which Google treats as a permanent move. Unknown paths go through 404.html.
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pages-redirect.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Write redirect pages
+        run: |
+          NEW=https://yayasansaintlusiaangello.org
+          OLD=/yayasan-saint-lusia-angello
+          page() {
+            mkdir -p "site/$1"
+            cat > "site/$1index.html" <<EOF
+          <!doctype html>
+          <html><head><meta charset="utf-8">
+          <title>Yayasan Saint Lusia Angello</title>
+          <link rel="canonical" href="$NEW/$1">
+          <meta http-equiv="refresh" content="0; url=$NEW/$1">
+          <script>location.replace('$NEW/$1' + location.search + location.hash)</script>
+          </head><body><a href="$NEW/$1">yayasansaintlusiaangello.org</a></body></html>
+          EOF
+          }
+          for p in "" en/ donasi/ en/donasi/ legal/ en/legal/; do page "$p"; done
+          cat > site/404.html <<EOF
+          <!doctype html>
+          <html><head><meta charset="utf-8"><meta name="robots" content="noindex">
+          <title>Yayasan Saint Lusia Angello</title>
+          <script>location.replace('$NEW' + (location.pathname.replace('$OLD', '') || '/') + location.search + location.hash)</script>
+          </head><body><a href="$NEW/">yayasansaintlusiaangello.org</a></body></html>
+          EOF
+          find site -type f
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
